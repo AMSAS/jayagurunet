@@ -1,0 +1,247 @@
+======================= Changed on 09/03/2010 ======================= 
+
+[Jul 04 program]
+No changes 
+[Jul 11 program]
+GeetaKhata2: Manima sunima heu dina guhari
+	Stanza 0 line 2: 'ra' phala added to shripada
+	Stanza 3 line 2: 'da' removed from bisada
+	Stanza 4 line 1: dirgha E changed to harsa e in ershaa
+
+[Jul 18 program]
+GeetaKhata1: Mana puja tora biphala na jiba
+	Stanza 3 line 2: apostophe added to tara
+GeetaKhata2: Se dina hoiba kebe achi anai
+	Stanza 4 line 3: apostophe added to kare
+GeetaKhata1: Ede daradia kie lo sajani
+	Stanza 2 line 4: rushi and dura modified
+	Stanza 3 line 1: dirgha E changed to harsa e in jhinabasa
+GeetaKhata2: Bandana ghena kara
+	Stanza 0 line 3: dirgha E changed to harsa e in pranati
+	Stanza 3 line 4: apostophe added to tara
+	Stanza 4 line 3: end quote in the front changed to start quote
+
+[Jul 25 program]
+GeetaKhata1: Dayamaya he! kholi diya hrudayara duara 
+	Ending pipes added to all stanza numbers 
+GeetaKhata2: Kahara bainsi bajuchi sakhi lo
+	Title: harsa e changed to dirgha E in sakhi
+	Stanza 0 line 1: harsa e changed to dirgha E in sakhi
+	Double pipes changed to single pipes in the stanza numbers
+	Stanza 2 line 2: harsa e changed to dirgha E in kunjakutikare
+	Stanza 3 line 4: harsa u changed to dirgha U in kula
+
+[Aug 01 program]
+GeetaKhata2: Manara Thakura aji
+	Stanza 1 line 3: dirgha E changed to harsa e in bhikarire
+GeetaKhata2: Nayana ranjana nayane nayane
+	Stanza 5 line 1: dirgha U changed to harsa u in ghume
+GeetaKhata1: Mana mandira satapa duara
+	Stanza 1 line 1: space removed between uhada and re
+	Stanza 1 line 2: space introduced between kie se
+
+[Aug 08 program]
+GeetaKhata1: Taba mandira duare asichi deba
+	Stanza 1 line 3: dipali spelling changed (two matras reversed)
+GeetaKhata2: Jibana bandhu mo etiki kariba
+	Stanza 3 line 3: harsa u put under da in dukha
+
+[Aug 15 program]
+GeetaKhata1: Dure bahudure akhira separe
+	Stanza 4 line 3: space introduced between asa he
+GeetaKhata2: Sei kajala ghenai diya
+	Stanza 1 line 2: space introduced between na saru
+GeetaKhata1: Natha manara basana mora
+	Stanza 1 line 3: comma removed
+	
+[Aug 22 program]
+GeetaKhata1: Jaga nishi pahilani raje rabikara he
+	Stanza 2 line 2: dirgha U changed to harsa u in gunagan
+GeetaKhata2: He mahamahima bhubanamohana nandana
+	Stanza 1 line 1: space removed in bhakatara
+	Stanza 1 line 2: ta changed to tha in phuthai
+	Stanza 2 line 3: aakara added to nidhana
+
+[Aug 29 program]
+GeetaKhata1: Bajilani sakhi mohana murali
+	Stanza counters fixed
+	Stanza 3 line 4: apostophe added in tara
+	Stanza 4 line 2: space added before mu
+GeetaKhata2: Ahe priyatama mora SriGurudeba
+	Stanza 4 line 3: end quote in the front changed to start quote
+GeetaKhata2: Kotikama jina thani ki manohara
+	Stanza 0 line 2: space introduced between sabu and dukha
+	Stanza 2 line 1: champakabarana spelling fixed
+	Stanza 4 line 1: ba phala brought below ma and space introduced between kana and suni
+[Sep 05 program]
+GeetaKhata2: Prabhu tuma pain jhara sephali hoi
+	Stanza 3 line 3: aa kara added to abujha
+	Stanza 3 line 4: apostophe introduces in tara
+GeetaKhata2: Kahinki tu jau tanku bhuli
+	Stanza 2 line 1: space introduced between priya and boli
+GeetaKhata1: Jibanare khali chahun ta nahin mu
+	Stanza 2 line 2: space removed in ethara
+	Stanza 2 aligned like stanza 1 
+GeetaKhata1: Kahara adara saraga bola e
+	Stanza 3 line 1: Paribesa changed to parabesa
+	Stanza 3 line 4: kamalati chang[ed to kamala ki
+
+======================= Changed on 09/15/2010 ======================= 
+
+[Sep 12 program]
+No changes
+
+======================= Changed on 12/12/2010 =======================
+
+[Sep 05 program]
+GeetaKhata1: Kahara adara saraga bola e
+	Stanza 4 line 4: kamalare changed to amalare
+	Stanza 5 line 1: je changed to e
+(some other changes were already present in the geeta khatas)
+
+[Sep 12 program]
+No changes
+
+[Sep 19 program]
+GeetaKhata1: Kahara adara saraga bola e
+	Stanza 1 line 4: space added between gala baji 
+	Stanza 2 line 4: Chabi changed to Raji
+	Stanza 4 line 3: mukha changed to sukha
+	Stanza 5 line 2: baje changed to baju
+
+[Sep 26 program]
+No changes
+
+[Oct 03 program]
+GeetaKhata2: Mote tumari duare bhikari karicha
+	Stanza 3 line 2: harsau changed to deerghau in kule
+
+[Oct 10 program]
+No changes
+
+[Oct 17 program]
+No changes
+
+======================= Changed on 12/16/2010 =======================
+[Oct 24 program]
+GeetaKhata1: Bhaba rajiara bhabara thakura
+	Stanza 2 line 3: spelling of dipali corrected
+	Stanza 4 line 3: harsau changed to dheerghau in purai
+GeetaKhata1: Aabahana karuchi aji
+	Stanza 3 line 1: space entered between gunthi and mala
+	Stanza 4 line 1: spelling of ranga corrected
+GeetaKhata2: Khojiba pari mu
+	Stanza 0 line 2: comma removed at the end of the line
+GeetaKhata2: E mara sansare mana
+	Stanza 0 line 3: direction of inverted comma corrected
+	Stanza 1 line 1: space entered between dhana and re
+	Stanza 1 line 2: space entered between aana and re
+	Stanza 2 line 1: space entered between bahe and re
+
+[Oct 31 program]
+GeetaKhata1: Kehi Dekhibeni
+	Stanza 2 line 1: space entered between na and rakhiba
+GeetaKhata1: Mu je ashare ganuchi dina
+	Stanza 1 line 3: U karas corrected in nupura
+	Stanza 1 line 4: U kara corrected in ghuma
+GeetaKhata2: New song Prabhu He added
+GeetaKhata2: Tuma sricharane prabhu
+	Stanza 0 line 2: spelling of sakhali corrected
+	Stanza 2 line 3: deergha e changed to harsa e in bari
+
+======================= Changed on 01/31/2011 & 02/04/2011 ==========
+[Nov 07 program]
+1: Aha ki ananda subhe bansi
+	stanza 1 line 3: harsa ee changed to dirgha ee in sahi
+	stanza 2 line 3: space entered between e and sara
+	stanza 2 line 3: tanure changed to tanura
+	stanza 4 line 4: space removed between nida and ku
+	stanza 4 line 5: space removed between patha and ti
+**Question: 'He satya sundara' new song?
+
+[Nov 14 program]
+2: Maage bhaba manaba
+	stanza 1 line 3: apostophe added in tara
+	stanza 3 line 1: nilanani changed to nilamani
+	stanza 4 line 1: spellings of lalita and labanya corrected
+
+[Nov 21 program]
+1: Mana nidhubane jhure
+	stanza 0 line 1: harsa ee changed to dirgha ee in lila
+2: Se name ki jadu achi kahakaha re sakhi
+	stanza 1 line 1: dirgha ee changed to harsa ee
+	stanza 2 line 1: space entered between na chalila
+	stanza 2 line 1: space entered between sakhi and pada
+2: Aha ki sundara rupa manohara
+	stanza 2 line 3: apostophe added to tara
+	stanza 2 line 5: apostophe added to jare
+	stanza 2 line 5: space entered between kiye and se
+	stanza 4 line 1: space entered in pasare
+	stanza 4 line 2: ganthi spelling corrected
+	stanza 4 line 3: apostophe added to jara
+	stanza 4 line 4: apostophe added to tara
+	
+
+[Nov 28 program]
+1: Aji marame ka madhusure
+	stanza 0 line 2: kampana spelling corrected
+	stanza 2 line 3: sangere spelling corrected
+	stanza 4 line 2: apostophe added in tare
+
+[Dec 05 program]
+2: Anila jebe go mate
+	stanza 3 line 1 and 2: cha changed to double cha in ichare
+
+
+[Dec 12 program]
+1: Nayane nayane diya dekha
+	stanza 3 line 1: dirgha u changed to harsa u in kutajabasa
+1: Mudita nayane jebe tuma rupa
+	stanza 0 line 4: chandrabindu removed from nayanu
+	stanza 2 line 1: harsa u changed to dirgha u in rupa
+	stanza 3 line 2: space removed between mana and lobha
+	stanza 3 line 3: space entered between radha and mana
+2: Bandana ghena kara
+	stanza 3 line 3: nije changed to nija
+
+** Question: 'Ki bhasare krutagyata janaibi' new song?
+
+[Dec 19 program]
+2: Sahaja bhaba mote diya he premamaya
+	stanza 4 line 2: ananda changed to anande
+
+[Dec 26 program]
+2: Pase mu ta achi bhaya nahin kichi
+	stanza 2 line 1: sagare changed to jalare
+	stanza 3 line 4: ee kara added to bahudibi
+
+[Jan 02 program]
+2: Pranati ghena
+	stanza 0 line 3: ee kara added to pranati
+	
+** Question: could not find 'nutana prabhate nutana hrudaye', new song?
+
+[Jan 09 program]
+1: E subha lagane puja singhasane
+	stanza 1 line 3: added singles quotes on the word Jayaguru
+	stanza 4 line 2: space entered between puja and bela
+
+[Jan 16 program]
+1: Eso premamaya Nigamananda
+	stanza 4 line 1: space removed between murati and khan
+	stanza 4 line 2: space entered between kara and he
+2: Emiti jane saara jagate
+	stanza 1 line 6: space removed between jibu and re
+
+[Jan 23 program]
+1: Kahin acha deba keun dura loke
+	stanza 6 line 1: prana sampatti spelling corrected
+	stanza 7 line 2: space entered between karma and jibanare
+	other suggested changes were already there in the song.
+
+[Jan 30 program]
+2: Jibana patra mo bharicha
+	stanza 1 line 1: Asi changed to Ani
+	stanza 1 line 2: comma removed from the end
+	stanza 2 line 3: apostophe added in tare
+	stanza 3 line 3: comma removed from the end

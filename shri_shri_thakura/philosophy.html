@@ -1,0 +1,271 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>America Saraswata Sangha</title>
+<link rel="stylesheet" type="text/css" href="../css/default.css" />
+<script type="text/javascript" src="../script/maindev.js"></script>
+<script type="text/javascript" src="../script/sidemenus.js"></script>
+
+<script language=javascript>
+
+var save_index = 0;
+var link_array = ['1.gif','2.gif','3.gif','4.gif','5.gif','6.gif','7.gif','8.gif',
+                  '9.gif','10.gif','11.gif','12.gif','13.gif','14.gif','15.gif','16.gif',
+				  '17.gif','18.gif','19.gif','20.gif','21.gif','22.gif','23.gif','24.gif',
+				  '25.gif','26.gif','27.gif'];
+
+function make_image()
+	{
+	document.writeln('<FORM NAME="imgform">')
+	if (link_array.length) 
+		{
+		document.writeln('<IMG NAME="curimage" SRC="./bigraha/'+link_array[save_index]+'" BORDER="0" height="386" width="270" >');	
+		document.writeln('<a href="#" onclick="goto_image(-1);return false;" >Previous</a> ');
+		document.writeln('<SELECT NAME="imgpopup" TYPE=popup onchange="goto_image(0)" size=1>');
+		for(var i = 0; i < link_array.length; i++)
+			document.writeln('<OPTION VALUE="./bigraha/' + link_array[i] + '">Bigraha ' + (i+1));
+		document.writeln('</SELECT>');
+		document.writeln('<a href="#" onclick="goto_image(+1);return false;" > Next</a><br/><br/>');
+			}
+	else
+		{
+		document.writeln('<a href="#" onclick="reload();return false;" >Previous</a> ');
+		document.writeln(' <INPUT TYPE=submit onclick="reload();" VALUE="Refresh"> ');
+		document.writeln(' <a href="#" onclick="reload();return false;" >Next</a>');
+		document.writeln('<br/><H2>No images available -- click refresh to try again</H2>');
+		} 
+	document.writeln('</FORM>');
+	}
+
+// Go to the next image (+1), previous image (-1), or selected image (0)
+function goto_image(direction)
+	{
+	var newindex = save_index + direction;
+	
+	if (direction == 0) newindex = document.imgform.imgpopup.selectedIndex;
+	else if (newindex < 0) newindex = link_array.length - 1;
+	else if (newindex > link_array.length - 1) newindex = 0;
+
+	save_index = newindex;
+	document.imgform.imgpopup.selectedIndex = newindex;
+	document.curimage.src = './bigraha/'+link_array[newindex];
+	}
+
+function setCurrentIndex()
+{
+save_Index=0;
+document.imgform.imgpopup.selectedIndex = 0;
+document.curimage.src='./bigraha/'+link_array[0];
+writeImageNumber();
+}	
+	
+</script>
+
+
+</head>
+<body  onload="setCurrentIndex()">
+<div class="wrap">
+<div align="center">
+
+<table border="0" width="1004" cellpadding="0" cellspacing="0" >
+  <tr>
+	<td width="1004" height="20" >
+	</td>
+  </tr>
+</table>
+<table border="0" width="1004" cellpadding="0" cellspacing="0" class="tabletop" >
+  <tr>
+      <td width="2" height="2" align="left" valign="middle" background="../images/pglt.gif">
+    </td>
+    <td colspan="3" align="left" valign="middle" width="1000" height="2" background="../images/pght.gif">
+    </td>
+    <td width="2" height="2" align="left" valign="middle" background="../images/pgrt.gif">
+    </td>
+  </tr>
+  
+  <tr height="125">
+      <td width="2" align="left" valign="middle" background="../images/pgvl.gif" >
+    </td>
+
+    <td colspan="3" align="left" valign="middle" width="1000" height="125" background="../images/logohd.gif">
+    </td>
+    <td width="2" align="left" valign="middle" background="../images/pgvr.gif" >
+    </td>
+  </tr>
+ 
+
+<!-- title bar --> 
+  <tr>
+    <td align="left" valign="middle" background="../images/pgvl.gif" width="2" height="30" >
+    </td>
+    <td colspan="3" align="center" valign="top" width="1000" height="30" background="../images/ttlbar.gif">
+<!-- menu -->
+<script type="text/javascript">
+topmenu();
+</script>
+
+
+<script type="text/javascript">
+cssdropdown.startchrome("chromemenu")
+</script>
+
+<!-- menu -->
+    </td>
+    <td align="left" valign="middle" background="../images/pgvr.gif" width="2" height="30" >
+    </td>
+
+  </tr>
+<!-- title bar -->
+
+</table>
+
+<table border="0" width="1004" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+
+  
+  
+  <tr>
+    <td align="left" valign="middle" width="2" background="../images/pgvl.gif">
+    </td>
+
+    <td width="275" height="25" valign="top" class="traces">
+		 <script type="text/javascript" src="../script/MPBackLinks.js"></script> 
+
+    </td>
+    <td width="725" valign="top" rowspan="3" >
+	  <!-- Body content -->
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" >
+	    <tr>
+		  <td width="100%" align="center" ><img src="../images/philbanr.gif" width="588" height="160"/>
+		  </td>
+		</tr>
+	    <tr>
+		  <td width="100%" valign="top" class="bodytext"><h1>Philosophy</h1>
+		    <p> <a name="Top">Swami Nigamananda</a> after coming to the people as Sagduru keenly observed the social conditions, religious beliefs of the people, attitudes of the educated 
+                class towards religion and our scriptures, system of education, conditions of the youth and household life in the country, particularly in Bengal. He was                 greatly disturbed to see the society steeped in utter ignorance, bigotry and                 many prejudices. There were many fake Gurus and religious teachers misleading                 the people and their followed exploiting their ignorance. Educated people had                 peculiar and wrong notions about the great scriptures of India and its religious                 traditions. There were hatred and animosity against other religions too. The                 system of education did not impart real knowledge and true education (satsikshya).                 The youth did not had a moral life and did not observe the rules of Brahmacharya                 (celibacy). The household life of many families was not ideal and conductive to                 the growth of an ideal society and nation. People had scant knowledge about                 Sanatan Dharma, the eternal religion. According to Swami Nigamananda, India once                 reached the pinnacle of glory for its knowledge, religion, scriptures, system of                education, scriptural achievements and household life especially of Rishi era. He                 wanted to bring changes in the life of the people and in the society and correct                 the state of affaires in the country through religious and scriptural means.<br>              </p>
+				<ol>
+				<li><a href="#Publications">Publications</a></li>
+				<li><a href="#As_Saddguru">As Saddguru</a></li>
+				<li><a href="#Mission">Mission</a></li>
+				<li><a href="#Teaching">Teaching</a></li>
+			    </ol>
+			</td>
+		</tr>
+		<tr>
+			<td width="100%" ><div style="overflow:auto; width:725px; height: 440px;">
+			<table border="0" cellspacing="0" cellpading="0" class="bodytext">
+			  <tr valign="top">
+			  <td width="100%" >
+				<h2><a name="Publications"><b>Publications</b></a></h2>
+				<p>As a first step in this direction, he wrote four great books in Bengali language                Yogi Guru, Jnani Guru, Tantirk Guru and Premik Guru which contained the essence                of Hindu religion of Sanatan Dharma. He had stated categorically that no book                other than these is required to be read if one intends to know the essence of India's                religion. The Hindi and Oriya versions of the above four books are also available.                 The English translations of these books have not yet been brought out. He also                wrote another book 'Vedanta Vivek' containing this essence of Vedantic philosophy                for higher learning. He wrote another famous book 'Bramhacharya Sadhan' especially                for the young people of the country, to enable them to lead a moral and religious                life. He started monthly religious magazine named 'Arya Darpan' for propagation of                the various aspects of Sanatan Dharma and declared that the magazine would be the                mouth piece of Sanatan Dharma. The magazine was started in 1908 A.D and is in 96thy                year of publication now. He wrote many essays on important topics relating to                religious and scriptural matters in this magazine. He founded Saraswata Math                (now known as Assam-Bangiya Saraswata Math' and a few Ashrams in different paces                in Bengal to serve as centers for propagation of Sanatan Dharama and his ideals                and teachings. He advised his household disciples and devotees to lead an ideal                household life like Rishis of ancient India who were married and had virtuous                family life and also practice 'Chitta Sudhi' (purification of the inner mind)                by obeying the teachings of the Guru. He also advised his disciples and devotees                to form 'Sanghas' (groups)   where  minimum three devotees should be available to                inculcate the spirit of cooperative action in them for fulfillment of his aims and                for collective worship of the Guru at a particular place on fixed days. He expected                these groups of devotees to be nucleus groups in the society who can set example of                ideal spiritual life for others. He also advised his disciples and devotees to share                their experiences in spirituals life for others. He also advised his disciples and                devotees to share their experiences spiritual life for others. He also advised his                disciples and devotees to share experiences in spiritual pursuits and exchange                ideas among them wherever they meet in order to enrich themselves and learn from                each other for their spiritual progress. He termed this process as Bhaba Binimaya.                He started an annual congregation of his devotees (Bhakta Sammilani) to achieve the                above objectives.<br>              </p>
+				<h2><a name="As_Saddguru"><b>As Saddguru</b></a></h2>
+				<p>He boldly declared that he was not an 'Avatar' or incarnation of God. He used to identify himself as a Sadguru who only carries out the desires of the Jagadguru, the ultimate being or the universal teacher. As per his teachings, Guru is the ultimate element of this world, all pervasive and all powerful, who can fulfill all the purposes of a person who comes to him and surrenders before him. All divine beings or deities can be propitiated through worship of Guru only and there is no need to worship any other entity. This ultimate or Universal Guru is the embodiment of 'Prajna' (intuition), Jnana (knowledge) and compassion (karuna). This highest element or entity is eternal and all-embracing. One realize him fully if he or she can bestow true love on him as an ardent devotee and through selfless service. If one can get s Sadguru in his life and obeys his teachings, all his problems of life communal ideology i.e. Worship of Guru which is accepted by all religions. According to his teachings, if we practice to see our own guru in all individuals, there won't be any enmity and hatred towards anybody which will lead to establishment of universal brotherhood. He introduced the 'sidha mantra' 'Jayaguru' (glory of the Guru) for realization of this process. As eternal element which can never be extinguished and gave a firm declaration that he would continue to function as Guru even after leaving the mortal body for those who would seek shelter in him for their spiritual growth culminating in the salvation or mokshya.<br>
+				<h2><a name="Mission"><b>Mission</b></a></h2>
+              </p><p>The main mission of Swami Nigamananda was to preach Sanatan Dharma, spread Satshikhya (real education for moral and spiritual development of a person with character building) and impart service to the poor and needy by treating each such person as a part of Shiva, the divine entity which he termed as 'Shiva Jnane Jeeva Seva'. He called upon his household devotees to assist him in these tasks by leading an ideal household life by following his teachings. His teachings were, in essence, a blending of Sankar's ideology and Shri Shri Gouranga Dev's path of devotion i.e. Jnana (Knowledge) and Bhakti (devotion) together. According to him, to acquire the knowledge of Sankar and have a compassionate heart like Shri Gouranga Dev should be the aim of his disciples and devotees.<br>
+			     <h2><a name="Teaching"><b>Teaching</b></a></h2>
+              </p><p> To the general masses, his teaching was to lead a virtuous and righteous life by following the dictation of one's conscience and all established canons of the society and sticking to one's own religion and to avoid religious intolerance and hatred towards other religions. They have to make all out efforts to find a real guru or a Sadguru for getting his guidance on all spiritual matters. In the absence of such a guru, they should be guided by their own conscience to determine what is right and what is wrong. He widely recommended reading of 'Bhagabat Gita' for leading a better life by following its teachings. One should only earn money and wealth through just and right means. The ultimate aim of everybody should be development of the self and 'Chitta Sudhi' (purification of the inner mind and heart) through the required sadhana (efforts) under the guidance of a right and real Guru. Everybody can attain the above goals by simply doing 'Naama Japa' or chanting of the divine name of Guru's name regularly with sincere love for him and serving him in right earnest.
+              </p>
+			  </td>
+			</tr>
+			</table>
+			</div><br/>
+		  </td>
+		</tr>
+	  </table>
+	  <!-- Body content ends -->
+      </td>
+
+
+  <td align="left" valign="middle" width="2" background="../images/pgvr.gif">
+    </td>
+  </tr>
+
+
+  
+  <tr>
+    <td align="left" valign="middle" width="2" background="../images/pgvl.gif">
+    </td>
+
+	   <td width="275" height="580" valign="top" bgcolor="#ffffff" >
+<!--  Side Menu options start -->	   
+		   
+<div class="sidemenu" >
+  <script type="text/javascript" >runAccordion(1);</script> <!-- replace this index with folder index -->
+<div id="AccordionContainer" class="AccordionContainer">
+  <script type="text/javascript" >    defineMenu();  </script>
+
+</div>
+</div>
+
+<!--  Side Menu options end -->	   
+      </td>
+
+
+    <td align="left" valign="middle" width="2" background="../images/pgvr.gif">
+    </td>
+  </tr>
+
+
+  
+  <tr>
+    <td align="left" valign="middle" width="2" background="../images/pgvl.gif">
+    </td>
+
+    <td width="275" valign="top" > <!--bgcolor="#c7fe94" >-->
+	  <!-- Additional Page Information start -->
+      <table border="0" width="275" cellpadding="0" cellspacing="0" >
+      <tr>
+          <td width="100%" height="30" align="center" valign="top" class="adtexts" ><img src="../images/underline.gif" height="18" width="106"/>
+          </td>
+	  </tr>
+      <tr>
+	    <td width="100%" valign="top" align="center" class="adtexts">
+		  <SCRIPT LANGUAGE="Javascript">
+				make_image();
+		  </SCRIPT>
+
+		</td>
+	  </tr>
+	</table>
+	  <!-- Additional Page Information end -->
+    </td>
+
+    <td align="left" valign="middle" width="2" background="../images/pgvr.gif">
+    </td> 
+	</tr>
+  
+</table>
+
+<!-- bottom row table -->
+<table border="0" width="1004" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+  <tr>
+      <td width="2" height="29" align="left" valign="middle" background="../images/pgvl.gif">
+    </td>
+    <td align="center" valign="bottom" width="1000" height="29" background="../images/ftrbar.gif" >
+    	  <script type="text/javascript" >    copyRight();  </script>
+    </td>
+    <td width="2" height="29" align="left" valign="middle" background="../images/pgvr.gif">
+    </td>
+  </tr>
+  <tr>
+      <td width="2" height="2" align="left" valign="middle" background="../images/pglb.gif">
+    </td>
+    <td align="left" valign="middle" width="1000" height="2" background="../images/pghb.gif">
+    </td>
+    <td width="2" height="2" align="left" valign="middle" background="../images/pgrb.gif">
+    </td>
+  </tr>
+</table>
+</div> <!-- center-->
+</div> <!-- wrap -->
+<div id="footer">
+<div align="center">
+<div class="footcenter">
+	  <script type="text/javascript" >    footCenter();  </script>
+</div> <!-- footcenter-->
+</div> <!-- center-->
+</div> <!-- footer-->
+</body>
+</html>

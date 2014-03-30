@@ -1,0 +1,383 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>America Saraswata Sangha</title>
+<link rel="stylesheet" type="text/css" href="../css/default.css" />
+<script type="text/javascript" src="../script/maindev.js"></script>
+<script type="text/javascript" src="../script/sidemenus.js"></script>
+
+<script language=javascript>
+
+var save_index = 0;
+var link_array = ['1.gif','2.gif','3.gif','4.gif','5.gif','6.gif','7.gif','8.gif',
+                  '9.gif','10.gif','11.gif','12.gif','13.gif','14.gif','15.gif','16.gif',
+				  '17.gif','18.gif','19.gif','20.gif','21.gif','22.gif','23.gif','24.gif',
+				  '25.gif','26.gif','27.gif'];
+
+function make_image()
+	{
+	document.writeln('<FORM NAME="imgform">')
+	if (link_array.length) 
+		{
+		document.writeln('<IMG NAME="curimage" SRC="./bigraha/'+link_array[save_index]+'" BORDER="0" height="386" width="270" >');	
+		document.writeln('<a href="#" onclick="goto_image(-1);return false;" >Previous</a> ');
+		document.writeln('<SELECT NAME="imgpopup" TYPE=popup onchange="goto_image(0)" size=1>');
+		for(var i = 0; i < link_array.length; i++)
+			document.writeln('<OPTION VALUE="./bigraha/' + link_array[i] + '">Bigraha ' + (i+1));
+		document.writeln('</SELECT>');
+		document.writeln('<a href="#" onclick="goto_image(+1);return false;" > Next</a><br/><br/>');
+			}
+	else
+		{
+		document.writeln('<a href="#" onclick="reload();return false;" >Previous</a> ');
+		document.writeln(' <INPUT TYPE=submit onclick="reload();" VALUE="Refresh"> ');
+		document.writeln(' <a href="#" onclick="reload();return false;" >Next</a>');
+		document.writeln('<br/><H2>No images available -- click refresh to try again</H2>');
+		} 
+	document.writeln('</FORM>');
+	}
+
+// Go to the next image (+1), previous image (-1), or selected image (0)
+function goto_image(direction)
+	{
+	var newindex = save_index + direction;
+	
+	if (direction == 0) newindex = document.imgform.imgpopup.selectedIndex;
+	else if (newindex < 0) newindex = link_array.length - 1;
+	else if (newindex > link_array.length - 1) newindex = 0;
+
+	save_index = newindex;
+	document.imgform.imgpopup.selectedIndex = newindex;
+	document.curimage.src = './bigraha/'+link_array[newindex];
+	}
+
+function setCurrentIndex()
+{
+save_Index=0;
+document.imgform.imgpopup.selectedIndex = 0;
+document.curimage.src='./bigraha/'+link_array[0];
+writeImageNumber();
+}	
+	
+</script>
+
+
+</head>
+<body  onload="setCurrentIndex()">
+<div class="wrap">
+<div align="center">
+  
+<table border="0" width="1004" cellpadding="0" cellspacing="0" >
+  <tr>
+	<td width="1004" height="20" >
+	</td>
+  </tr>
+</table>
+<table border="0" width="1004" cellpadding="0" cellspacing="0" class="tabletop" >
+  <tr>
+      <td width="2" height="2" align="left" valign="middle" background="../images/pglt.gif">
+    </td>
+    <td colspan="3" align="left" valign="middle" width="1000" height="2" background="../images/pght.gif">
+    </td>
+    <td width="2" height="2" align="left" valign="middle" background="../images/pgrt.gif">
+    </td>
+  </tr>
+  
+  <tr height="125">
+      <td width="2" align="left" valign="middle" background="../images/pgvl.gif" >
+    </td>
+
+    <td colspan="3" align="left" valign="middle" width="1000" height="125" background="../images/logohd.gif">
+    </td>
+    <td width="2" align="left" valign="middle" background="../images/pgvr.gif" >
+    </td>
+  </tr>
+ 
+
+<!-- title bar --> 
+  <tr>
+    <td align="left" valign="middle" background="../images/pgvl.gif" width="2" height="30" >
+    </td>
+    <td colspan="3" align="center" valign="top" width="1000" height="30" background="../images/ttlbar.gif">
+<!-- menu -->
+<script type="text/javascript">
+topmenu();
+</script>
+
+
+<script type="text/javascript">
+cssdropdown.startchrome("chromemenu")
+</script>
+
+<!-- menu -->
+    </td>
+    <td align="left" valign="middle" background="../images/pgvr.gif" width="2" height="30" >
+    </td>
+
+  </tr>
+<!-- title bar -->
+
+</table>
+
+<table border="0" width="1004" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+
+  <tr>
+    <td align="left" valign="middle" width="2" background="../images/pgvl.gif">
+    </td>
+
+    <td width="275" height="25" valign="top" class="traces">
+		 <script type="text/javascript" src="../script/MPBackLinks.js"></script> 
+
+    </td>
+    <td width="725" valign="top" rowspan="3" >
+	  <!-- Body content -->
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" >
+	    <tr>
+		  <td width="100%" align="center" ><img src="../images/biogr.gif" width="660" height="160"/>
+		  </td>
+		</tr>
+	    <tr>
+		  <td width="100%" valign="top" class="bodytext"><h1>Biography</h1>
+		  <p><a name="Top">Nilachala Saraswata Sangha, Puri</a> and Assam-Bangiya Saraswata 
+              Matha, have published several books on Biography of ShriShri Thakura in
+			  different languages. For more information please visit 
+              <script language=javascript>getLink('Saraswata Publications');</script>
+              section. </p>
+			  <ol>
+				<li><a href="#Early_Life">Early Life</a></li>
+				<li><a href="#The_Turning_Point">The Turning Point</a></li>
+				<li><a href="#The_Quest_for_Truth">The Quest for Truth</a></li>
+				<li><a href="#Life_After_Attainment_of_Truth">Life After Attainment of Truth</a></li>
+
+			  </ol>
+		  </td>
+		</tr>
+		<tr>
+		<td width="100%" ><div style="overflow:auto; width:725px; height: 630px;">
+			<table border="0" cellspacing="0" cellpading="0" class="bodytext">
+			  <tr valign="top">
+			  <td width="100%" >
+			  
+			  <h2><a name="Early_Life"><b>Early Life</b></a></h2>
+              <p><i> Paramahansa</i> Shri Shri Nigamananda Saraswati Deva was born to a virtuous bramhin couple at Qutabpur in Nadia district (now in Bangladesh) in the year 1879. His father Bhuban Mohan Bhattacharya and mother Yogendra Mohini had named him 'Nalinikanta'. As he grew to boyhood, Nalinikanta drew admiration of the people for his extraordinary fearlessness, intelligence and forthrightness. Leadership was natural to him. Nalinikanta was especially dear to his mother.
+              </p>
+              <p>
+              As the fate would have it the mother of Nalinikanta breathed her last immaturely from a brief illness. At that time, Nalinikanta was pursuing his primary education in his maternal uncle's village
+              <i> Radhakantapur</i>. Her death deeply shocked Nalinikanta as he was very much devoted to his mother. He came to know that just before she breathed her last, his mother had handed over his charges to the
+              '<i>Jaganmata</i>' the '<i>Cosmic Mother</i>'. He took the words of her mother to be literally true. As he was desperately in need of a mother, he single-heartedly prayed to the 'Jaganmata' to appear before him.
+              </p>
+
+              <p>
+              But alas! He failed to get a glimpse of 'Her' even in his dreams. He lost faith in God thinking that God does not exist, the religious rites and spiritual practices are worthless activities, and all those sadhus, ascetics or renunciates are lazy worthless cheats. His belief in God was shaken to such extent that he turned extremely antagonistic towards everything related to Him.
+              </p>
+              <p>
+              Especially, the sadhus and the wandering ascetics used to face most of his ire. He convinced to himself that 'death' is the 'end' of everything in one's life. Thereafter he decided for himself that - religion to him would be nothing other than 'doing good to the fellow beings', and his duty is to lead a disciplined and virtuous life.
+              </p>
+              <p>
+              During his school days Nalinikanta used to read textbooks that the 'Sun' is a gigantic ball of burning gases and the 'Moon' and the other planets are composed of gross matters such as dust and rocks. He used to feel a pinch in his heart when his fellow countrymen were jeered at as superstitious folks paying obeisance to these insentient planets. Even though he had lost faith in God and religion, he used to wonder how all those ancient Rishis (seers) of his land could go wrong in putting such significance on these heavenly bodies. Later, during his sadhak (spiritual practitioner) life, he was delighted to find that thousand of years before Newton, the ancient Rishis of India knew the science of space and the principles of gravitation. His heart was urging him to spread the knowledge and ideals of those ancient Rishis among his fellow beings.&nbsp;
+              </p>
+
+              
+              <h2><a name="The_Turning_Point"><b>The Turning Point</b></a></h2>
+              <p> The death of Yogendramohini Devi created a void in the Bhattacharya household. Nalinikanta being the eldest son in the family had to be married soon to bring a daughter-in-law for the proper management of the household. Hence, at the early age of seventeen, Nalinikanta was married to an extremely beautiful and intelligent girl named Sudhansubala Devi.
+              Nalinikanta went to study at the Dhaka School of Survey and thereafter took up jobs at various places to earn his livelihood. His independent spirit and forthright attitude was forcing him to frequently change his jobs.
+              </p>
+              <p>
+              Once, while serving as the supervisor of the <i> Narayanapur</i> estate
+              (<i>Zamindari</i>) Nalinikanta was working late in the night. He suddenly saw the shadowy image of Sudhansubala Devi standing at the table, sullen and silent. Sudhansubala Devi was supposed to be away at
+              <i> Qutabpur</i> at that time and was not expected to be present at
+              <i> Narayanpur</i> at all. The image appeared there for a few moments only. Nalinikanta felt disturbed and rushed to his village
+              <i>Qutabpur</i>. He came to know that Sudhansubala Devi had expired just an hour before he saw her image at
+              <i>Narayanapur</i>. Since childhood Nalinikanta had a thoughtful disposition. This incidence drew him further inwards. Soon after, he happened to see the shadowy image of Sudhansubala Devi several times in quick succession.
+              </p>
+
+              <p>
+              Nalinikanta had thought that death is the ultimate end of an individual. But, now he couldn't wish away the fact that it is not. By now, he was convinced that there must be 'life' after 'death'. He solemnly resolved to get back his beloved wife at any cost. Never before in the history of mankind any bereaved husband had made such a resolution, being so much oblivious of the impossibility of his success.
+              <br/>
+              <h2><a name="The_Quest_for_Truth"><b>The Quest for Truth</b></a></h2>
+              <p> Nakinikanta became desperate to know all about the subtle phenomena of life and death. Thoughts such as - "What's death? How can I win over death? If death can come inevitably at any time in one's life why am I wasting my time without exploring the secrets of it?" - began to worry him all the time. This inquest took him to the Theosophical Society at
+              <i>Adyar</i>, in Chennai, India. He learnt all the theories and practices that Theosophy could offer and was able to talk to Sudhansu Devi through a medium. But, Nalinikanta could not see her physically. He was not satisfied with the experience at all. Through a discussion with the members of the Society he came to know that the knowledge about the phenomena of 'life and death' was the prerogative of the Hindu Yogis. He spared no time in looking for a true Yogi or
+              <i> Sadhu</i> who could fulfill his desire to meet his dead wife as well as bring contentment to his seeking mind.
+              </p>
+
+              <p><img src="../images/imgqot.gif" width="230" height="295" alt="image at quest of Truth" align="left"/>
+              While searching for a true yogi, Nalinikanta came across Swami Purnananda, a highly educated renunciate. The Swami explained to him that all female beings are merely a partial manifestation of the
+              '<i>Mahamaya</i>' or the 'Cosmic Mother'. Hence, it was extremely unwise and ridiculous on his part to run after an insignificant part (his wife) ignoring the whole (the Cosmic Mother). If he could get
+              <i>Mahamaya</i>, he would automatically get his wife and there were sure ways to get Her. Swami Purnananda advised him to look for a
+              '<i>Sadguru</i>'. Nalinikanta returned to his place of service a changed man. The belief in 'life after death' and 'soul' had turned him into a believer. He was desperately praying God for a chance to meet his destined
+              <i>Sadguru</i>.
+              </p>
+              <p>
+              One night Nalinikanta saw one <i> Sadhu</i> with a brilliant aura around him in his dream. He woke up to find the
+              <i> Sadhu</i> standing beside his bed in 'reality'. The <i> Sadhu</i> handed out to him a leaf bearing a mantra on it and then disappeared. Nalinikanta was spellbound by the incident. He did not know what to do with the mantra. No
+              <i>S</i><i>adhu</i> or spiritual teacher, whom he consulted, could decipher the mantra nor could they give him any guidance about what to do with it. At this point of time a crestfallen Nalinikanta received directions in his dream to go to the greatest
+              <i> tantrik</i> guru of that time - Bamakshepa, at the '<i>Tarapitha</i>' of Birbhum, in West Bengal. Bama was extremely pleased to see the unique
+              '<i>veeja mantra</i>' (root/source mantra) of Goddess <i> Tara</i> which Nalinikanta had received in his dream, and readily accepted him as his disciple. Within a short span of one month, Nalinikanta was able to master the secrets of the
+              <i> Tantrik</i> ways (<i>Tantra Sadhana</i>) of attaining spiritual success. As a mark of perfection of his
+              <i> sadhana</i> (spiritual practice), '<i>Tara</i>' or '<i>Mahashakti</i>' (the embodiment of cosmic energy) appeared before him in the form of Devi Sudhansubala and granted him the boon that he would be able to see her in that form whenever he would so wish.
+              </p>
+
+              <p><img src="../images/imgtg.gif" width="123" height="174" alt="image Tantrika Guru" align="left"/>
+              But, Nalinikanta became discontent when he was unable to touch that form. Moreover, to his amazement Nalinikanta saw that a brilliant light used to emanate from his body and take the shape of Devi Sudhansubala. He was puzzled. He wanted to know "if
+              '<i>Mahashakti</i>' originated from him only, then who 'he' is."
+              </p>
+              <p>
+			  Overpowered by a consuming desire to know his 'self', Nalinikanta sought guru Bamakshepa's advice. The latter advised him to attain the knowledge of
+              '<i>Advaita</i>' from a Vedantic guru. He became a disciple of guru
+              <i> Srimad Swami Satchidananda Saraswati</i> at the holy place of 'Pushkar' in the state of Rajasthan, India. He instantly realized that Swami Satchidananda Saraswati was the
+              <i> sadhu</i> who gave him the '<i>Tara</i>' mantra in his dream. The
+              <i> swami</i> initiated Nalinikanta into renunciation and according to the principle changed his name to 'Nigamananda', for he was able to comprehend the Vedic
+              (<i>nigama</i>) knowledge (<i>Jnana</i>) effortlessly.
+              <br/>
+
+              <h2><a name="Life_After_Attainment_of_Truth"> <b>Life after Attainment of Truth</b></a></h2>
+              <p> During the 1907 Kumbha Mela at Allahabad, under the auspices of the then Shankaracharya of
+              <i> Sringery Matha</i>, the <i>Jnaniguru</i> of Nalinikanta Swami Satchidananda Deva conferred the title of
+              '<i>paramahansa</i>' on him in the presence of leading <i> sadhus</i> and renunciates. The uniqueness about Nigamananda's spiritual accomplishment was that he had explored and perfected
+              <i> tantra, jnana, yoga and prema/bhav</i>, all the four original ways envisaged in
+              <i> Sanatana Dharma</i> (ever new/eternal, and universal spiritual method based on Vedic knowledge) for the attainment of the highest spiritual goal.
+              </p>
+
+              <p>
+              <i>Sadguru Swami Sri Sri Nigamananda Saraswati Deva</i> wished every soul to rise to this exulted state of consciousness. Hence, he entered into society to wake up a spiritually inert people.
+              </p>
+              <p><img src="../images/imgaat.gif" width="202" height="308" alt="image after attaining truth" align="left"/>
+              In the prevailing atmosphere of confusion in ideals and spirituality among his countrymen, he wanted them to rediscover the merits of sanatana dharma. He wrote five books -
+              <i> Bramhacharya Sadhana, Yogiguru, Tantrikguru, Jnaniguru and Premikaguru</i> - which are invaluable for any seeker on the path of spirituality. He edited and published a path breaking and reformist periodical 'Arya Darpana' (one of the earliest periodicals of India). It was widely received as a trend-setting journal on religion and spirituality.<br>
+              With a view to establishing universal brotherhood he set before himself three objectives, namely, (i) propagation of
+              '<i>sanatana dharma</i>', (ii) dissemination of '<i>sat
+              siksha</i>' (right type of education that enables development of integrated personality conducive for spiritual development), and (iii) service to all living beings deeming it as service rendered to the Supreme Being. In his opinion a person having attained 'self knowledge' is the right one to serve mankind in the right manner.
+              </p>
+
+              <p>
+              He enjoined upon His devotees - to walk together on the path of spirituality forming
+              <i> Sanghas</i> (spiritual associations), to lead <i> Adarsha Grihastha Jeevan</i> (life of an ideal householder), and to have
+              <i> Bhava Binimaya</i> (commune with each other for mutual exchange of spiritual ideas and experiences), which would enable them to achieve the above mentioned objectives and lead a fulfilled life.
+              </p>
+
+              <p>
+              He established the tradition of "Vakta Sammilani" (the annual congregation of devotees and spiritually minded people, for the close interaction between the two types of seekers - the household devotees and the renunciates. Till date, this congregation has been proved to be a spiritually beneficial experience for all.
+              </p>
+              <p>
+              There was a harmonious blending of highest enlightenment (<i>jnana</i>) and universal love
+              (<i>vakti</i>) in the person of Swamy Nigamananda. Rightly so, his ideological as well as methodological slogan was - "
+              <i> Shankarer Mata</i>&quot; (the Vedantic doctrine of the 8th century spiritual
+              reformist Sri Sri Adi Shankaracharya that Bramha - the Supreme Soul and the individual soul is 'one' and the same, and it is the ultimate truth to be realized by men), and
+              &quot;<i>Gauranger Patha</i>&quot; (the path of devotion adopted by Sri Chaitanya Deva, the fourteenth century avatara of devotion, as the royal road to the spiritual destination i.e. God).
+              </p>
+
+              <p>
+              <i>Thakura</i> Sri Sri Nigamananda Deva left his corporal body and attained
+              '<i>mahasamadhi</i>' (eternal union with the Supreme Soul) through
+              <i> yoga kriya</i> (yogic techniques) on November 29, 1935 in Kolkata. But, his holy presence is still felt and his reassuring voice is still heard in the hour of need by those who have implicit faith in him, for the
+              '<i>sadguru</i>' is 'immortal'. Rightly, his followers deified Him as their revered and beloved
+              '<i>thakura</i>' and worshiped Him as their 'Guru' (the supreme preceptor) and 'Ishta' (the personal God) at the same time.
+              </p>
+			  <br/>
+			  
+			  </td>
+			  </tr>
+			</table>
+		    </div><br/>
+
+		  </td>
+		</tr>
+	  </table>
+	  <!-- Body content ends -->
+      </td>
+
+
+  <td align="left" valign="middle" width="2" background="../images/pgvr.gif">
+    </td>
+  </tr>
+
+
+  
+  <tr>
+    <td align="left" valign="middle" width="2" background="../images/pgvl.gif">
+    </td>
+
+	   <td width="275" height="580" valign="top" bgcolor="#ffffff" >
+<!--  Side Menu options start -->	   
+		   
+<div class="sidemenu" >
+  <script type="text/javascript" >runAccordion(1);</script> <!-- replace this index with folder index -->
+<div id="AccordionContainer" class="AccordionContainer">
+  <script type="text/javascript" >    defineMenu();  </script>
+
+</div>
+</div>
+
+<!--  Side Menu options end -->	   
+      </td>
+
+
+    <td align="left" valign="middle" width="2" background="../images/pgvr.gif">
+    </td>
+  </tr>
+
+
+  
+  <tr>
+    <td align="left" valign="middle" width="2" background="../images/pgvl.gif">
+    </td>
+
+    <td width="275" valign="top" > <!--bgcolor="#c7fe94" >-->
+	  <!-- Additional Page Information start -->
+      <table border="0" width="275" cellpadding="0" cellspacing="0" >
+      <tr>
+          <td width="100%" height="30" align="center" valign="top" class="adtexts" ><img src="../images/underline.gif" height="18" width="106"/>
+          </td>
+	  </tr>
+      <tr>
+	    <td width="100%" valign="top" align="center" class="adtexts">
+		  <SCRIPT LANGUAGE="Javascript">
+				make_image();
+		  </SCRIPT>
+
+		</td>
+	  </tr>
+	</table>
+	  <!-- Additional Page Information end -->
+    </td>
+
+    <td align="left" valign="middle" width="2" background="../images/pgvr.gif">
+    </td> 
+	</tr>
+  
+</table>
+
+<!-- bottom row table -->
+<table border="0" width="1004" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+  <tr>
+      <td width="2" height="29" align="left" valign="middle" background="../images/pgvl.gif">
+    </td>
+    <td align="center" valign="bottom" width="1000" height="29" background="../images/ftrbar.gif" >
+    	  <script type="text/javascript" >    copyRight();  </script>
+    </td>
+    <td width="2" height="29" align="left" valign="middle" background="../images/pgvr.gif">
+    </td>
+  </tr>
+  <tr>
+      <td width="2" height="2" align="left" valign="middle" background="../images/pglb.gif">
+    </td>
+    <td align="left" valign="middle" width="1000" height="2" background="../images/pghb.gif">
+    </td>
+    <td width="2" height="2" align="left" valign="middle" background="../images/pgrb.gif">
+    </td>
+  </tr>
+</table>
+</div> <!-- center-->
+</div> <!-- wrap -->
+<div id="footer">
+<div align="center">
+<div class="footcenter">
+	  <script type="text/javascript" >    footCenter();  </script>
+</div> <!-- footcenter-->
+</div> <!-- center-->
+</div> <!-- footer-->
+</body>
+</html>

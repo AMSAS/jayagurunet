@@ -1,0 +1,1055 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>America Saraswata Sangha</title>
+<link rel="stylesheet" type="text/css" href="../css/default.css" />
+<script type="text/javascript" src="../script/maindev.js"></script>
+<script type="text/javascript" src="../script/sidemenus.js"></script>
+
+<script language=javascript>
+
+var save_index = 0;
+var link_array = ['1.gif','2.gif','3.gif','4.gif','5.gif','6.gif','7.gif','8.gif',
+                  '9.gif','10.gif','11.gif','12.gif','13.gif','14.gif','15.gif','16.gif',
+				  '17.gif','18.gif','19.gif','20.gif','21.gif','22.gif','23.gif','24.gif',
+				  '25.gif','26.gif','27.gif'];
+
+function make_image()
+	{
+	
+	document.writeln('<FORM NAME="imgform">')
+	if (link_array.length) 
+		{
+		document.writeln('<IMG NAME="curimage" SRC="./bigraha/'+link_array[save_index]+'" BORDER="0" height="386" width="270" >');	
+		document.writeln('<a href="#" onclick="goto_image(-1);return false;" >Previous</a> ');
+		document.writeln('<SELECT NAME="imgpopup" TYPE=popup onchange="goto_image(0)" size=1>');
+		for(var i = 0; i < link_array.length; i++)
+			document.writeln('<OPTION VALUE="./bigraha/' + link_array[i] + '">Bigraha ' + (i+1));
+		document.writeln('</SELECT>');
+		document.writeln('<a href="#" onclick="goto_image(+1);return false;" > Next</a><br/><br/>');
+			}
+	else
+		{
+		document.writeln('<a href="#" onclick="reload();return false;" >Previous</a> ');
+		document.writeln(' <INPUT TYPE=submit onclick="reload();" VALUE="Refresh"> ');
+		document.writeln(' <a href="#" onclick="reload();return false;" >Next</a>');
+		document.writeln('<br/><H2>No images available -- click refresh to try again</H2>');
+		} 
+	document.writeln('</FORM>');
+	}
+
+// Go to the next image (+1), previous image (-1), or selected image (0)
+function goto_image(direction)
+	{
+	var newindex = save_index + direction;
+	
+	if (direction == 0) newindex = document.imgform.imgpopup.selectedIndex;
+	else if (newindex < 0) newindex = link_array.length - 1;
+	else if (newindex > link_array.length - 1) newindex = 0;
+
+	save_index = newindex;
+	document.imgform.imgpopup.selectedIndex = newindex;
+	document.curimage.src = './bigraha/'+link_array[newindex];
+	}
+
+function setCurrentIndex()
+{
+save_Index=0;
+document.imgform.imgpopup.selectedIndex = 0;
+document.curimage.src='./bigraha/'+link_array[0];
+//writeImageNumber();
+}	
+	
+</script>
+
+
+</head>
+<body  onload="setCurrentIndex()">
+<div class="wrap">
+<div align="center">
+<table border="0" width="1004" cellpadding="0" cellspacing="0" >
+  <tr>
+	<td width="1004" height="20" >
+	</td>
+  </tr>
+</table>
+<table border="0" width="1004" cellpadding="0" cellspacing="0" class="tabletop" >
+  <tr>
+      <td width="2" height="2" align="left" valign="middle" background="../images/pglt.gif">
+    </td>
+    <td colspan="3" align="left" valign="middle" width="1000" height="2" background="../images/pght.gif">
+    </td>
+    <td width="2" height="2" align="left" valign="middle" background="../images/pgrt.gif">
+    </td>
+  </tr>
+  
+  <tr height="125">
+      <td width="2" align="left" valign="middle" background="../images/pgvl.gif" >
+    </td>
+
+    <td colspan="3" align="left" valign="middle" width="1000" height="125" background="../images/logohd.gif">
+    </td>
+    <td width="2" align="left" valign="middle" background="../images/pgvr.gif" >
+    </td>
+  </tr>
+ 
+
+<!-- title bar --> 
+  <tr>
+    <td align="left" valign="middle" background="../images/pgvl.gif" width="2" height="30" >
+    </td>
+    <td colspan="3" align="center" valign="top" width="1000" height="30" background="../images/ttlbar.gif">
+<!-- menu -->
+<script type="text/javascript">
+topmenu();
+</script>
+
+
+<script type="text/javascript">
+cssdropdown.startchrome("chromemenu")
+</script>
+
+<!-- menu -->
+    </td>
+    <td align="left" valign="middle" background="../images/pgvr.gif" width="2" height="30" >
+    </td>
+
+  </tr>
+<!-- title bar -->
+
+</table>
+
+<table border="0" width="1004" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+
+  
+  
+  <tr>
+    <td align="left" valign="middle" width="2" background="../images/pgvl.gif">
+    </td>
+
+    <td width="275" height="25" valign="top" class="traces">
+		 <script type="text/javascript" src="../script/MPBackLinks.js"></script> 
+
+    </td>
+    <td width="725" valign="top" rowspan="3" >
+	  <!-- Body content -->
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" >
+	    <tr>
+		  <td width="100%" valign="top" class="bodytext"><h1>SrimatSwami Nigamananda Saraswati Dev</h1>
+		  <p>Paramahansha Srimat Swami Nigamananda Saraswati Deva is able to assert the direct unmediated knowledge of the Absolute reality, which is also identical with illuminated consciousness of the spiritual unity of man and universe, is the core of all religious disciplines as understood by the Rushis, Santhas and Saints who visualized the grave expression to the great truth co-eternal with Brhman (God). </p>
+
+		  <p>He has spread the gospel of "Sanatana Dharma" Hinduism through out India. His ideological advice to followers is in the Vedantic doctrine of Sri Shankaracharya and the path of devotion adopted by SriChaitanya Deva. <br/>Read more from 
+		  <script language=javascript>getLink("Biography");</script> and <script language=javascript>getLink("Philosophy");</script></p>
+
+		  <h3>Chronological Events of Shri Shri Thakur’s Life:  </h3>
+
+		  <table border="0" cellspacing="0" cellpading="0" align="center" width="655" class="tabtext">
+
+		  <tr valign="top">
+			<td align="center" width="40"><b>Year</b></td>
+			<td align="center" width="615"><b>Events</b>                
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td align="center" width="655" height="2" colspan="2" background="../images/pght.gif"></td>
+			</td>
+		  </tr>
+		  <tr>
+		  <td colspan="2"><div style="overflow:auto; width:655px; height: 725px; ">
+		
+		  <table border="0" cellspacing="5" cellpading="0" align="center" class="tabtext">
+
+		  
+		  <tr valign="top">
+			<td width="40">1880
+			</td>
+			<td width="615">On  Thursday, 19<sup>th</sup> of August, at 2:00 AM, a son was born to  Bhubanmohan Bhattacharya and Yogendramohini at Radhakantapur, the maternal  home. The child was named Nalinikanta who in time became known as our beloved  Shri Shri Thakur. It happened to be the auspicious day of <i  style='mso-bidi-font-style:normal'>Jhulan Purnima</i> in the month of <i style='mso-bidi-font-style:normal'>Shraban</i>.			
+			</td>
+		  </tr>
+
+		  <tr valign="top">
+			<td width="40">1889
+			</td>
+			<td width="615">At  the age of nine, he saw Devi Durga in the form of a young girl with ten arms  at the family <i style='mso-bidi-font-style:normal'>Chandi Mandap</i> near  his home at Kutabpur.
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1891
+			</td>
+
+			<td width="615">When
+  Nalinikanta turns eleven, his father Bhubanmohan performed his <i  style='mso-bidi-font-style:normal'>Upanayan</i> (the sacred thread ceremony)  at Radhakantapur.
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1892
+			</td>
+			<td width="615">At the age of twelve, Nalinikanta started visiting Bankim Chandra Chattopadhyay, a renowned literary figure of Bengal and engaged in many spiritual and intellectual discussions with him.
+			</td>
+		  </tr>
+
+		  <tr valign="top">
+			<td width="40">1893
+			</td>
+			<td width="615">His  mother Yogendramohini passed away suffering from Asiatic Cholera.
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1894
+			</td>
+			<td width="615">Bankim Chandra Chattopadhyay passed away.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1895
+			</td>
+			<td width="615">After
+  passing out from Dariapur Middle English School, Nalinikanta started
+  attending Meharpur High School.<o:p></o:p>
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">
+
+			</td>
+			<td width="615">Nalinikanta  went to Dhaka Survey School (renamed as Ahsanullah School of Engineering and
+  currently Bangladesh University of Engineering and Technology).
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1897
+			</td>
+			<td width="615">While  still in Survey School, at the age of seventeen (<i style='mso-bidi-font-style:
+  normal'>16 years and 6 months</i>) Nalinikanta got married to Sudhanshubala
+  (Rani), the daughter of late Baidyanath Mukhopadhyay of Halisahar, now in
+  West Bengal.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">
+			</td>
+			<td width="615">After  two years of study in Dhaka Survey School, Nalinikanta taught for some time
+  at lower primary school at Kutabpur while waiting for a job outside. Around
+  the same time, he demonstrated his creative literary talents by writing
+  dramas like <i style='mso-bidi-font-style:normal'>Shobha Bilap</i> or <i
+  style='mso-bidi-font-style:normal'>Taranisen Badha</i>, and <i
+  style='mso-bidi-font-style:normal'>Bhagabatir Nikah</i> and poems like <i
+  style='mso-bidi-font-style:normal'>Marma Gatha</i> and novels like <i
+  style='mso-bidi-font-style:normal'>Charubala</i>.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1898
+			</td>
+			<td width="615">His  novel <i style='mso-bidi-font-style:normal'>Sudhansubala</i> was written.
+  Nalinikanta got a job as an overseer in Dinajpur Distict Board.
+			</td>
+		  </tr>
+		  <tr valign="top">
+
+			<td width="40">1899
+			</td>
+			<td width="615">Nityananda  Pustakalaya of Calcutta published Nalinikanta’s novel <i style='mso-bidi-font-style:
+  normal'>Sudhansubala</i>. Nalinikanta got a respectable job as Supervisor at
+  Narayanpur in the estates of Krushna Pramada Dasi. 
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1901
+			</td>
+			<td width="615">One  night, in the month of September around 9 PM, Sudhansubala took her last
+  breath and left the world.<br/>At that moment, Nalinikanta was at work in Narayanpur attending to some urgent
+  papers. Around the time of his wife’s eternal departure, the lamp on the
+  table he was working on slowly became dim and he saw Sudhansubala standing by
+  the side of his table. Her complexion was radiant but her face was pale and
+  gloomy and she did not say anything. He got frightened and screamed. The
+  figure vanished leaving Nalinikanta disturbed over the event. He left for
+  Kutabpur as soon as he got leave from service and heard the sad news from
+  villagers on his way.<br/><br/>Nalinikanta
+  found out the details of his wife’s last moments and her last words for him.
+  Despite best efforts, he could not overcome his grief. In the following days,
+  he had glimpses of Sudhansubala’s astral figure twice, which left him
+  wondering about the existence of the soul after death.<br/><br/>Nalinikanta
+  asked his father to perform the <i style='mso-bidi-font-style:normal'>Shradha</i>
+
+  and left for Calcutta to attend an urgent case. During this period, one
+  night, Sudhansubala appeared before Nalinikanta in her astral form and
+  requested him to perform the <i style='mso-bidi-font-style:normal'>Shradha</i>.
+  The next morning, Nalinikanta made all arrangement for the <i
+  style='mso-bidi-font-style:normal'>Shradha</i> and kept the articles liked by
+  her as offering. He then remembered Sudhansubala and waited for her to accept
+  the offerings. As time passed and Sudhansubala did not appear to take
+  offerings he got annoyed and then started taking the offering himself. At
+  that moment, Sudhansubala appeared again in her astral form and asked him to
+  refrain from eating because they were her left over.<br/><br/>After
+  repeated visions of his deceased wife, the belief in the existence of life
+  after death got firmly rooted in Nalinikanta’s mind.<br/><br/>After
+  repeated visions of his deceased wife, the belief in the existence of life
+  after death got firmly rooted in Nalinikanta’s mind.<br/><br/>Meanwhile,
+  Nalinikanta got transferred to Kumira.<br/><br/>In
+  his quest to get connected to his wife, Nalinikanta joined the Theosophical
+  Society in Calcutta and later travelled to the society headquarters at Adyar
+  near Madras (Chennai). After having learnt the techniques of attracting
+  souls, he got to hear his wife through a medium. He was not satisfied and
+  still had a lot of unanswered questions.<br/><br/>Nalinikanta
+  returned to his work at Kumira but kept an eye on any saints visiting Calcutta.
+  Around November-December 1901, he heard about Swami Purnananda, an
+  ex-professor who enjoyed a good deal of reputation. Nalinikanta finally got a
+  chance to meet Swami Purnananda at <st1:place w:st="on"><st1:City w:st="on">Calcutta</st1:City></st1:place>
+  and narrated his story to which Swamiji advised him that the <i
+  style='mso-bidi-font-style:normal'>Sadhana</i> to reach the Mother of the
+  Universe (<i style='mso-bidi-font-style:normal'>Adyashakti Mahamaya</i>) will
+  lead him to his wife as well.<br/><br/>Back
+  at Kumira, one night in the month of <i style='mso-bidi-font-style:normal'>Margasira</i>,
+  Nalinikanta woke up with the room illuminated and found a tall and radiant
+  saint standing beside him. The saint offered him a single-lettered <i
+  style='mso-bidi-font-style:normal'>mantra</i> written in red sandal paste on
+  a <i style='mso-bidi-font-style:normal'>Bilwa</i> (wood apple tree) leaf and
+  vanished.<br/><br/>In the search of finding the method of recitation of the <i style='mso-bidi-font-style:
+  normal'>mantra</i>, Nalinikanta met a number of saints at many holy places
+  and finally ended up in Kashi. Without any answer in sight, he became
+  confused and frustrated, and decided to end his life. That night, a <i
+  style='mso-bidi-font-style:normal'>Brahmin</i> appeared in his dream and
+  advised him that his guru is the famous <i style='mso-bidi-font-style:normal'>Tantrik</i>
+
+  saint Bamakhepa of Tarapith in the district of Birbhum.
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1902 (Month of Magha/Phalgun)
+			</td>
+			<td width="615">Per his dream, Nalinikanta went to Tarapith and surrendered to Bamakhepa. Under
+  the tutelage and supervision of his <i style='mso-bidi-font-style:normal'>Tantrik
+  Guru</i>, Nalinikanta learnt all the practices in connection with the tantrik
+  way of <i style='mso-bidi-font-style:normal'>sadhana</i> leading to see the
+  Cosmic Mother in just 20 days. On the midnight of the 21<sup>st</sup> day,
+  the <i style='mso-bidi-font-style:normal'>Krushna Chaturdasi</i> (night
+  before new moon), at a cremation ground, he started chanting the <i
+  style='mso-bidi-font-style:normal'>mantra</i> given by his guru. First, <i
+  style='mso-bidi-font-style:normal'>Mahashakti </i>(omnipower) appeared in the
+  form of his beloved wife Sudhansubala and subsequently revealed her divine
+  cosmic form. She granted him the boon of appearing in the form of
+  Sudhansubala whenever he would wish.<span style='mso-spacerun:yes'> 
+  </span>This was Shri Shri Thakur’s enlightenment in <i style='mso-bidi-font-style:
+  normal'>Tantrik Sadhana</i>.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1902 (month of Chaitra)
+			</td>
+			<td width="615">Nalinikanta
+  returned to Kumira and enjoyed the company of the Universal Mother in the
+  form of Sudhasubala. However, when he tried to touch her, the image would
+  dissolve (merge) into his body. Nalinikanta then went back to Bamakhepa
+  seeking an answer to this enigma. Bamakhepa posed his questions to Tara Devi
+  and her answer was that Nalinikanta must seek <i style='mso-bidi-font-style:
+  normal'>sannyas</i> in the Vedantic line under the guidance of a <i
+  style='mso-bidi-font-style:normal'>Gyani Guru</i>.<br/><br/>Nalinikanta
+  resigned from his job and started his quest for <i style='mso-bidi-font-style:
+  normal'>Gyani Guru</i>. He visited different places of India before finally
+  meeting Swami Sachchidananda Saraswati, a renowned vedantic saint at Ajmer in
+  the state of Rajasthan. At the first sight, Nalinikanta remembered that the
+  saint was the same person who offered him the single-lettered <i
+  style='mso-bidi-font-style:normal'>mantra</i> at Kumira. Then he stayed in
+  his Guru’s ashram at Pushkar as a <i style='mso-bidi-font-style:normal'>sebak</i>
+
+  and led a life of <i style='mso-bidi-font-style:normal'>Brahmachari</i>.
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1903
+			</td>
+			<td width="615">On  the 11<sup>th</sup> day of Bhadrava (July-August), Nalinikanta was initiated
+  into Sannyasa and was named “Nigamananda” by his guru. He had mastered with ease
+  the secrets of the knowledge of the <i style='mso-bidi-font-style:normal'>Nigama</i>
+
+  (Vedas). In order to realize the deeper spiritual import of four great
+  sayings of Vedas, as a sannyasi, Swami Nigamananda had to undertake a
+  pilgrimage to the four <i style='mso-bidi-font-style:normal'>dhams</i>.  <br/><br/>He
+  was accompanied by Swami Sachchidananda to Badrinath and on the way they
+  stopped at Gouri Maa’s ashram. She was a renowned female Yogic saint. During
+  this visit to Badrinath, Swami Nigamananda learnt the method of realizing the
+  <i style='mso-bidi-font-style:normal'>Mahabakya</i> of Vedas, “<i
+  style='mso-bidi-font-style:normal'>Ayamatama Brahma</i>”. After returning
+  from Badrinath, Shri Shri Thakur went to visit the remaining three <i
+  style='mso-bidi-font-style:normal'>dhams</i>, Dwarka, Rameswar and Puri alone
+  where he realized the “<i style='mso-bidi-font-style:normal'>Tatwam Asi</i>”,
+  “<i style='mso-bidi-font-style:normal'>Aham Brahmasmi</i>” and “<i
+  style='mso-bidi-font-style:normal'>Pragyanam Brahma</i>” <i style='mso-bidi-font-style:
+  normal'>Mahabakyas</i> respectively. <br/><br/>Upon  his return from his pilgrimage of the four <i style='mso-bidi-font-style:
+  normal'>dhams</i>, his guru advised him to search for his Y<i
+  style='mso-bidi-font-style:normal'>ogi Guru</i> for yoga sadhana and acquire
+  the knowledge of <i style='mso-bidi-font-style:normal'>Bramha</i> through “<i
+  style='mso-bidi-font-style:normal'>Nirbikalpa Samadhi</i>”.<br/><br/>Swami
+  Nigamananda started his journey to search for a Y<i style='mso-bidi-font-style:
+  normal'>ogi Guru</i> towards the end of winter. While wandering through the
+  forests of Kota, he met two young women, who he later found out were yoginis.
+  Per their direction, he left for <st1:City w:st="on"><st1:place w:st="on">Calcutta</st1:place></st1:City>.<br/><br/>Continuing
+  his quest, around the month of May-June, Swami Nigamananda travelled eastward
+  to Kamakshya and Parasuram Tirtha now in Arunachal Pradesh. At Parasuram
+  Tirtha, he fell ill with fever and dysentery but recovered with the help of
+  the tribal people in that area. One day while enjoying the natural beauty of
+  the hills, he wandered into the jungle and was lost and decided to rest the night
+  in the hollow of a big tree trunk. Towards dawn, he met a saint with a
+  radiating glow below the tree. This was his Y<i style='mso-bidi-font-style:
+  normal'>ogi Guru</i> Swami Sumerudasji. Under his guidance, for a period of
+  three months, Swami Nigamananda read yogic scriptures and learnt and practiced
+  methods of <i style='mso-bidi-font-style:normal'>Yoga Sadhana</i>.<br/><br/>Per
+  the direction of his Y<i style='mso-bidi-font-style:normal'>ogi Guru</i>,
+  Swami Nigamananda left and went on to stay at the home of Sarada Prasad
+  Majumdar, <i style='mso-bidi-font-style:normal'>zamindar</i> of Haripur in
+  Pabna district (now in Bangladesh) and started practising yoga.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1904
+			</td>
+			<td width="615">Over  a period of nine months, he made a good progress in yogic practices. However,
+  due to some interruptions and external disturbances, he had to leave Haripur
+  for Guwahati. He ended up staying at the home of Yajneswar Biswas, a senior
+  government officer, and continued practicing yoga. He practised meditation (<i
+  style='mso-bidi-font-style:normal'>Samadhi</i>) for one whole day, then three
+  days and finally for seven days at a stretch before coming back to senses.
+  This state is called the “<i style='mso-bidi-font-style:normal'>Sabikalpa
+  Samadhi</i>”.<br/><br/>One   day in the month of Pousha, he went up the hills of Kamakshya and found a
+  lonely spot where he sat and started his meditation. Shri Shri Thakur
+  succeeded in reaching<span style='mso-spacerun:yes'>  </span>“<i
+  style='mso-bidi-font-style:normal'>Nirbikalpa Samadhi</i>”, the ultimate
+  attainment in <i style='mso-bidi-font-style:normal'>Yoga Sadhana</i>. During
+  the sublime state of this <i style='mso-bidi-font-style:normal'>Samadhi</i>,
+  he had a firm and exuberant feeling of “I am Guru”. His face was beaming an
+  aura of radiance.<br/><br/>He   was eager to meet his guru, Swami Sachchidananda, to tell him about it and
+  hence bade farewell to Yajneswar Biswas and his wife, Saraju Devi. He went to
+  Kumbhamela at Ujjain and found that his <i style='mso-bidi-font-style:normal'>Gyani
+  Guru</i> was also there. By the direction of Jagadguru Sankaracharya of
+  Shringeri Math, his <i style='mso-bidi-font-style:normal'>Gyani Guru</i>
+
+  Swami Sachchidananda bestowed on him the title of <i style='mso-bidi-font-style:
+  normal'>Paramahansa </i>with approval of all saints present there. From that
+  day, his full name was <i style='mso-bidi-font-style:normal'>Paribrajakacharya
+  Paramahansa Swami Nigamananda Saraswati Dev</i>.<br/><br/>Per   his <i style='mso-bidi-font-style:normal'>Gyani Guru</i>’s direction, Shri
+  Shri Thakur gave <i style='mso-bidi-font-style:normal'>dikshya</i> to
+  Yajneswar Biswas and his wife Saraju Devi.
+			</td>
+		  </tr>
+		  <tr valign="top">
+
+			<td width="40">1905
+			</td>
+			<td width="615">In   the month of Magha, Shri Shri Thakur was in Kashi and had a chance to meet
+  Devi Annapurna in the form of an old lady. Later that night Devi appeared in
+  his dream and advised him to perform <i style='mso-bidi-font-style:normal'>Bhaba
+  Sadhana</i>. Shri  Shri Thakur then decided to see Gouri Maa whom he had met on the way to
+  Badrinath with Swami Sachchidananda during his <i style='mso-bidi-font-style:
+  normal'>Paribrajaka</i> period. He learnt <i style='mso-bidi-font-style:normal'>Prema
+  Sadhana</i> from Gouri Maa and attained <i style='mso-bidi-font-style:normal'>Bhaba
+  Samadhi</i>.<br/><br/>Shri  Shri Thakur returned to Guwahati and then went to Garohill in Assam, which
+  was later known as Garohill Yogashram (now in Meghalaya) and started a lower
+  primary school for the children of the <i style='mso-bidi-font-style:normal'>Hajong</i>
+
+  inhabitants in that area.<br/><br/>During  this period, the divine mother appeared before him in her physical body of
+  flesh and blood, and lavished all love, humor and joys of the universe on
+  him. <br/><br/>A  few days later, the divine mother reminded him of his responsibility as a
+  Guru. She granted Shri Shri Thakur two boons, the first one was “those who
+  accept him as guru would attain salvation in three births even though they go
+  against him in the later part”, and the second one was “those who will
+  continue to be his disciples to the end will attain liberation in one life
+  whether they perform <i style='mso-bidi-font-style:normal'>sadhana</i> or
+  not”.<br/><br/>It   was here, Shri Shri Thakur wrote the book ‘Yogi Guru’ in just 14 days.
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1906
+			</td>
+			<td width="615">During  the first quarter of the year, Shri Shri Thakur went to public. <br/><br/>Later,
+  he stayed at the house of Umacharan Sarkar of Beniachar in Mymensing.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1907
+			</td>
+			<td width="615">A  young man named Chandicharan Das, having read Shri Shri Thakur’s first book,
+  “Yogi Guru”, came to him and became his <i style='mso-bidi-font-style:normal'>sebak</i>.
+  He was later known as Swami Chidananda after taking <i style='mso-bidi-font-style:
+  normal'>sannyas</i> from Shri Shri Thakur.<br/><br/>Shanti  Ashram was founded at Durgapur near Kumilla (Comilla). Later it was moved to <st1:place
+  w:st="on">Dhaka</st1:place>. During this period Shri Shri Thakur wrote the
+  book “Gyani Guru” in 21 days.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1908
+			</td>
+			<td width="615">Shri  Shri Thakur’s third book, “Gyani Guru” was published on the 2<sup>nd</sup>
+  day of the month of <i style='mso-bidi-font-style:normal'>Bhadrab</i>. Under
+  his guidance, in the month of Kartik, the first issue of the monthly
+  magazine, “Arya-Darpan”, was published.
+			</td>
+		  </tr>
+
+		  <tr valign="top">
+			<td width="40">1909
+			</td>
+			<td width="615">Shri  Shri Thakur visited the ancestral home of Dr. Nrupendra Chandra Roy of Dhaka.<br/>On  the 16<sup>th</sup> day of month of <i style='mso-bidi-font-style:normal'>Jyastha</i>,
+  Shri Shri Thakur gave <i style='mso-bidi-font-style:normal'>dikshya</i> to
+  Priyanath Khasanabish, who was later known as Swami Premananda.<br/>On  the day of <i style='mso-bidi-font-style:normal'>Laxmi Purnima</i>, Dr.
+  Rajachandra Dhar, who was later known as Swami Swarupananda, met Shri Shri
+  Thakur for the first time.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1910
+			</td>
+			<td width="615">Shri  Shri Thakur’s book, “Bramhacharya Sadhan”, was published from Shanti Ashram
+  of <st1:place w:st="on"><st1:City w:st="on">Durgapur</st1:City></st1:place>.<br/><br/>On
+  the 21<sup>st</sup> day of the month of <i style='mso-bidi-font-style:normal'>Ashadha</i>,
+  Shri Shri Thakur gave <i style='mso-bidi-font-style:normal'>dikshya</i> to
+  Dr. Rajachandra Dhar (later Swami Swarupananda) and his wife.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1911
+			</td>
+			<td width="615">While
+  staying at Shanti Ashram in <st1:place w:st="on">Dhaka</st1:place>, Shri Shri
+  Thakur wrote “Tantrik Guru” in 7 days. The book was published on the day of <i
+  style='mso-bidi-font-style:normal'>Jhulan Purnima</i>.<br/><br/>On
+  the 26<sup>th</sup> day of the month of <i style='mso-bidi-font-style:normal'>Margasira</i>,
+  “Anatha Niketana” was started.<br/><br/>Later  that year, Shri Shri Thakur wrote the book “Premika Guru” in 17 days.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1912
+			</td>
+			<td width="615">On  the 14<sup>th</sup> day of the month of <i style='mso-bidi-font-style:normal'>Magha</i>,
+  Shri Shri Thakur went to Kokilamukh in Assam with Rajachandra Dhar to look at
+  the land for the new <i style='mso-bidi-font-style:normal'>ashram</i>.<br/><br/>On
+  the 22<sup>nd</sup> day of the month of <i style='mso-bidi-font-style:normal'>Phalgun</i>,
+  the <i style='mso-bidi-font-style:normal'>ashram</i> was shifted from Dhaka
+  to Kokilamukh in Assam state.<br/><br/>On
+  the auspicious day of <i style='mso-bidi-font-style:normal'>Akshaya Trutiya</i>
+
+  in the month of <i style='mso-bidi-font-style:normal'>Baisakha</i>, Shri Shri
+  Thakur set up the Shanti Ashram at Kokilamukh. The seat of <i
+  style='mso-bidi-font-style:normal'>Gurubramha</i> was established. On
+  the day of <i style='mso-bidi-font-style:normal'>Rasa Purnima</i>, Shri Shri
+  Thakur’s book, “Premika Guru” was published. 
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1913
+			</td>
+
+			<td width="615">Shri Shri Thakur visited his birthplace at Kutabpur.
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1914
+			</td>
+			<td width="615">On
+  the 12<sup>th</sup> day of the month of <i style='mso-bidi-font-style:normal'>Baisakha</i>,
+  Shanti Ashram was renamed as Saraswata Math and Shri Shri Thakur gave Sannyas
+  <i style='mso-bidi-font-style:normal'>dikshya</i> to seven of his disciples
+  on that day. During the month of <i style='mso-bidi-font-style:normal'>Chaitra</i>,
+  Shri Shri Thakur along with his disciples travelled to the <i
+  style='mso-bidi-font-style:normal'>Kumbhamela</i> at Haridwar.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1915
+			</td>
+			<td width="615">The  first <i style='mso-bidi-font-style:normal'>Bhakta Sammilani</i> was
+  organized at Saraswata Math and was attended by eleven <i style='mso-bidi-font-style:
+  normal'>bhaktas</i> – seven <i style='mso-bidi-font-style:normal'>Sannyasis</i>
+
+  and four <i style='mso-bidi-font-style:normal'>Grihastha</i> devotees. They
+  were Swami Bodhananda, Swami Chidananda, Swami Swarupananda, Swami Yogananda,
+  Swami Sudhananda, Swami Premananda, Swami Saradananda, Khepadas Bhattacharya,
+  Banamali Sarakar, Surendramohan Dasgupta and Nagendranath Rai.
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1917
+			</td>
+			<td width="615">On  the 3<sup>rd</sup> day of the month of <i style='mso-bidi-font-style:normal'>Phalgun</i>,
+  Saraswata Ashram was established in a rented house in the Jariyatuli area of <st1:place
+  w:st="on">Dhaka</st1:place>.<br/><br/>In  the month of <i style='mso-bidi-font-style:normal'>Chaitra</i>, Shri Shri
+  Thakur bought land in Maynamati with the purpose of establishing an ashram.
+  Subsequently in 1919, with the hardwork and dedication of Kumarananda
+  Brahmachari, (later Swami Atmananda Saraswati), a beautiful <i
+  style='mso-bidi-font-style:normal'>ashram</i> was built there.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1919
+			</td>
+			<td width="615">On  the auspicious day of <i style='mso-bidi-font-style:normal'>Jhulana Purnima</i>,
+  Shri Shri Gouranga-Sebashrama was established at Boguda (Bogra). It was later
+  renamed as Uttara Bangla Saraswata Ashram.
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1920
+			</td>
+
+			<td width="615">On
+  the 27<sup>th</sup> day of the month of <i style='mso-bidi-font-style:normal'>Aswin</i>,
+  the Saraswata Ashram in <st1:place w:st="on">Dhaka</st1:place> shifted to
+  Jayadevpur of Bhawal Pragana. On the day of <i style='mso-bidi-font-style:
+  normal'>Akhya Trutiya</i> in 1921, this <i style='mso-bidi-font-style:normal'>ashram</i>
+  was established and went on to host the <i style='mso-bidi-font-style:normal'>Bhakta
+  Sammilani</i> in 1922. This <i style='mso-bidi-font-style:normal'>ashram</i>
+
+  was later renamed as Madhya Bangla Saraswata Ashram.
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1922
+			</td>
+			<td width="615">For the  first time Sarbabhauma Sammilani held at Bhawal Saraswata Ashram, Dhaka, was
+  open to public.
+			</td>
+		  </tr>
+		  <tr valign="top">
+
+			<td width="40">1923
+			</td>
+			<td width="615">Shri Shri Thakur comes to Puri. Initially, Shri Shri Thakur
+  stayed at Goenka Dharmasala and then in a rented house named Kamalakamini
+  Mandira around the Chakratirtha locality of Puri. Subsequently he shifted to
+  Number 3 Giri Kutira in the Mochisahi area of Puri. A number of <i
+  style='mso-bidi-font-style:normal'>sebaka</i> and <i style='mso-bidi-font-style:
+  normal'>sebikas</i> accompanied Shri Shri Thakur at various points of time
+  but some stayed permanently with him in Puri.
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1924
+			</td>
+
+			<td width="615">On the first day of the month of <i style='mso-bidi-font-style:
+  normal'>Baisakha</i>, “<i style='mso-bidi-font-style:normal'>Griha Prabesha</i>”
+  was performed at the Nilachala Kutira in Puri.<br/>In the same year, on the day of <i style='mso-bidi-font-style:
+  normal'>Akshyaya Trutiya</i>, the seat of <i style='mso-bidi-font-style:normal'>Gurubrahma</i>
+  was established at Purba Bangla Saraswata Ashram in Maynamati, Kumilla.
+			</td>
+		  </tr>
+		  <tr valign="top">
+
+			<td width="40">1925
+			</td>
+			<td width="615">The construction of Dakhin Bangla Saraswata Ashram
+  commences at Halisahar, West Bengal under the supervision and hard work of
+  Ganga Gopala Saha of Balighati. In the same year, the construction of
+  Paschima Bangla Saraswata Ashram started at Khadakusuma in Medinapur
+  district, West Bengal.<br/><br/>Ashadha</i>,
+  Suresh Chandra Chattopadhyay, a disciple of Thakur from East Bengal, after
+  the death of his wife, left his infant daughter in the trust of Shri Shri
+  Thakur and sought <i style='mso-bidi-font-style:normal'>sannyasa</i>. Shri
+  Shri Thakur accepted her and named the girl Narayani, who is lovingly
+  remembered as Narayani Maa to Thakur’s disciples/devotees.
+			</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1926
+			</td>
+
+			<td width="615">In the month of <i style='mso-bidi-font-style:normal'>Kartika</i>,
+  “<i style='mso-bidi-font-style:normal'>Gurudham</i>” was established in
+  Kutabpur.<br/><br/>On the 1<sup>st</sup> day of <i style='mso-bidi-font-style:
+  normal'>Bhakta Sammilani</i> at Paschima Bangla Saraswata Ashram in
+  Khadakusuma, the seat of <i style='mso-bidi-font-style:normal'>Jagatguru</i>
+  was established there.<br/><br/>Shri Shri Thakur attended the <i style='mso-bidi-font-style:
+  normal'>Kumbhamela</i> at Haridwar.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1927
+			</td>
+			<td width="615">The <i style='mso-bidi-font-style:normal'>Bhakta
+  Sammilani</i> was organized at Assam Bangiya Saraswata Matha, where Shri Shri
+  Thakur read his hand written “<i style='mso-bidi-font-style:normal'>Arpananama</i>”
+  in front of all <i style='mso-bidi-font-style:normal'>bhaktas</i>.<br/><br/>For the first time in Sarbabhauma Sammilani, ‘Ananda
+  Sabha’ was introduced by Shri Shri Thakur.<br/><br/>On the 22<sup>nd</sup> night of the month of <i
+  style='mso-bidi-font-style:normal'>Baisakha</i>, Shri Shri Thakur was
+  sleeping on roof top of Nilachala Kutira when he heard someone coughing and
+  saw the astral image of one of his favorite disciples, Ashwini Dasgupta.
+  Ashwini Babu had been suffering from a prolonged illness. The next morning,
+  Shri Shri Thakur received a telegram with the message that Ashwini Babu had
+  passed away the night before.<br/><br/>In the month of <i style='mso-bidi-font-style:normal'>Chaitra</i>,
+  the King of Bastar, Prafulla Chandra Bhanja Deo received <i style='mso-bidi-font-style:
+  normal'>dikshya</i> from Shri Shri Thakur.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1928
+			</td>
+			<td width="615">During the month of Ashwin, Shri Shri Thakur visited the
+  native State of Bastar at the request of Shri Prafulla Chandra Bhanja Deo,
+  Rajasaheb of Bastar. He was accompanied by Haren Bhai, Pragyananda Maharaj
+  and Phani Mitra Bhai.<br/>Ishwar Sahu Bhai came to know Shri Shri Thakur after
+  reading GyaniGuru book on 13<sup>th</sup> of November. <br/>Three <i style='mso-bidi-font-style:normal'>bhaktas</i>
+  from Orissa, Ishwar Sahu, Balaji Raju and Dinabandhu Deo received <i
+  style='mso-bidi-font-style:normal'>dikshya</i> from Shri Shri Thakur at
+  Nilachala Kutira on the 12<sup>th</sup> of December.
+			</td>
+
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1929
+			</td>
+			<td width="615">Shri Shri Thakur traveled to Darjeeling with the King
+  and Queen of Bastar. <br/><br/>Upon his return to Calcutta from Darjeeling, Shri Shri
+  Thakur visited Gurudham in Kutabpur during the month of <i style='mso-bidi-font-style:
+  normal'>Ashwin</i>.
+			</td>
+		  </tr>
+		  </tr>
+
+		  <tr valign="top">
+			<td width="40">1930
+			</td>
+			<td width="615">Shri Shri Thakur’s youngest aunt Gobindamohini Devi
+  (a.k.a. Golapasundari) visited him at Nilachala Kutira.<br/><br/>At Nilachala Kutira on March 20<sup>th</sup>,
+  Durgacharan Bhai met Shri Shri Thakur for the first time.<br/><br/>On March 23<sup>rd</sup>, Durgacharan Bhai got his first
+  instruction on <i style='mso-bidi-font-style:normal'>Asana</i> and <i
+  style='mso-bidi-font-style:normal'>Mudra</i> from Thakurdas Brahmachari
+  (Haren Bhai).<br/><br/>Shri Shri Thakur established the seat of <i
+  style='mso-bidi-font-style:normal'>Gurubrahma</i> at Jalapaigudi Saraswata
+  Ashram on the auspicious day of <i style='mso-bidi-font-style:normal'>Akshaya
+  Trutiya</i>.<br/><br/>Arpananama</i>”
+  (Trust Deed) written by Shri Shri Thakur was registered at Jorhat, Assam.
+  Apart from Shri Shri Thakur, other trustees included five household disciples
+  and five sannyasis of Saraswata Matha.<br/><br/>Shri Shri Thakur became sick with influenza during a
+  visit to Shillong and was treated by Dr. Bidhan Chandra Ray of Calcutta.<br/><br/>Shri Shri Thakur returned to Puri and took rest for a
+  month and half before embarking on a trip to Gurudham in Kutabpur. His
+  maternal home in Radhakantapur was also on the itinerary. He was accompanied
+  by a number of people including Maa’s from Nilachala Kutira.<br/><br/>For the first time ever, in the Sarbabhauma Sammilani
+  held at Maynamati, ‘Mahila Sabha’ was introduced by Shri Shri Thakur at the
+  request of His female disciples and devotees.
+			</td>
+
+		  </tr>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1931
+			</td>
+			<td width="615">On the 27<sup>th</sup> of January, Durgacharan Bhai met
+  Nrupa (Nrupal Jee) Bhai for the first time and discussed about Shri Shri
+  Thakur with him.<br/><br/>On the 24<sup>th</sup> of February, Shri Shri Thakur is
+  welcomed back on his return at the Puri railway station by <i
+  style='mso-bidi-font-style:normal'>bhaktas</i> including Durgacharan Bhai and
+  Nrupa Bhai.<br/><br/>On the 12<sup>th</sup> of March, Gobinda Patnaik Bhai
+  met Shri Shri Thakur for the first time.<br/><br/>On April 2<sup>nd</sup>, which was the auspicious day of
+  <i style='mso-bidi-font-style:normal'>Akshaya Trutiya</i>, a number of <i
+  style='mso-bidi-font-style:normal'>bhaktas</i> met Shri Shri Thakur at
+  Nilachala Kutira and accepted <i style='mso-bidi-font-style:normal'>prasad</i>.
+  Later that day, Shri Shri Thakur departed for Assam Bangiya Saraswata Matha
+  where he spent the next three months.<br/><br/>On July 5<sup>th</sup>, A number of <i style='mso-bidi-font-style:
+  normal'>bhaktas</i> met Shri Shri Thakur on his return to Nilachala Kutira.
+  Shri Shri Thakur answered their questions. In the course of the discussion,
+  Gobinda Bhai asked Shri Shri Thakur about the process and significance of
+  identifying one’s <i style='mso-bidi-font-style:normal'>Sadguru</i>. Shri
+  Shri Thakur then continued to explain Shri Krishna’s words to Arjuna from the
+  Bhagabat Gita namely “<i style='mso-bidi-font-style:normal'>Sarba Dharman
+  Parityajya Mamekam Saranam Braja</i>”.<br/><br/>During the rest of the summer, Durgacharan Bhai and a
+  limited number of <i style='mso-bidi-font-style:normal'>bhaktas</i> got the
+  opportunity of meeting Shri Shri Thakur nearly every afternoon and discussed
+  a wide range of spiritual topics.<br/><br/>Prafulla Chandra Bhanja Deo stayed at Nilachala Kutira
+  for eight days for important discussions regarding his Tantrik sadhana.<br/><br/>At Nilachala Kutira on October 11<sup>th</sup>, Shri
+  Shri Thakur talked about controlling the mind and the state after death.<br/><br/>At the earnest prayer of the disciples and devotees,
+  Shri Shri Thakur presided over the Sarbabhauma Sammilani at Halisahar in
+  place of Shri Sankaracharya and Shri Gourang Dev, which continued thereafter.
+			</td>
+
+		  </tr>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1932
+			</td>
+			<td width="615">Shri Shri Thakur returned to Puri on January 7<sup>th</sup>.<br/><br/>On the 26<sup>th</sup> of February, Shri Shri Thakur
+  went on a trip to Chilka Lake along with a number of <i style='mso-bidi-font-style:
+  normal'>bhaktas</i> including Durgacharan Bhai, Satchidananda Saha,
+  Jayakrushna Mohanty Bhai, Thakurdas Brahmachari and Ekadasi Harichandan Bhai.
+  He visited the Kalijaai Temple.<br/><br/>Shri Shri Thakur left for Kokilamukha Matha on the 22<sup>nd</sup>
+
+  of April.<br/><br/>In November, Shri Shri Thakur started on a pilgrimage
+  tour and stopped at Puri for a day in between.
+			</td>
+		  </tr>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1933
+			</td>
+			<td width="615">On the 7<sup>th</sup> of March, Shri Shri Thakur
+  discussed his meeting with Sir John George Woodroffe. Later that day, a few
+  of school students including Durgacharan Bhai expressed their desire to
+  accept <i style='mso-bidi-font-style:normal'>dikshya</i> from Shri Shri
+  Thakur. Shri Shri Thakur talked about the special relationship between a guru
+  and a disciple.<br/><br/>On the 30<sup>th</sup> of April, Shri Shri Thakur
+  explained the purpose of <i style='mso-bidi-font-style:normal'>dikshya</i>.
+  Due to rain, instead of his usual visit to the beach, Shri Shri Thakur stayed
+  inside and continued to talk about creation, <i style='mso-bidi-font-style:
+  normal'>Brahma</i> and <i style='mso-bidi-font-style:normal'>Sanskara</i>,
+  etc.<br/><br/>Shri Shri Thakur appointed Swami Pragyananda Saraswati
+  as caretaker/ <i style='mso-bidi-font-style:normal'>mahanta</i> of Saraswata
+  Matha, Head Trustee and in-charge of all branch ashrams. Then Shri Shri
+  Thakur retired from active management.
+			</td>
+
+		  </tr>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1934
+			</td>
+			<td width="615">On the 3<sup>rd</sup> of March, Chaitanya Charan Das
+  Bhai and his wife Suruchi Sundari Maa received <i style='mso-bidi-font-style:
+  normal'>dikshya</i> from Shri Shri Thakur. Subsequently, Shri Shri Thakur
+  solicited questions from <i style='mso-bidi-font-style:normal'>bhaktas</i>
+
+  that were present then and elaborated on topics namely, the duties of a
+  widow, the grace of guru and <i style='mso-bidi-font-style:normal'>prarabdha</i>.<br/><br/>Later that day, Banamali Dash Bhai visited Shri Shri
+  Thakur for the first time. The next day, Banamali Bhai met Shri Shri Thakur
+  and expressed his desire to pursue a spiritual path. On the 20<sup>th</sup>
+  of March, Banamali Bhai received <i style='mso-bidi-font-style:normal'>dikshya</i>
+  from Shri Shri Thakur.<br/><br/>On the 23<sup>rd</sup> of March, Durgacharan Bhai,
+  Banamali Bhai and Ekadasi Bhai met Shri Shri Thakur before he departed for
+  Calcutta. Prior to leaving, he mentioned that upon his return he would
+  address their issues.<br/><br/>Shri Shri Thakur returned to Puri on April 11<sup>th</sup>.
+  The next day, Banamali Bhai and Durgacharan Bhai met Shri Shri Thakur.
+  Banamali Bhai expressed his interest in spreading Shri Shri Thakur’s
+  teachings in Orissa.<br/><br/>A rickshaw, acquired for Shri Shri Thakur’s late
+  afternoon visits to the beach, arrived from Calcutta on the 19<sup>th</sup>
+
+  of April. Annada Brahmachari took the responsibility of pulling the rickshaw.
+  A number of <i style='mso-bidi-font-style:normal'>bhaktas</i> accompanied
+  Shri Shri Thakur during these late afternoon strolls on the beach.<br/><br/>On the 5<sup>th</sup> of June, Durgacharan Bhai and
+  Nrupa Bhai received <i style='mso-bidi-font-style:normal'>dikshya</i> from
+  Shri Shri Thakur.<br/><br/>Shri Shri Thakur went to see the <i style='mso-bidi-font-style:
+  normal'>Ratha Jatra</i> on July 13<sup>th</sup>.
+			</td>
+
+		  </tr>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">August
+  24, 1934 (Inception of Nilachala Saraswata Sangha)
+			</td>
+			<td width="615">On the occasion of Shri Shri Thakur’s birthday, a number
+  of <i style='mso-bidi-font-style:normal'>bhaktas</i> performed Shri Shri
+  Thakur’s <i style='mso-bidi-font-style:normal'>puja</i>. None of the <i
+  style='mso-bidi-font-style:normal'>bhaktas</i> had any idea of how to perform
+  <i style='mso-bidi-font-style:normal'>puja, aarati</i> and <i
+  style='mso-bidi-font-style:normal'>stotra bandana </i>correctly; the <i
+  style='mso-bidi-font-style:normal'>aarati</i> was performed by Annada
+  Brahmachari. Shri Shri Thakur got concerned over this. With seriousness, Shri
+  Shri Thakur rose and spoke the following golden words of advice:
+  <br/><br/><span style='font-size:12.5pt; font-family:Calibri'>“<b style='mso-bidi-font-weight:normal'>My 1<sup>st</sup>
+
+  commandment is:</b></span> I left Saraswata Matha and Ashrams, and have been living
+  a solitary life at Puri for about 12 years. Here I was staying almost
+  inactive for these years. Ultimately, all of you came and your number
+  gradually increased. On seeing you after so many years I experience and feel
+  a divine urge and inspiration inside. It is my desire that you should
+  practise to live a life of order and discipline. Do not treat it as a child’s
+  play. If you have taken shelter under me do it seriously in the best possible
+  manner. See! I have given opportunity of doing Arati only to my household
+  devotees. Sannyasis and Brahmacharis are not given this privilege. Before
+  offering me Arati and worship, you should learn sincerely how to perform
+  these correctly. If one wants to deliver a lecture or enact a role on the
+  stage, he has to practice it first and then perform it in the real field. It
+  is called rehearsal.<br/><br/>Each of you should set up the image of Shri Gurudev in
+  your house and worship it according to the practices prevalent in your State.
+  Chant the hymns in front of the image and try to understand their meaning. On
+  a specific day in a week, all of you assemble in a place and offer Arati,
+  prayers, read <i style='mso-bidi-font-style:normal'>Aryadarpan</i> and other
+  holy books. You should discuss together my teachings and ideas. At the end of
+  each session, decide the place of next session ….<br/><br/><span style='font-size:12.5pt; font-family:Calibri'><b style='mso-bidi-font-weight:normal'>Then my 2<sup>nd</sup>
+  commandment is:</b></span>  Lead an ideal household life. My household devotees have attained more
+  spiritual progress than others. They are more cautious about religion than
+  those who have renounced the world.…. If you lead an ideal household life,
+  your children will develop good moral character. Again, the great sages like,
+  Vyasa, Vasistha, Jaimini and Patanjali will be born in your families.<br/><br/><span style='font-size:12.5pt; font-family:Calibri'><b style='mso-bidi-font-weight:normal'>My 3<sup>rd</sup>
+
+  commandment is:</b></span>  You should exchange your spiritual feelings among yourselves which is called
+  ‘Bhava Binimaya’. Each guru-brother should not conceal anything from one
+  another. Those who want to speak to me something secretly, I think, they have
+  some selfish motive. They may either beg for wealth or pray to cure their
+  disease. You should disclose everything before me innocently without a pinch
+  of hypocrisy. You should observe simplicity and truthfulness… <br/><br/>Hope you will not forget whatever I have told you today”.<br/><br/>
+  <span style='font-size:10.5pt; font-family:Calibri'><b style='mso-bidi-font-weight:normal'><i>This event was the inception of Nilachala Saraswata
+  Sangha.</i></b></span>
+			</td>
+		  </tr>
+		  </tr>
+		  <tr valign="top">
+
+			<td width="40">1934 (August 24th onwards)
+			</td>
+			<td width="615">On the 29<sup>th</sup> of September, Shri Shri Thakur
+  went on a boat ride in the river on Mangalaghata with a number of <i
+  style='mso-bidi-font-style:normal'>bhaktas</i>.<br/><br/>The first official session of Nilachala Saraswata Sangha
+  was conducted at the residence of Banamali Bhanja Bhai on the 4<sup>th</sup>
+  of October.<br/><br/>On the 14<sup>th</sup> of October, Shri Shri Thakur
+  discussed regarding hosting the <i style='mso-bidi-font-style:normal'>Bhakta
+  Sammilani</i> in Puri.<br/><br/>Shri Shri Thakur attended His last Sarbabhauma Sammilani
+  (20<sup>th </sup>session) held at Saraswata Matha, Kokilamukh. Chaitanya
+  Charan Das Bhai was the only disciple who attended from Orissa. During
+  Sammilani, Shri Shri Thakur assumed the role of ‘Kalpataru’ and asked
+  devotees and disciples to tell their wishes. 
+			</td>
+
+		  </tr>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">1935
+			</td>
+			<td width="615">Shri Shri Thakur left Kokilamukha Matha for the last
+  time on 13<sup>th</sup> day of the month of <i style='mso-bidi-font-style:
+  normal'>Asadha</i>.<br/><br/>On the 31<sup>st</sup> of August, Shri Shri Thakur
+  returned back to Nilachala Kutira. A number of his disciples met him and had
+  the golden opportunity to listen to his words of advice.<br/><br/>On the holy day of Dussherra, Banamali Dash Bhai and
+  Durgacharan Bhai performed <i style='mso-bidi-font-style:normal'>puja</i> and
+  <i style='mso-bidi-font-style:normal'>aarati</i> of Shri Shri Thakur.<br/><br/>On the 13<sup>th</sup> of November, as a result of Shri
+  Shri Thakur’s illness, a few of his disciples proposed to take him to
+  Calcutta and get him treated by a doctor, to which he replied that “I know
+  what I am going to have. Still if you want to show me to Doctor you can”. The
+  very same day Shri Shri Thakur left Puri for Calcutta by train.
+			</td>
+
+		  </tr>
+		  </tr>
+		  <tr valign="top">
+			<td width="40">November 29, 1935 (Mahasamadhi of Shri Shri Thakur)
+			</td>
+			<td width="615">Mahasamadhi</i>,
+  Shri Shri Thakur appeared in his subtle form before one of his favorite
+  disciples, Prafulla Chandra Bhanja Deo, the King of Bastar, when he was in
+  London.<br/><br/>At a rented house in Beadon Street in Calcutta on the 13<sup>th</sup>
+  day of <i style='mso-bidi-font-style:normal'>Margashira</i>, a Friday, Shri
+  Shri Thakur took his <i style='mso-bidi-font-style:normal'>Mahasamadhi</i>
+
+  around 1:15PM in the afternoon. His physical body was lowered into ground at
+  Dakshin Bangla Saraswata Ashram at Halisahar, West Bengal.
+			</td>
+		  </tr>
+		  </table>
+		  
+		  </td>
+		  </tr>
+		</table>
+		  
+
+		  </td>
+		</tr>
+	  </table>
+	  <!-- Body content ends -->
+      </td>
+
+
+  <td align="left" valign="middle" width="2" background="../images/pgvr.gif">
+    </td>
+  </tr>
+
+
+  
+  <tr>
+    <td align="left" valign="middle" width="2" background="../images/pgvl.gif">
+    </td>
+
+	   <td width="275" height="580" valign="top" bgcolor="#ffffff" >
+<!--  Side Menu options start -->	   
+		   
+<div class="sidemenu" >
+  <script type="text/javascript" >runAccordion(1);</script> <!-- replace this index with folder index -->
+<div id="AccordionContainer" class="AccordionContainer">
+  <script type="text/javascript" >    defineMenu();  </script>
+
+</div>
+</div>
+
+<!--  Side Menu options end -->	   
+      </td>
+
+
+    <td align="left" valign="middle" width="2" background="../images/pgvr.gif">
+    </td>
+  </tr>
+
+
+  
+  <tr>
+    <td align="left" valign="middle" width="2" background="../images/pgvl.gif">
+    </td>
+
+    <td width="275" valign="top" > <!--bgcolor="#c7fe94" >-->
+	  <!-- Additional Page Information start -->
+      <table border="0" width="275" cellpadding="0" cellspacing="0" >
+      <tr>
+          <td width="100%" height="30" valign="top" class="adtexts" ><img src="../images/underline.gif" height="18" width="106"/>
+		  </td>
+	  </tr>
+      <tr>
+	    <td width="100%" valign="top"  class="adtexts">
+		  <SCRIPT LANGUAGE="Javascript">
+				make_image();
+		  </SCRIPT>
+
+		</td>
+	  </tr>
+	</table>
+	  <!-- Additional Page Information end -->
+    </td>
+
+    <td align="left" valign="middle" width="2" background="../images/pgvr.gif">
+    </td> 
+	</tr>
+  
+</table>
+
+<!-- bottom row table -->
+<table border="0" width="1004" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+  <tr>
+      <td width="2" height="29" align="left" valign="middle" background="../images/pgvl.gif">
+    </td>
+    <td align="center" valign="bottom" width="1000" height="29" background="../images/ftrbar.gif" >
+    	  <script type="text/javascript" >    copyRight();  </script>
+    </td>
+    <td width="2" height="29" align="left" valign="middle" background="../images/pgvr.gif">
+    </td>
+  </tr>
+  <tr>
+      <td width="2" height="2" align="left" valign="middle" background="../images/pglb.gif">
+    </td>
+    <td align="left" valign="middle" width="1000" height="2" background="../images/pghb.gif">
+    </td>
+    <td width="2" height="2" align="left" valign="middle" background="../images/pgrb.gif">
+    </td>
+  </tr>
+</table>
+</div> <!-- center-->
+</div> <!-- wrap -->
+<div id="footer">
+<div align="center">
+<div class="footcenter">
+	  <script type="text/javascript" >    footCenter();  </script>
+</div> <!-- footcenter-->
+</div> <!-- center-->
+</div> <!-- footer-->
+</body>
+</html>
