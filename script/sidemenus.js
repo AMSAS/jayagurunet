@@ -144,7 +144,7 @@ document.write('</div>');
 function footLinksLeft() {
   document.write('<ul>');
   document.write('<li><a href="'+linkHome+menuLinks[22]+'">About Us</a></li>');
-  document.write('<li><a href="mailto:nss_amsas@yahoo.com">Contact Us</a></li>');
+  document.write('<li><a href="contactus">Contact Us</a></li>');
   document.write('<li><a href="'+linkHome+menuLinks[23]+'">Site Map</a></li>');
   document.write('</ul>');
 }
