@@ -14,9 +14,7 @@ if (!isset($_SESSION['email'])) {
 	$client->setRedirectUri($redirect_uri);
 	$client->setScopes("openid email profile");
 
-	if (isset($_REQUEST['logout'])) {
-	  unset($_SESSION['access_token']);
-	}
+
 
 	if (isset($_GET['code'])) {
 	  $client->authenticate($_GET['code']);
@@ -62,7 +60,7 @@ if (!isset($_SESSION['email'])) {
   <div class="request">
 <?php
 if (isset($authUrl)) {
-  echo "<a class='login' href='" . $authUrl . "'>Click here to login Via Google</a>";
+  echo "<a class='login' href='" . $authUrl . "'><img src='sign-in-with-google.png' alt='Click here to login Via Google'/></a>";
 }else{
 
 	include 'db.php';
@@ -125,7 +123,8 @@ function draw_calendar($month,$year){
 	/* draw table */
 	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
 	$calendar.= '<tr class="calendar-row"><td class="calendar-day-head"><a href="?mon='.$prevm.'&year='.$prevy.'">&lt;-</a></td>';
-	$calendar.= '<td class="calendar-day-head" colspan="5">Dinalipi Calendar <br>'.$months[$month-1].'-'.$year.'</td>';
+	$calendar.= '<td class="calendar-day-head" colspan="4">Dinalipi Calendar <br>'.$months[$month-1].'-'.$year.'</td>';
+	$calendar.= '<td class="calendar-day-head"><a href="logout.php">Logout '.$_SESSION['display_name'].'</td>';
 	$calendar.= '<td class="calendar-day-head"><a href="?mon='.$nextm.'&year='.$nexty.'">-&gt;</a></td></tr>';
 
 	/* table headings */
