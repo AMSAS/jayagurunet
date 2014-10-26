@@ -38,13 +38,13 @@
 		if($user_results){
 			//var_dump($_SESSION);
 			echo "<form action='save.php?Date=".$selectedDay->format('Y-m-d')."' method='post'><table border='1'>";
-			echo "<tr><td colspan='7' style='text-align:center'><h4>Jayaguru<br>" . $_SESSION['display_name'] ."<br>Dinalipi For ".$selectedDay->format('Y-m-d')."</h4></td></tr>";
+			echo "<tr><td colspan='7' style='text-align:center'><h4>Jayaguru<br>" . $_SESSION['display_name'] ."<br>Dinalipi For ".$selectedDay->format('Y-m-d l')."</h4></td></tr>";
 			echo "<tr><td><a href='?Date=".$previousDay->format('Y-m-d')."'>&lt;-Previous Day</a></td>";
 			echo "<td colspan='5' style='text-align:center'><a href='index.php?mon=".$selectedDay->format('m')."&year=".$selectedDay->format('Y')."'>Calendar</a></td>";
 			echo "<td><a href='?Date=".$nextDay->format('Y-m-d')."'>Next Day-&gt;</a></td></tr>";
 			echo "<tr><td colspan='7'><table>";
 			while($user_row = mysql_fetch_array($user_results)) {
-				echo "<tr><td>" .$user_row['qdesc']. "</td><td><input name='" .$user_row['qid']. "' type='text' value='" .$user_row['qanswer']. "'></td></tr>";
+				echo "<tr><td>" .$user_row['qdesc']. "</td><td><input name='" .$user_row['qid']. "' type='text' maxlength='2' value='" .$user_row['qanswer']. "'></td></tr>";
 			}
 			echo "</table></td></tr>";
 			echo "<tr><td colspan='7' style='text-align:right'><input type='submit' value='Submit'></td></tr>";
