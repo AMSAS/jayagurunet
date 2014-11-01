@@ -11,14 +11,14 @@
 		table, td, th {
 		    border: 1px solid black;
 		}
+		.alignCenter { margin-left: auto; margin-right: auto;}
 		</style>
 		<style type="text/css" media="print">
 		.dontprint	{ display: none; }
 		</style>
 	</head>
-	<body>
-	<div class="box">
-	  <div class="request" align="middle">
+	<body width="100%">
+	<div style="text-align:center">
 		<?php
 			session_start();
 			if (isset($_SESSION['PID'])) {
@@ -40,18 +40,25 @@
 
 				$Date = new DateTime($dateStart);
 
-				$reportQuery="select Question_Seq,Question_desc,Q_response,DAY(Dinalipi_date) as day from Question_master,Daily_transaction,Devotee ";
-				$reportQuery.="where Devotee.Devotee_id=Daily_transaction.Devotee_id and Question_master.Question_id=Daily_transaction.Question_id ";
-				$reportQuery.="and Devotee.Devotee_id='".$_SESSION['PID']."' ";
-				//$reportQuery.="and Devotee.Devotee_id='1' ";
-				$reportQuery.="and Dinalipi_date between '".$dateStart."' and '".$dateEnd."' order by Question_Seq,Dinalipi_date";
+				$reportQuery=  "select Question_Seq,Question_desc,Q_response,DAY(Dinalipi_date) as day from Devotee ";
+				$reportQuery.= "join Question_master ";
+				$reportQuery.= "on Devotee.Member_Category=Question_master.Member_Category ";
+				$reportQuery.= "left outer join Daily_transaction  ";
+				$reportQuery.= "on ( ";
+				$reportQuery.= "Devotee.Devotee_id=Daily_transaction.Devotee_id AND  ";
+				$reportQuery.= "Question_master.Question_id=Daily_transaction.Question_id AND ";
+				$reportQuery.= "Dinalipi_date between '".$dateStart."' and '".$dateEnd."' ";
+				$reportQuery.= ") ";
+				$reportQuery.="where Devotee.Devotee_id='".$_SESSION['PID']."' ";
+				//$reportQuery.="and Devotee.Devotee_id='-1' ";
+				$reportQuery.="order by Question_Seq,Dinalipi_date";
 
 				//echo $reportQuery;
 
 				$report_results = mysql_query($reportQuery);
 				$qid=-100;
 				$curdate=0;
-  	  			echo "<table cellspacing='0' cellpadding='1'>\n";
+  	  			echo "<table class='alignCenter' cellspacing='0' cellpadding='1'>\n";
   	  			echo "<tr><td style='text-align:center'><img height='100' src='/images/orgnz.gif'/></td>";
   	  			echo "<td style='text-align:center' colspan='".($days)."'><span style='font-size:18px;color:#000099'>Nilachala Saraswata Sangha</span><br>";
   	  			echo "<span style='color:#660033'>Branch: America Saraswata Sangha</span><br>";
@@ -90,6 +97,8 @@
 					$qid=$one_record['Question_Seq'];
 					$curdate=$day;
 				}
+				//Fill any gaps for last question row
+				fill_gaps($curdate,$days);
 				echo "</tr>\n";
 				echo "<tr><td cellpadding='2px' style='border:0px;text-align:center' colspan='10'>Observations/Exceptions<br><br>&nbsp;</td>\n";
 				echo "<td cellpadding='2px' style='border:0px;text-align:left' colspan='".($days+1-20)."'>&nbsp;<br><br>President:</td>\n";
@@ -98,8 +107,10 @@
 				echo "<tr><td style='border:0px;' colspan='".($days+1)."'>&nbsp;</td></tr>";
 				echo "<tr><td style='border:0px;' colspan='".($days+1)."'>&nbsp;</td></tr>";
 				echo "</table>";
-				echo "<div class='dontprint'><a href='index.php?mon=".$month."&year=".$year."'>Back to Calendar</a>&nbsp;&nbsp;&nbsp;&nbsp;";
-				echo "<a href='javascript:window.print();'>Print</a></div>";
+				echo "<div class='dontprint'>";
+				echo "<a href='index.php?mon=".$month."&year=".$year."'>Back to Calendar</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+				echo "<a href='javascript:window.print();'>Print</a>";
+				echo "</div>";
 
 			}else{
   				echo "<a href='index.php'>[Session Expired] Visit Landing Page</a>";
@@ -118,7 +129,6 @@ function fill_gaps($curdate,$day){
 	}
 }
 		?>
-	  </div>
 </div>
 </body>
 </html>

@@ -42,22 +42,34 @@ if (!isset($_SESSION['email'])) {
 ?>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="styles/media-detect.css">
+		<meta name="viewport" content="width=480">
 		<style>
+			* {
+				font-family: Arial, "Times New Roman", Times, serif;
+				font-size:12px;
+			}
+			table {
+				border-collapse: collapse;
+			}
+			table, td, th {
+				border: 1px solid black;
+			}
 			/* calendar */
-			table.calendar		{ border-left:1px solid #999; }
+			table.calendar		{ border-left:1px solid #999; margin-left: auto; margin-right: auto;  }
 			tr.calendar-row	{  }
-			td.calendar-day	{ min-height:80px; font-size:11px; position:relative; } * html div.calendar-day { height:80px; }
+			td.calendar-day	{ min-height:40px; font-size:11px; position:relative; } * html div.calendar-day { height:40px; }
 			td.calendar-day:hover	{ background:#eceff5; }
-			td.calendar-day-np	{ background:#eee; min-height:80px; } * html div.calendar-day-np { height:80px; }
+			td.calendar-day-np	{ background:#eee; min-height:40px; } * html div.calendar-day-np { height:40px; }
 			td.calendar-day-head { background:#ccc; font-weight:bold; text-align:center; width:120px; padding:5px; border-bottom:1px solid #999; border-top:1px solid #999; border-right:1px solid #999; }
 			div.day-number		{ background:#999; padding:5px; color:#fff; font-weight:bold; float:right; margin:-5px -5px 0 0; width:20px; text-align:center; }
 			/* shared */
 			td.calendar-day, td.calendar-day-np { width:120px; padding:5px; border-bottom:1px solid #999; border-right:1px solid #999; }
 		</style>
 	</head>
-<body>
-<div class="box">
-  <div class="request">
+<body width="100%">
+<div style="text-align:center">
+  <img src="/images/orgnz.gif"/><br>
 <?php
 if (isset($authUrl)) {
   echo "<a class='login' href='" . $authUrl . "'><img src='sign-in-with-google.png' alt='Click here to login Via Google'/></a>";
@@ -122,13 +134,14 @@ function draw_calendar($month,$year){
 
 	/* draw table */
 	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
-	$calendar.= '<tr class="calendar-row"><td class="calendar-day-head"><a href="?mon='.$prevm.'&year='.$prevy.'">&lt;-</a></td>';
-	$calendar.= '<td class="calendar-day-head" colspan="4">Dinalipi Calendar <br>'.$months[$month-1].'-'.$year.'</td>';
-	$calendar.= '<td class="calendar-day-head"><a href="logout.php">Logout '.$_SESSION['display_name'].'</td>';
+	$calendar.='<tr><td style="text-align:center;background:#ccc; font-weight:bold;" colspan="7">Dinalipi Calendar</td></tr>';
+	$calendar.= '<tr><td class="calendar-day-head"><a href="?mon='.$prevm.'&year='.$prevy.'">&lt;-</a></td>';
+	$calendar.= '<td class="calendar-day-head" colspan="3"><a href="report.php?mon='.$month.'&year='.$year.'">'.$months[$month-1].'-'.$year.'</a></td>';
+	$calendar.= '<td class="calendar-day-head" colspan="2"><a href="logout.php">Logout<br> '.$_SESSION['display_name'].'</td>';
 	$calendar.= '<td class="calendar-day-head"><a href="?mon='.$nextm.'&year='.$nexty.'">-&gt;</a></td></tr>';
 
 	/* table headings */
-	$headings = array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
+	$headings = array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
 	$calendar.= '<tr class="calendar-row"><td class="calendar-day-head">'.implode('</td><td class="calendar-day-head">',$headings).'</td></tr>';
 
 	/* days and weeks vars now ... */
@@ -185,7 +198,6 @@ function draw_calendar($month,$year){
 	return $calendar;
 }
 ?>
-  </div>
 </div>
 </body>
 </html>

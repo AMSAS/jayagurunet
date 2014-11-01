@@ -1,10 +1,9 @@
 <html>
 	<head>
-
 	</head>
 	<body>
-	<div class="box">
-	  <div class="request">
+	  <div style="text-align:center">
+  	  <img src="/images/orgnz.gif"/><br>
 		<?php
 			session_start();
 			if (isset($_SESSION['PID'])) {
@@ -35,6 +34,5 @@
 			}
 		?>
 	  </div>
-</div>
 </body>
 </html>
