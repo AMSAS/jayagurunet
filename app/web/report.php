@@ -1,6 +1,5 @@
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="styles/print.css" media="print" />
 		<style>
 		* {
 		    font-family: Arial, "Times New Roman", Times, serif;
@@ -13,6 +12,9 @@
 		    border: 1px solid black;
 		}
 		</style>
+		<style type="text/css" media="print">
+		.dontprint	{ display: none; }
+		</style>
 	</head>
 	<body>
 	<div class="box">
@@ -21,10 +23,17 @@
 			session_start();
 			if (isset($_SESSION['PID'])) {
 				include 'db.php';
-				$year=$_GET['year'];
-				$month=$_GET['mon'];
-				$days = date('t',mktime(0,0,0,$month,1,$year));
 
+				$year=date('Y');
+				if(isset($_GET['year'])){
+					$year=$_GET['year'];
+				}
+
+				$month=date('m');
+				if(isset($_GET['mon'])){
+					$month=$_GET['mon'];
+				}
+				$days = date('t',mktime(0,0,0,$month,1,$year));
 
 				$dateStart=$year.'-'.$month.'-01';
 				$dateEnd=$year.'-'.$month.'-'.$days;
@@ -89,8 +98,8 @@
 				echo "<tr><td style='border:0px;' colspan='".($days+1)."'>&nbsp;</td></tr>";
 				echo "<tr><td style='border:0px;' colspan='".($days+1)."'>&nbsp;</td></tr>";
 				echo "</table>";
-				//echo "<span class='print'><a href='index.php?mon=".$month."&year=".$year."'>Back to Calendar</a><br>";
-				//echo "<a href='#' onclick='javascript:window.print()'>Print</a></span>";
+				echo "<div class='dontprint'><a href='index.php?mon=".$month."&year=".$year."'>Back to Calendar</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+				echo "<a href='javascript:window.print();'>Print</a></div>";
 
 			}else{
   				echo "<a href='index.php'>[Session Expired] Visit Landing Page</a>";
