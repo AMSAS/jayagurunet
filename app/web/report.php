@@ -69,8 +69,7 @@
   	  			echo "<td style='border:0px;text-align:center' colspan='10'>".$Date->format('F,Y')."</td></tr>\n";
 				echo "<tr><td style='text-align:center;font-weight: bold'>Items</td>\n";
 				for ($counter=1;$counter<=$days;$counter++) {
-					$Date = new DateTime($year."-".$month."-".$counter);
-					echo "\n<td style='text-align:center;font-weight: bold' width='20px'>".$Date->format('d')."</td>";
+					echo "\n<td style='text-align:center;font-weight: bold' width='20px'>".$counter."</td>";
 				}
 				echo "</tr>\n";
 				while($one_record = mysql_fetch_array($report_results)) {
@@ -108,8 +107,12 @@
 				echo "<tr><td style='border:0px;' colspan='".($days+1)."'>&nbsp;</td></tr>";
 				echo "</table>";
 				echo "<div class='dontprint'>";
-				echo "<a href='index.php?mon=".$month."&year=".$year."'>Back to Calendar</a>&nbsp;&nbsp;&nbsp;&nbsp;";
-				echo "<a href='javascript:window.print();'>Print</a>";
+				$Date->modify('-1 month');
+				echo "<a href='report.php?mon=".$Date->format('m')."&year=".$Date->format('Y')."'>Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+				echo "<a href='index.php?mon=".$month."&year=".$year."'>Calendar</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+				echo "<a href='javascript:window.print();'>Print</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+				$Date->modify('2 month');
+				echo "<a href='report.php?mon=".$Date->format('m')."&year=".$Date->format('Y')."'>Next</a>";
 				echo "</div>";
 
 			}else{

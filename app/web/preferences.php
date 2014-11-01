@@ -31,6 +31,10 @@ table, td, th {
 .alignCenter {
  margin-left: auto; margin-right: auto;
 }
+
+td.alignRight {
+ text-align:right;
+}
 </style>
 
 </head>
@@ -61,13 +65,13 @@ table, td, th {
 		if($user_results){
 			//var_dump($_SESSION);
 			echo "<form  class='validate-form' action='savepreferences.php' method='post'><table class='alignCenter' cellspacing='0' cellpadding='0'>";
-			echo "<tr><td colspan='7' style='text-align:center'><h4>Jayaguru<br>" . $_SESSION['display_name'] ."<br>Dinalipi Preferences</h4></td></tr>";
-			echo "<tr><td colspan='7'><table>";
+			echo "<tr><td style='text-align:center'><h4>Jayaguru<br>" . $_SESSION['display_name'] ."<br>Dinalipi Preferences</h4><a href='index.php'>Calendar</a></td></tr>";
+			echo "<tr><td><table>";
 			while($user_row = mysql_fetch_array($user_results)) {
 				echo "<tr><td>" .$user_row['qdesc']. "</td><td><input title='".$user_row['message']."' pattern='".$user_row['vpattern']."' style='text-transform:uppercase' name='" .$user_row['qid']. "' type='text' maxlength='2' value='" .strtoupper($user_row['qanswer']). "'></td></tr>";
 			}
 			echo "</table></td></tr>";
-			echo "<tr><td colspan='7' style='text-align:right'><input type='submit' value='Save'></td></tr>";
+			echo "<tr><td><span style='text-align:right'><input type='submit' value='Save'><span></td></tr>";
 			echo "</table></form>";
 		}
 	}else{
