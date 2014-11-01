@@ -134,10 +134,10 @@ function draw_calendar($month,$year){
 
 	/* draw table */
 	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
-	$calendar.='<tr><td style="text-align:center;background:#ccc; font-weight:bold;" colspan="7">Dinalipi Calendar</td></tr>';
+	$calendar.='<tr><td style="text-align:center;background:#ccc; font-weight:bold;" colspan="7">Dinalipi Calendar<br>'.$_SESSION['display_name'].'</td></tr>';
 	$calendar.= '<tr><td class="calendar-day-head"><a href="?mon='.$prevm.'&year='.$prevy.'">&lt;-</a></td>';
 	$calendar.= '<td class="calendar-day-head" colspan="3"><a href="report.php?mon='.$month.'&year='.$year.'">'.$months[$month-1].'-'.$year.'</a></td>';
-	$calendar.= '<td class="calendar-day-head" colspan="2"><a href="logout.php">Logout<br> '.$_SESSION['display_name'].'</td>';
+	$calendar.= '<td class="calendar-day-head" colspan="2"><a href="logout.php">Logout</a><br><a href="preferences.php">Preferences</a></td>';
 	$calendar.= '<td class="calendar-day-head"><a href="?mon='.$nextm.'&year='.$nexty.'">-&gt;</a></td></tr>';
 
 	/* table headings */
