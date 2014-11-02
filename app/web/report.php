@@ -3,7 +3,7 @@
 		<style>
 		* {
 		    font-family: Arial, "Times New Roman", Times, serif;
-		    font-size:12px;
+		    font-size:10px;
 		}
 		table {
 		    border-collapse: collapse;
@@ -61,50 +61,62 @@
   	  			echo "<table class='alignCenter' cellspacing='0' cellpadding='1'>\n";
   	  			echo "<tr><td style='text-align:center'><img height='100' src='/images/orgnz.gif'/></td>";
   	  			echo "<td style='text-align:center' colspan='".($days)."'><span style='font-size:18px;color:#000099'>Nilachala Saraswata Sangha</span><br>";
-  	  			echo "<span style='color:#660033'>Branch: America Saraswata Sangha</span><br>";
+  	  			echo "<span style='font-size:12px;color:#660033'>Branch: America Saraswata Sangha</span><br>";
   	  			echo "<span style='font-size:20px;color:#FF3300'>DINALIPI</span>";
   	  			echo "</td></tr>\n";
-  	  			echo "<tr><td style='text-align:center;font-weight: bold'>".$_SESSION['display_name']."</td>\n";
-  	  			echo "<td style='border:0px;text-align:center' colspan='".($days-10)."'>&nbsp;</td>\n";
-  	  			echo "<td style='border:0px;text-align:center' colspan='10'>".$Date->format('F,Y')."</td></tr>\n";
-				echo "<tr><td style='text-align:center;font-weight: bold'>Items</td>\n";
+  	  			echo "<tr><td style='font-size:12px;text-align:center;font-weight: bold'>".$_SESSION['display_name']."</td>\n";
+  	  			echo "<td style='font-size:12px;border:0px;text-align:center' colspan='".($days-10)."'>&nbsp;</td>\n";
+  	  			echo "<td style='font-size:12px;border:0px;text-align:center' colspan='10'>".$Date->format('F,Y')."</td></tr>\n";
+				echo "<tr><td style='font-size:12px;text-align:center;font-weight: bold'>Items</td>\n";
 				for ($counter=1;$counter<=$days;$counter++) {
-					echo "\n<td style='text-align:center;font-weight: bold' width='20px'>".$counter."</td>";
+					echo "\n<td style='font-size:12px;text-align:center;font-weight: bold' width='20px'>".$counter."</td>";
 				}
 				echo "</tr>\n";
 				while($one_record = mysql_fetch_array($report_results)) {
 					if($qid==-100){
 						echo "<tr>";
-						echo "\n<td style='white-space: nowrap'>" .$one_record['Question_desc']. "</td>" ;
+						echo "\n<td style='font-size:12px;white-space: nowrap'>" .$one_record['Question_desc']. "</td>" ;
 						$day = $one_record['day'];
 						fill_gaps($curdate,$day);
-						echo "\n<td style='font-size:10px'>" .strtoupper($one_record['Q_response']). "</td>" ;
+						if($day>0){
+							//echo "\n<!--".$curdate."/".$day."-->\n" ;
+							echo "\n<td style='text-align:center'>" .strtoupper($one_record['Q_response']). "</td>" ;
+						}
 					}else if($qid!=$one_record['Question_Seq']){
-						fill_gaps($curdate,$days);
+						fill_gaps($curdate,($days+1));
 						echo "</tr>";
 						$curdate=0;
 						echo "<tr>";
-						echo "\n<td style='white-space: nowrap'>" .$one_record['Question_desc']. "</td>" ;
+						echo "\n<td style='font-size:12px;white-space: nowrap'>" .$one_record['Question_desc']. "</td>" ;
 						$day = $one_record['day'];
 						fill_gaps($curdate,$day);
-						echo "\n<td style='font-size:10px'>" .strtoupper($one_record['Q_response']). "</td>" ;
+						if($day>0){
+							//echo "\n<!--".$curdate."/".$day."-->\n" ;
+							echo "\n<td style='text-align:center'>" .strtoupper($one_record['Q_response']). "</td>" ;
+						}
 					}else{
 						$day = $one_record['day'];
 						fill_gaps($curdate,$day);
-						echo "\n<td style='font-size:10px'>" .strtoupper($one_record['Q_response']). "</td>" ;
+						if($day>0){
+							//echo "\n<!--".$curdate."/".$day."-->\n" ;
+							echo "\n<td style='text-align:center'>" .strtoupper($one_record['Q_response']). "</td>" ;
+						}
 					}
 					$qid=$one_record['Question_Seq'];
-					$curdate=$day;
+					if($day>0){
+						//echo "\n<!--".$curdate."/".$day."-->\n" ;
+						$curdate=$day;
+					}
 				}
 				//Fill any gaps for last question row
-				fill_gaps($curdate,$days);
+				fill_gaps($curdate,($days+1));
 				echo "</tr>\n";
-				echo "<tr><td cellpadding='2px' style='border:0px;text-align:center' colspan='10'>Observations/Exceptions<br><br>&nbsp;</td>\n";
-				echo "<td cellpadding='2px' style='border:0px;text-align:left' colspan='".($days+1-20)."'>&nbsp;<br><br>President:</td>\n";
-				echo "<td cellpadding='2px' style='border-left:0px;border-bottom:0px;text-align:left' colspan='10'>Shree Shree Thakura Charanashrita<br><br>Signature:</td></tr>\n";
+				echo "<tr><td cellpadding='2px' style='font-size:12px;border:0px;text-align:center' colspan='10'>Observations/Exceptions<br><br>&nbsp;</td>\n";
+				echo "<td cellpadding='2px' style='font-size:12px;border:0px;text-align:left' colspan='".($days+1-20)."'>&nbsp;<br><br>President:</td>\n";
+				echo "<td cellpadding='2px' style='font-size:12px;border-left:0px;border-bottom:0px;text-align:left' colspan='10'>Shree Shree Thakura Charanashrita<br><br>Signature:</td></tr>\n";
 				echo "<tr><td style='border:0px;' colspan='".($days+1)."'>&nbsp;</td></tr>";
 				echo "<tr><td style='border:0px;' colspan='".($days+1)."'>&nbsp;</td></tr>";
-				echo "<tr><td style='border:0px;' colspan='".($days+1)."'>&nbsp;</td></tr>";
+				echo "<tr><td style='border:0px;' colspan='".($days+1)."'><img height='1' width='980px' src='trans.gif'><br></td></tr>";
 				echo "</table>";
 				echo "<div class='dontprint'>";
 				$Date->modify('-1 month');
@@ -124,10 +136,10 @@
 
 
 function fill_gaps($curdate,$day){
+	//echo "\n<!--Filling Gaps".($curdate+1)."/".($day-1)." Inclusive-->\n" ;
 	if($curdate<$day-1){
-		echo "\n<!--".$curdate."/".$day."-->\n" ;
 		for($ctr=$curdate+1;$ctr<$day;$ctr++){
-			echo "\n\t<td style='font-size:10px'>&nbsp;</td>" ;
+			echo "\n\t<td>&nbsp;</td>" ;
 		}
 	}
 }
