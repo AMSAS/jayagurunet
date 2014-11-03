@@ -123,6 +123,7 @@
 				echo "<a href='report.php?mon=".$Date->format('m')."&year=".$Date->format('Y')."'>Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;";
 				echo "<a href='index.php?mon=".$month."&year=".$year."'>Calendar</a>&nbsp;&nbsp;&nbsp;&nbsp;";
 				echo "<a href='javascript:window.print();'>Print</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+				echo "<a href='barchart.php?mon=".$month."&year=".$year."'>Chart</a>&nbsp;&nbsp;&nbsp;&nbsp;";
 				$Date->modify('2 month');
 				echo "<a href='report.php?mon=".$Date->format('m')."&year=".$Date->format('Y')."'>Next</a>";
 				echo "</div>";
