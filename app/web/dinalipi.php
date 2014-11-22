@@ -15,6 +15,10 @@
 input {
   display: block;
 }
+
+input[type="text"] {
+    width: 60px;
+}
 </style>
 
 <style>
