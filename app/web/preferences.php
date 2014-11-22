@@ -35,6 +35,10 @@ table, td, th {
 td.alignRight {
  text-align:right;
 }
+
+input[type="text"] {
+    width: 60px;
+}
 </style>
 
 </head>
