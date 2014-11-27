@@ -39,7 +39,12 @@
 				$dateEnd=$year.'-'.$month.'-'.$days;
 
 				$Date = new DateTime($dateStart);
-
+				$sangha_name = "";
+				$sangha_name_query="select Sangha_master.Sangha_name from Devotee,Sangha_master where Devotee.Sangha_id=Sangha_master.Sangha_id and Devotee.Devotee_id='".$_SESSION['PID']."' ";
+				$sangha_name_results = mysql_query($sangha_name_query);
+				while($sangha_record = mysql_fetch_array($sangha_name_results)) {
+					$sangha_name=$sangha_record['Sangha_name'];
+				}
 				$reportQuery=  "select Question_Seq,Question_desc,Q_response,DAY(Dinalipi_date) as day,Q_response REGEXP Question_master.success_pattern as success from Devotee ";
 				$reportQuery.= "join Question_master ";
 				$reportQuery.= "on Devotee.Member_Category=Question_master.Member_Category ";
@@ -61,7 +66,7 @@
   	  			echo "<table class='alignCenter' cellspacing='0' cellpadding='1'>\n";
   	  			echo "<tr><td style='text-align:center'><img height='100' src='/images/orgnz.gif'/></td>";
   	  			echo "<td style='text-align:center' colspan='".($days+1)."'><span style='font-size:18px;color:#000099'>Nilachala Saraswata Sangha</span><br>";
-  	  			echo "<span style='font-size:12px;color:#660033'>Branch: America Saraswata Sangha</span><br>";
+  	  			echo "<span style='font-size:12px;color:#660033'>Branch: ".$sangha_name."</span><br>";
   	  			echo "<span style='font-size:20px;color:#FF3300'>DINALIPI</span>";
   	  			echo "</td></tr>\n";
   	  			echo "<tr><td style='font-size:12px;text-align:center;font-weight: bold'>".$_SESSION['display_name']."</td>\n";
