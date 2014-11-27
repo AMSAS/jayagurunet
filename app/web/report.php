@@ -40,7 +40,7 @@
 
 				$Date = new DateTime($dateStart);
 
-				$reportQuery=  "select Question_Seq,Question_desc,Q_response,DAY(Dinalipi_date) as day from Devotee ";
+				$reportQuery=  "select Question_Seq,Question_desc,Q_response,DAY(Dinalipi_date) as day,Q_response REGEXP Question_master.success_pattern as success from Devotee ";
 				$reportQuery.= "join Question_master ";
 				$reportQuery.= "on Devotee.Member_Category=Question_master.Member_Category ";
 				$reportQuery.= "left outer join Daily_transaction  ";
@@ -60,47 +60,36 @@
 				$curdate=0;
   	  			echo "<table class='alignCenter' cellspacing='0' cellpadding='1'>\n";
   	  			echo "<tr><td style='text-align:center'><img height='100' src='/images/orgnz.gif'/></td>";
-  	  			echo "<td style='text-align:center' colspan='".($days)."'><span style='font-size:18px;color:#000099'>Nilachala Saraswata Sangha</span><br>";
+  	  			echo "<td style='text-align:center' colspan='".($days+1)."'><span style='font-size:18px;color:#000099'>Nilachala Saraswata Sangha</span><br>";
   	  			echo "<span style='font-size:12px;color:#660033'>Branch: America Saraswata Sangha</span><br>";
   	  			echo "<span style='font-size:20px;color:#FF3300'>DINALIPI</span>";
   	  			echo "</td></tr>\n";
   	  			echo "<tr><td style='font-size:12px;text-align:center;font-weight: bold'>".$_SESSION['display_name']."</td>\n";
   	  			echo "<td style='font-size:12px;border:0px;text-align:center' colspan='".($days-10)."'>&nbsp;</td>\n";
-  	  			echo "<td style='font-size:12px;border:0px;text-align:center' colspan='10'>".$Date->format('F,Y')."</td></tr>\n";
+  	  			echo "<td style='font-size:12px;border:0px;text-align:center' colspan='11'>".$Date->format('F,Y')."</td></tr>\n";
 				echo "<tr><td style='font-size:12px;text-align:center;font-weight: bold'>Items</td>\n";
 				for ($counter=1;$counter<=$days;$counter++) {
 					echo "\n<td style='font-size:12px;text-align:center;font-weight: bold' width='20px'>".$counter."</td>";
 				}
-				echo "</tr>\n";
+				echo "<td style='font-size:12px;text-align:center;font-weight: bold' width='20px'>%S</td></tr>\n";
+				$success_count=0;
+				$num_of_days_value_available=0;
 				while($one_record = mysql_fetch_array($report_results)) {
 					if($qid==-100){
 						echo "<tr>";
 						echo "\n<td style='font-size:12px;white-space: nowrap'>" .$one_record['Question_desc']. "</td>" ;
-						$day = $one_record['day'];
-						fill_gaps($curdate,$day);
-						if($day>0){
-							//echo "\n<!--".$curdate."/".$day."-->\n" ;
-							echo "\n<td style='text-align:center'>" .strtoupper($one_record['Q_response']). "</td>" ;
-						}
+						$day = render_cells($curdate,$one_record,$success_count,$num_of_days_value_available);
 					}else if($qid!=$one_record['Question_Seq']){
 						fill_gaps($curdate,($days+1));
-						echo "</tr>";
+						echo "<td>".(round(100*$success_count/$num_of_days_value_available,2))."</td></tr>";
 						$curdate=0;
+						$success_count=0;
+						$num_of_days_value_available=0;
 						echo "<tr>";
 						echo "\n<td style='font-size:12px;white-space: nowrap'>" .$one_record['Question_desc']. "</td>" ;
-						$day = $one_record['day'];
-						fill_gaps($curdate,$day);
-						if($day>0){
-							//echo "\n<!--".$curdate."/".$day."-->\n" ;
-							echo "\n<td style='text-align:center'>" .strtoupper($one_record['Q_response']). "</td>" ;
-						}
+						$day = render_cells($curdate,$one_record,$success_count,$num_of_days_value_available);
 					}else{
-						$day = $one_record['day'];
-						fill_gaps($curdate,$day);
-						if($day>0){
-							//echo "\n<!--".$curdate."/".$day."-->\n" ;
-							echo "\n<td style='text-align:center'>" .strtoupper($one_record['Q_response']). "</td>" ;
-						}
+						$day = render_cells($curdate,$one_record,$success_count,$num_of_days_value_available);
 					}
 					$qid=$one_record['Question_Seq'];
 					if($day>0){
@@ -110,13 +99,13 @@
 				}
 				//Fill any gaps for last question row
 				fill_gaps($curdate,($days+1));
-				echo "</tr>\n";
+				echo "<td>".(round(100*$success_count/$num_of_days_value_available,2))."</td></tr>\n";
 				echo "<tr><td cellpadding='2px' style='font-size:12px;border:0px;text-align:center' colspan='10'>Observations/Exceptions<br><br>&nbsp;</td>\n";
 				echo "<td cellpadding='2px' style='font-size:12px;border:0px;text-align:left' colspan='".($days+1-20)."'>&nbsp;<br><br>President:</td>\n";
-				echo "<td cellpadding='2px' style='font-size:12px;border-left:0px;border-bottom:0px;text-align:left' colspan='10'>Shree Shree Thakura Charanashrita<br><br>Signature:</td></tr>\n";
-				echo "<tr><td style='border:0px;' colspan='".($days+1)."'>&nbsp;</td></tr>";
-				echo "<tr><td style='border:0px;' colspan='".($days+1)."'>&nbsp;</td></tr>";
-				echo "<tr><td style='border:0px;' colspan='".($days+1)."'><img height='1' width='980px' src='trans.gif'><br></td></tr>";
+				echo "<td cellpadding='2px' style='font-size:12px;border-left:0px;border-bottom:0px;text-align:left' colspan='11'>Shree Shree Thakura Charanashrita<br><br>Signature:</td></tr>\n";
+				echo "<tr><td style='border:0px;' colspan='".($days+1+1)."'>&nbsp;</td></tr>";
+				echo "<tr><td style='border:0px;' colspan='".($days+1+1)."'>&nbsp;</td></tr>";
+				echo "<tr><td style='border:0px;' colspan='".($days+1+1)."'><img height='1' width='980px' src='trans.gif'><br></td></tr>";
 				echo "</table>";
 				echo "<div class='dontprint'>";
 				$Date->modify('-1 month');
@@ -135,6 +124,18 @@
 
 
 
+function render_cells($curdate,$one_record,&$success_count,&$num_of_days_value_available){
+	$day = $one_record['day'];
+	fill_gaps($curdate,$day);
+	if($day>0){
+			//echo "\n<!--".$curdate."/".$day."-->\n" ;
+			echo "\n<td style='text-align:center'>" .strtoupper($one_record['Q_response']). "</td>" ;
+			$num_of_days_value_available=$num_of_days_value_available+1;
+	}
+	$success_count=$success_count+$one_record['success'];
+	return $day;
+}
+
 
 function fill_gaps($curdate,$day){
 	//echo "\n<!--Filling Gaps".($curdate+1)."/".($day-1)." Inclusive-->\n" ;
@@ -144,6 +145,7 @@ function fill_gaps($curdate,$day){
 		}
 	}
 }
+
 		?>
 </div>
 </body>
