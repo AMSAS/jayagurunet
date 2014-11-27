@@ -84,6 +84,8 @@ if (isset($authUrl)) {
 		if($user_results){
 			while($user_row = mysql_fetch_array($user_results)) {
 				$_SESSION['PID']=$user_row['Devotee_id'];
+				$_SESSION['SANGHA_ID']=$user_row['Sangha_id'];
+				$_SESSION['ROLE']=$user_row['Roles'];
 				$user_exists = true;
 			}
 		}
@@ -137,7 +139,13 @@ function draw_calendar($month,$year){
 	$calendar.='<tr><td style="text-align:center;background:#ccc; font-weight:bold;" colspan="7">Dinalipi Calendar<br>'.$_SESSION['display_name'].'</td></tr>';
 	$calendar.= '<tr><td class="calendar-day-head"><a href="?mon='.$prevm.'&year='.$prevy.'">&lt;-</a></td>';
 	$calendar.= '<td class="calendar-day-head" colspan="3"><a href="report.php?mon='.$month.'&year='.$year.'">'.$months[$month-1].'-'.$year.'</a></td>';
-	$calendar.= '<td class="calendar-day-head" colspan="2"><a href="logout.php">Logout</a><br><a href="preferences.php">Preferences</a></td>';
+	$calendar.= '<td class="calendar-day-head" colspan="2">';
+	$calendar.= '<a href="logout.php">Logout</a><br>';
+	$calendar.= '<a href="preferences.php">Preferences</a><br>';
+	if(isAllowed($GLOBALS[ROLE_SA])){
+		$calendar.= '<a href="adddevotee.php">Add Devotee</a></br>';
+	}
+	$calendar.= '</td>';
 	$calendar.= '<td class="calendar-day-head"><a href="?mon='.$nextm.'&year='.$nexty.'">-&gt;</a></td></tr>';
 
 	/* table headings */
