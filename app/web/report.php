@@ -39,12 +39,21 @@
 				$dateEnd=$year.'-'.$month.'-'.$days;
 
 				$Date = new DateTime($dateStart);
+
 				$sangha_name = "";
-				$sangha_name_query="select Sangha_master.Sangha_name from Devotee,Sangha_master where Devotee.Sangha_id=Sangha_master.Sangha_id and Devotee.Devotee_id='".$_SESSION['PID']."' ";
+				$monthly_comment = "";
+				$sangha_name_query="select Sangha_master.Sangha_name,Monthly_comment.Comment from Devotee ";
+				$sangha_name_query.="join Sangha_master ";
+				$sangha_name_query.="on Devotee.Sangha_id=Sangha_master.Sangha_id ";
+				$sangha_name_query.="left outer join Monthly_comment ";
+				$sangha_name_query.="on Devotee.Devotee_id=Monthly_comment.Devotee_id and Xn_month='".$dateStart."'";
+				$sangha_name_query.="where Devotee.Devotee_id='".$_SESSION['PID']."' ";
 				$sangha_name_results = mysql_query($sangha_name_query);
 				while($sangha_record = mysql_fetch_array($sangha_name_results)) {
 					$sangha_name=$sangha_record['Sangha_name'];
+					$monthly_comment=$sangha_record['Comment'];
 				}
+
 				$reportQuery=  "select Question_Seq,Question_desc,Q_response,DAY(Dinalipi_date) as day,Q_response REGEXP Question_master.success_pattern as success from Devotee ";
 				$reportQuery.= "join Question_master ";
 				$reportQuery.= "on Devotee.Member_Category=Question_master.Member_Category ";
@@ -105,7 +114,9 @@
 				//Fill any gaps for last question row
 				fill_gaps($curdate,($days+1));
 				echo "<td>".(round(100*$success_count/$num_of_days_value_available,2))."</td></tr>\n";
-				echo "<tr><td cellpadding='2px' style='font-size:12px;border:0px;text-align:center' colspan='10'>Observations/Exceptions<br><br>&nbsp;</td>\n";
+				echo "<tr><td cellpadding='2px' style='font-size:12px;border:0px;text-align:center' colspan='10'>Observations/Exceptions<br>";
+				echo "<input type='hidden' id='dateStart' value='".$dateStart."'></input>\n";
+				echo "<textarea id='monthlyComment' maxlength='1500' rows='5' cols='100' onblur='javascript:saveComments()'>".$monthly_comment."</textarea></td>\n";
 				echo "<td cellpadding='2px' style='font-size:12px;border:0px;text-align:left' colspan='".($days+1-20)."'>&nbsp;<br><br>President:</td>\n";
 				echo "<td cellpadding='2px' style='font-size:12px;border-left:0px;border-bottom:0px;text-align:left' colspan='11'>Shree Shree Thakura Charanashrita<br><br>Signature:</td></tr>\n";
 				echo "<tr><td style='border:0px;' colspan='".($days+1+1)."'>&nbsp;</td></tr>";
@@ -153,5 +164,32 @@ function fill_gaps($curdate,$day){
 
 		?>
 </div>
+
+		<script>
+		function saveComments()
+		{
+			var comments=document.getElementById("monthlyComment").value;
+			var Date=document.getElementById("dateStart").value;
+			var url="savecomments.php?Comment="+comments+"Xn_month="+Date;
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+			  {// code for IE7+, Firefox, Chrome, Opera, Safari
+			  xmlhttp=new XMLHttpRequest();
+			  }
+			else
+			  {// code for IE6, IE5
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			xmlhttp.onreadystatechange=function()
+			  {
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				{
+					//alert(comments);
+				}
+			  }
+			xmlhttp.open("GET","savecomments.php?Comment="+comments+"&Xn_month="+Date,false);
+			xmlhttp.send();
+		}
+	</script>
 </body>
 </html>
