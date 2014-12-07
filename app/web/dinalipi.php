@@ -97,7 +97,7 @@ table, td, th {
 				if($user_row['submitted'] == $user_row['qanswer']){
 					$submit_button='Update';
 				}
-				echo "<tr><td>" .$user_row['qdesc']. "</td><td><input title='".$user_row['message']."' pattern='".$user_row['vpattern']."' style='text-transform:uppercase' name='" .$user_row['qid']. "' type='text' maxlength='2' value='" .strtoupper($user_row['qanswer']). "'></td></tr>";
+				echo "<tr><td>" .$user_row['qdesc']. "</td><td><input title='".$user_row['message']."' pattern='".$user_row['vpattern']."' style='text-transform:uppercase' name='" .$user_row['qid']. "' type='text' maxlength='5' value='" .strtoupper($user_row['qanswer']). "'></td></tr>";
 			}
 			echo "</table></td></tr>";
 			echo "<tr><td colspan='7' style='text-align:right'><input type='submit' value='".$submit_button."'></td></tr>";

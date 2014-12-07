@@ -145,6 +145,9 @@ function draw_calendar($month,$year){
 	if(isAllowed($GLOBALS[ROLE_SA])){
 		$calendar.= '<a href="adddevotee.php">Add Devotee</a></br>';
 	}
+	if(isAllowed($GLOBALS[ROLE_UPPROGRAM])){
+		$calendar.= '<a href="fileuploader.html">Upload Program</a></br>';
+	}
 	$calendar.= '</td>';
 	$calendar.= '<td class="calendar-day-head"><a href="?mon='.$nextm.'&year='.$nexty.'">-&gt;</a></td></tr>';
 
