@@ -92,34 +92,40 @@ input[type="email"] {
 		$user_query.= "from Devotee all_devotee ";
 		$user_query.= "where all_devotee.Sangha_id='".$Sangha_id."' ";
 
-		$user_query.= "order by all_devotee.First_name";
+		$user_query.= "order by all_devotee.Family_id,all_devotee.Fam_Pri_contact,all_devotee.First_name";
 		$user_results = mysql_query($user_query);
 		$submit_button='Submit';
 		if($user_results){
 			echo "<table class='alignCenter' cellspacing='0' cellpadding='0'>";
-			echo "<tr><td width='100px'><b>First Name</b></td><td width='100px'><b>Last Name</b></td><td width='150px'><b>Email</b></td><td><b>Gender</b></td><td><b>Member Category</b></td><td><b>Add/Update</b></td></tr>";
+			echo "<tr><td width='100px'><b>Family</b><td width='100px'><b>Primary</b></td><td width='100px'><b>First Name</b></td><td width='100px'><b>Last Name</b></td><td width='150px'><b>Email</b></td><td><b>Gender</b></td><td><b>Member Category</b></td><td><b>Send Reminder</b></td><td width='100px'><b>Add/Update</b></td></tr>";
 			echo "<tr>";
 			echo "<form class='validate-form' action='adddevotee.php' method='post'>";
+			echo "<td><input required maxlength='15' type='text' name='Family_id'></input></td>";
+			echo "<td><input required maxlength='15' type='text' pattern='Y|N' title='Allowed values are Y/N.' name='Fam_Pri_contact'></input></td>";
 			echo "<td><input required maxlength='30' type='text' name='First_name'></input></td>";
 			echo "<td><input required maxlength='30' type='text' name='Last_name'></input></td>";
 			echo "<td><input type='hidden' name='Devotee_id' value='-1'></input>";
 			echo "<input type='hidden' name='Sangha_id' value='" .$Sangha_id. "'></input>";
 			echo "<input required maxlength='50' type='email' name='EmailId'></input></td>";
 			echo "<td><input required type='text' pattern='M|F' title='Allowed values are M/F.' name='Gender'></input></td>";
-			echo "<td><input required type='text' pattern='C|G' title='Allowed values are C/G.' name='Member_category'></input></td>";
+			echo "<td><input required type='text' pattern='C|G|S' title='Allowed values are C/G/S.' name='Member_category'></input></td>";
+			echo "<td><input required type='text' pattern='0|1' title='Allowed values are 0/1.' name='Reminder'></input></td>";
 			echo "<td><input type='submit' value='Add'></input></td>";
 			echo "</form>";
 			echo "</tr>\n";
 			while($user_row = mysql_fetch_array($user_results)) {
 				echo "<tr>";
 				echo "<form class='validate-form' action='adddevotee.php' method='post'>";
+				echo "<td><input required maxlength='15' type='text' name='Family_id' value='" .$user_row['Family_id']. "'></input></td>";
+				echo "<td><input required maxlength='15' type='text' pattern='Y|N' title='Allowed values are Y/N.' name='Fam_Pri_contact' value='" .$user_row['Fam_Pri_contact']. "'></input></td>";
 				echo "<td><input required maxlength='30' type='text' name='First_name' value='" .$user_row['First_name']. "'></input></td>";
 				echo "<td><input required maxlength='30' type='text' name='Last_name' value='" .$user_row['Last_name']. "'></input></td>";
 				echo "<td><input type='hidden' name='Devotee_id' value='" .$user_row['Devotee_id']. "'></input>";
 				echo "<input type='hidden' name='Sangha_id' value='" .$Sangha_id. "'></input>";
 				echo "<input required maxlength='50' type='email' name='EmailId' value='" .$user_row['EmailId']. "'></input></td>";
 				echo "<td><input required type='text' pattern='M|F' name='Gender' title='Allowed values are M/F.' value='" .$user_row['Gender']. "'></input></td>";
-				echo "<td><input required type='text' pattern='C|G' name='Member_category' title='Allowed values are C/G.' value='" .$user_row['Member_category']. "'></input></td>";
+				echo "<td><input required type='text' pattern='C|G|S' name='Member_category' title='Allowed values are C/G/S.' value='" .$user_row['Member_category']. "'></input></td>";
+				echo "<td><input required type='text' pattern='0|1' name='Reminder' title='Allowed values are 0/1.' value='" .$user_row['Reminder']. "'></input></td>";
 				echo "<td><input type='submit' value='Update'></input></td>";
 				echo "</form>";
 				echo "<tr>\n";
@@ -131,13 +137,13 @@ input[type="email"] {
 	}
 
 	function addDevoteeQuery(){
-		$insertQuery = "insert into Devotee(EmailId,First_name,Last_name,Gender,Member_category,Sangha_id,Termination_date,Share_security,phone_nbr)";
-		$insertQuery.= " values('".$_POST['EmailId']."','".$_POST['First_name']."','".$_POST['Last_name']."','".$_POST['Gender']."','".$_POST['Member_category']."','".$_POST['Sangha_id']."','2020-01-01','','0')";
+		$insertQuery = "insert into Devotee(Family_id,Fam_Pri_contact,EmailId,First_name,Last_name,Gender,Member_category,Sangha_id,Termination_date,Share_security,phone_nbr)";
+		$insertQuery.= " values('".$_POST['Family_id']."','".$_POST['Fam_Pri_contact']."','".$_POST['EmailId']."','".$_POST['First_name']."','".$_POST['Last_name']."','".$_POST['Gender']."','".$_POST['Member_category']."','".$_POST['Sangha_id']."','2020-01-01','','0')";
 		return $insertQuery;
 	}
 
 	function updateDevotee(){
-		$updateQuery = "update Devotee set EmailId='".$_POST['EmailId']."',First_name='".$_POST['First_name']."',Last_name='".$_POST['Last_name']."',Gender='".$_POST['Gender']."',Member_category='".$_POST['Member_category']."',Sangha_id='".$_POST['Sangha_id']."',Termination_date='2020-01-01',Share_security='',phone_nbr='0' where Devotee_id='".$_POST['Devotee_id']."' ";
+		$updateQuery = "update Devotee set Family_id='".$_POST['Family_id']."',Fam_Pri_contact='".$_POST['Fam_Pri_contact']."',EmailId='".$_POST['EmailId']."',First_name='".$_POST['First_name']."',Last_name='".$_POST['Last_name']."',Gender='".$_POST['Gender']."',Member_category='".$_POST['Member_category']."',Sangha_id='".$_POST['Sangha_id']."',Termination_date='2020-01-01',Share_security='',phone_nbr='0' where Devotee_id='".$_POST['Devotee_id']."' ";
 		return $updateQuery;
 	}
 ?>
