@@ -7,7 +7,7 @@
 
 
 		include 'db.php';
-		$user_query= "SELECT EmailId, Gender, First_name,(CURDATE( ) - INTERVAL 1 DAY) as Missing FROM Devotee d WHERE NOT EXISTS ";
+		$user_query= "SELECT EmailId, Gender, First_name,(CURDATE( ) - INTERVAL 1 DAY) as Missing FROM Devotee d WHERE Reminder>0 AND NOT EXISTS ";
 		$user_query.= "(SELECT Devotee_id FROM Daily_transaction t WHERE t.Devotee_id = d.Devotee_id AND Dinalipi_date = (CURDATE( ) - INTERVAL 1 DAY)) ";
 
 		$user_results = mysql_query($user_query);
