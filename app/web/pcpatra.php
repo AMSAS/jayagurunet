@@ -42,6 +42,9 @@ input[type="text"] {
 input[type="number"] {
     width: 60px;
 }
+select{
+    width: 60px;
+}
 </style>
 
 </head>
@@ -87,8 +90,8 @@ input[type="number"] {
 		$user_query= "SELECT Devotee.Devotee_id LT_Devotee_id,Gender,First_name,YEAR(CURDATE()) CurrentYear,Value Exch_Rate,Parichaya_patra.* FROM Devotee ";
 		$user_query.= "JOIN Exchange_rate ON Exchange_rate.PP_year=YEAR(CURDATE()) ";
 		$user_query.= "LEFT OUTER JOIN Parichaya_patra ON Devotee.Devotee_id=Parichaya_patra.Devotee_id and Parichaya_patra.PP_year=YEAR(CURDATE()) ";
-		//$user_query.= "where Devotee.Devotee_id=(select Family_id from Devotee where Devotee_id=".$_SESSION['PID'].") order by Fam_Pri_contact,First_name";
-		$user_query.= "where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=1) order by Fam_Pri_contact desc,First_name asc";
+		$user_query.= "where Devotee.Devotee_id=(select Family_id from Devotee where Devotee_id=".$_SESSION['PID'].") order by Fam_Pri_contact,First_name";
+		//$user_query.= "where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=1) order by Fam_Pri_contact desc,First_name asc";
 		//echo $user_query;
 		$user_results = mysql_query($user_query);
 		$submit_button='Submit';
@@ -131,13 +134,39 @@ input[type="number"] {
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Kutira Pali (&#x20B9 0/151/252/501/602)</td>";
+			echo "<tr><td>Kutira Pali (&#x20B9)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 				if($user_row['Gender']=="M"){
 					echo "<td><input type='text' name='Kutira_pali[]' value='0' readonly></input></td>";
 				}else{
-					echo "<td><input required pattern='0|151|252|501|602' type='text' title='Enter 0/151/252/501/602' name='Kutira_pali[]' value='" .$user_row['Kutira_pali']. "'></input></td>";
+					echo "<td><select name='Kutira_pali[]'>";
+					if($user_row['Kutira_pali']=="0"){
+						echo "<option value='0' selected>NA</option>";
+					}else{
+						echo "<option value='0'>NA</option>";
+					}
+					if($user_row['Kutira_pali']=="151"){
+						echo "<option value='151' selected>151 Weekly Recurring </option>";
+					}else{
+						echo "<option value='151'>151 Weekly Recurring </option>";
+					}
+					if($user_row['Kutira_pali']=="252"){
+						echo "<option value='252' selected>252 Weekly New </option>";
+					}else{
+						echo "<option value='252'>252 Weekly New </option>";
+					}
+					if($user_row['Kutira_pali']=="501"){
+						echo "<option value='501' selected>501 Monthly Recurring</option>";
+					}else{
+						echo "<option value='501'>501 Monthly Recurring </option>";
+					}
+					if($user_row['Kutira_pali']=="602"){
+						echo "<option value='602' selected>602 Monthly New</option>";
+					}else{
+						echo "<option value='602'>602 Monthly New</option>";
+					}
+					echo "</select></td>";
 				}
 			}
 			echo "</tr>\n";
@@ -304,6 +333,13 @@ function subTotal(myEvent){
 	var myEl = myEvent.currentTarget.elements;
 	var exchRates = myEl.namedItem("Exch_Rate[]");
 	var famTotal=0;
+	if(Array.isArray(exchRates)){
+		processMultiple(myEl,exchRates);
+	}else{
+		processSingle(myEl,exchRates);
+	}
+}
+function processMultiple(myEl,exchRates){
 	for(index=0;index<exchRates.length;index++){
 		var pmTot = 0.0;
 		var exchRate = exchRates[index].value;
@@ -328,11 +364,36 @@ function subTotal(myEvent){
 		myEl.namedItem("Round_up[]")[index].value=0;
 		myEl.namedItem("PP_Total[]")[index].value=pmTot;
 		famTotal = famTotal+ pmTot;
-		//alert(pmTot);
+		alert(pmTot);
 	}
 	var leftOver = Math.ceil(famTotal)-famTotal;
 	myEl.namedItem("Round_up[]")[0].value = leftOver
 	myEl.namedItem("PP_Total[]")[0].value=parseFloat(myEl.namedItem("PP_Total[]")[0].value)+leftOver;
+}
+
+function processSingle(myEl,exchRates){
+	var pmTot = 0.0;
+	var exchRate = exchRates.value;
+	pmTot=pmTot+parseInt(myEl.namedItem("Parichaya_patra[]").value)/exchRate;
+	pmTot=pmTot+parseInt(myEl.namedItem("Aabaahaka[]").value)/exchRate;
+	pmTot=pmTot+parseInt(myEl.namedItem("Sammilani_Daily_seba[]").value)/exchRate;
+	pmTot=pmTot+parseInt(myEl.namedItem("Kutira_pali[]").value)/exchRate;
+	pmTot=pmTot+parseInt(myEl.namedItem("Sangha_sebaka[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Musti_Bhikhyaa[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Gruhaasana[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Janmotsaba[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Kendra_Unnayana[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Nirmana[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Sammilani_sahajya[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Narayana_sebaa[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Webcast[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Nitya_Puja[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Bidhyaa_nidhi[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Swaasthya_seba[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Sammilani_Baalya[]").value);
+	pmTot=pmTot+parseInt(myEl.namedItem("Misc_pranami[]").value);
+	myEl.namedItem("Round_up[]").value = Math.ceil(pmTot)-pmTot;
+	myEl.namedItem("PP_Total[]").value=Math.ceil(pmTot);
 }
 </script>
 </body>
