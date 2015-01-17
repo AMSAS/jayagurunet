@@ -142,6 +142,7 @@ function draw_calendar($month,$year){
 	$calendar.= '<td class="calendar-day-head" colspan="2">';
 	$calendar.= '<a href="logout.php">Logout</a><br>';
 	$calendar.= '<a href="preferences.php">Preferences</a><br>';
+	$calendar.= '<a href="pcpatra.php">Parichaya Patra</a></br>';
 	if(isAllowed($GLOBALS[ROLE_SA])){
 		$calendar.= '<a href="adddevotee.php">Add Devotee</a></br>';
 	}

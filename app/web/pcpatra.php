@@ -37,13 +37,13 @@ td.alignRight {
 }
 
 input[type="text"] {
-    width: 60px;
+    width: 100px;
 }
 input[type="number"] {
-    width: 60px;
+    width: 100px;
 }
 select{
-    width: 60px;
+    width: 100px;
 }
 </style>
 
@@ -55,8 +55,8 @@ select{
 <?php
 	session_start();
 	include 'db.php';
-	if (isset($_SESSION['PID']) && isAllowed($GLOBALS[ROLE_SA])) {
-		//var_dump($_POST);
+	if (isset($_SESSION['PID'])) {
+		//var_dump($_SERVER);
 		if(isset($_POST['Parichaya_patra'])){
 			$index=0;
 			foreach( $_POST['Devotee_id'] as $D_id ) {
@@ -68,7 +68,12 @@ select{
 
 			echo "<h4>Download Printable Applications Below</h4>\n";
 
+			$printpage="pcpatraalt.html";
+			if (strpos($_SERVER['HTTP_USER_AGENT'],'Windows NT 6.1') !== false) {
+				$printpage="pcpatraweb.htm";
+			}
 			$index=0;
+			$totalAmount = 0.00;
 			foreach( $_POST['Devotee_id'] as $D_id ) {
 				$query=insertPPQuery($index);
 				//echo $query."<br>\n";
@@ -77,7 +82,7 @@ select{
 					$applicant = mysql_query("select First_name,Last_name from Devotee where Devotee_id=".$D_id);
 					if($applicant){
 						while($one_applicant = mysql_fetch_assoc($applicant)) {
-							echo "<a target='Devotee".$D_id."' href='pcpatraweb.htm?First_name=".$one_applicant['First_name']."&Last_name=".$one_applicant['Last_name'];
+							echo "<a target='Devotee".$D_id."' href='".$printpage."?First_name=".$one_applicant['First_name']."&Last_name=".$one_applicant['Last_name'];
 							echo "&A11=".$_POST['Musti_Bhikhyaa'][$index].".00";
 							echo "&A12=".$_POST['Gruhaasana'][$index].".00";
 							echo "&A13=".$_POST['Janmotsaba'][$index].".00";
@@ -87,18 +92,24 @@ select{
 							echo "&A17=".$_POST['Sammilani_Daily_seba'][$index].".00";
 							echo "&A18=".$_POST['Misc_pranami'][$index].".00";
 							echo "'>".$one_applicant['First_name']." ".$one_applicant['Last_name']."</a><br>";
+							$totalAmount = $totalAmount + $_POST['PP_Total'][$index];
 						}
 					}
 				}
 				$index=$index+1;
 			}
 
+			echo "<h4>TOTAL AMOUNT DUE: $".round($totalAmount).".00</h4>";
 			echo "<hr>";
+		}
+		$POPULATE_YEAR="YEAR(CURDATE()) ";
+		if($_GET['autofill']=="true"){
+			$POPULATE_YEAR="YEAR(CURDATE())-1 ";
 		}
 		$user_query= "SELECT Devotee.Devotee_id LT_Devotee_id,Gender,First_name,YEAR(CURDATE()) CurrentYear,Value Exch_Rate,Parichaya_patra.* FROM Devotee ";
 		$user_query.= "JOIN Exchange_rate ON Exchange_rate.PP_year=YEAR(CURDATE()) ";
-		$user_query.= "LEFT OUTER JOIN Parichaya_patra ON Devotee.Devotee_id=Parichaya_patra.Devotee_id and Parichaya_patra.PP_year=YEAR(CURDATE()) ";
-		$user_query.= "where Devotee.Devotee_id=(select Family_id from Devotee where Devotee_id=".$_SESSION['PID'].") order by Fam_Pri_contact,First_name";
+		$user_query.= "LEFT OUTER JOIN Parichaya_patra ON Devotee.Devotee_id=Parichaya_patra.Devotee_id and Parichaya_patra.PP_year=".$POPULATE_YEAR;
+		$user_query.= "where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=".$_SESSION['PID'].") order by Fam_Pri_contact,First_name";
 		//$user_query.= "where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=1) order by Fam_Pri_contact desc,First_name asc";
 		//echo $user_query;
 		$user_results = mysql_query($user_query);
@@ -107,13 +118,14 @@ select{
 			echo "<table class='alignCenter' cellspacing='0' cellpadding='0'>";
 			echo "<form class='validate-form' onsubmit='javascript:subTotal(event)' action='pcpatra.php' method='post'>\n";
 			echo "<tr><td><b>Name</b></td>";
-
+			$app_count = 0;
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td>";
 			echo "<input type='hidden' name='Exch_Rate[]' value='" .$user_row['Exch_Rate']. "' disabled/>";
 			echo "<input type='hidden' name='Devotee_id[]' value='" .$user_row['LT_Devotee_id']. "'/>";
 			echo "<input type='hidden' name='PP_year[]' value='" .$user_row['CurrentYear']. "'/>";
 			echo "<b>" .$user_row['First_name']. "</b></td>";
+			$app_count=$app_count+1;
 			}
 			echo "</tr>\n";
 
@@ -299,7 +311,7 @@ select{
 			}
 			echo "</tr>\n";
 
-			echo "<tr><td colspan='4'><input type='submit' value='Save'></input></td><tr>\n";
+			echo "<tr><td colspan='1'><a href='pcpatra.php?autofill=true'>Previous Year Information</a></td><td colspan='".app_count."'><input type='submit' value='Save & Print'></input></td><tr>\n";
 			echo "</form>\n";
 
 			echo "</table>";
