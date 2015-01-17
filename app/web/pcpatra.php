@@ -50,7 +50,7 @@ select{
 </head>
 <body width="100%">
 <div style="text-align:center">
-  <h4>America Saraswata Sangha</h4>
+  <h2>America Saraswata Sangha</h2>
   <h4>Parichaya Patra Application 2015</h4>
 <?php
 	session_start();
@@ -61,31 +61,39 @@ select{
 			$index=0;
 			foreach( $_POST['Devotee_id'] as $D_id ) {
 				$query="delete from Parichaya_patra where Devotee_id=".$D_id. " and PP_year=".$_POST['PP_year'][$index];
-				echo $query."<br>\n";
+				//echo $query."<br>\n";
 				$results=mysql_query($query);
 				$index=$index+1;
 			}
 
+			echo "<h4>Download Printable Applications Below</h4>\n";
+
 			$index=0;
-			$noerror=true;
 			foreach( $_POST['Devotee_id'] as $D_id ) {
 				$query=insertPPQuery($index);
-				echo $query."<br>\n";
+				//echo $query."<br>\n";
 				$results=mysql_query($query);
 				if($results){
-					//echo "Submitted successfully";
-				}else{
-					$noerror=false;
+					$applicant = mysql_query("select First_name,Last_name from Devotee where Devotee_id=".$D_id);
+					if($applicant){
+						while($one_applicant = mysql_fetch_assoc($applicant)) {
+							echo "<a target='Devotee".$D_id."' href='pcpatraweb.htm?First_name=".$one_applicant['First_name']."&Last_name=".$one_applicant['Last_name'];
+							echo "&A11=".$_POST['Musti_Bhikhyaa'][$index].".00";
+							echo "&A12=".$_POST['Gruhaasana'][$index].".00";
+							echo "&A13=".$_POST['Janmotsaba'][$index].".00";
+							echo "&A14=".$_POST['Kendra_Unnayana'][$index].".00";
+							echo "&A15=".$_POST['Nirmana'][$index].".00";
+							echo "&A16=".$_POST['Aabaahaka'][$index].".00";
+							echo "&A17=".$_POST['Sammilani_Daily_seba'][$index].".00";
+							echo "&A18=".$_POST['Misc_pranami'][$index].".00";
+							echo "'>".$one_applicant['First_name']." ".$one_applicant['Last_name']."</a><br>";
+						}
+					}
 				}
 				$index=$index+1;
 			}
-			echo "<h4>";
-			if($noerror){
-				echo "Submitted successfully";
-			}else{
-				echo "Error Occured while Submitting";
-			}
-			echo "</h4>";
+
+			echo "<hr>";
 		}
 		$user_query= "SELECT Devotee.Devotee_id LT_Devotee_id,Gender,First_name,YEAR(CURDATE()) CurrentYear,Value Exch_Rate,Parichaya_patra.* FROM Devotee ";
 		$user_query.= "JOIN Exchange_rate ON Exchange_rate.PP_year=YEAR(CURDATE()) ";
@@ -332,14 +340,18 @@ if (hasHtml5Validation()) {
 function subTotal(myEvent){
 	var myEl = myEvent.currentTarget.elements;
 	var exchRates = myEl.namedItem("Exch_Rate[]");
-	var famTotal=0;
-	if(Array.isArray(exchRates)){
+
+		//alert(exchRates);
+	if(exchRates.length){
+		//alert("if");
 		processMultiple(myEl,exchRates);
 	}else{
+		//alert("else");
 		processSingle(myEl,exchRates);
 	}
 }
 function processMultiple(myEl,exchRates){
+	var famTotal=0.0;
 	for(index=0;index<exchRates.length;index++){
 		var pmTot = 0.0;
 		var exchRate = exchRates[index].value;
@@ -364,7 +376,6 @@ function processMultiple(myEl,exchRates){
 		myEl.namedItem("Round_up[]")[index].value=0;
 		myEl.namedItem("PP_Total[]")[index].value=pmTot;
 		famTotal = famTotal+ pmTot;
-		alert(pmTot);
 	}
 	var leftOver = Math.ceil(famTotal)-famTotal;
 	myEl.namedItem("Round_up[]")[0].value = leftOver
