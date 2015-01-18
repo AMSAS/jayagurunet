@@ -14,7 +14,12 @@
         document.write(" "+(results[1] || 0));
      }
 }
+function printDate(){
+ var currentDate = new Date();
+ document.write("  ("+currentDate.getDate()+"-"+(currentDate.getMonth()+1)+"-"+currentDate.getFullYear()+")");
+}
 </script>
+<title>PCPApplication</title>
 <style>
 body{
   margin-left: -20px;
@@ -118,8 +123,8 @@ body{
 		</tr>
 	</table>
   </div>
-  <div class="c"><script>$.printParam('First_name'); $.printParam('Last_name'); </script></div>
-  <div class="d"><script>$.printParam('First_name'); $.printParam('Last_name'); </script></div>
+  <div class="c"><script>$.printParam('First_name'); $.printParam('Last_name');</script><br><br><script> printDate(); </script></div>
+  <div class="d"><script>$.printParam('First_name'); $.printParam('Last_name'); printDate();</script></div>
 </div>
 </body>
 </html>
