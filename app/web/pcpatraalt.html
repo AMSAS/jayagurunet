@@ -2,7 +2,7 @@
 <html>
 <head>
 
-
+<link href="http://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" type="text/css">
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
 <script>
  $.printParam = function(name){
@@ -35,6 +35,24 @@ body{
   position: absolute;
   width: 1208px;
   z-index: 110;
+}
+
+.c {
+  position: absolute;
+  top:715px;
+  left:953px;
+  z-index: 180;
+  font: 20px/0.8 'Great Vibes', Helvetica, sans-serif;
+  color: blue;
+}
+
+.d {
+  position: absolute;
+  top:814px;
+  left:170px;
+  z-index: 150;
+  font: 20px/0.8 'Great Vibes', Helvetica, sans-serif;
+  color: blue;
 }
 </style>
 </head>
@@ -100,6 +118,8 @@ body{
 		</tr>
 	</table>
   </div>
+  <div class="c"><script>$.printParam('First_name'); $.printParam('Last_name'); </script></div>
+  <div class="d"><script>$.printParam('First_name'); $.printParam('Last_name'); </script></div>
 </div>
 </body>
 </html>
