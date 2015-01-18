@@ -154,7 +154,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Kutira Pali (&#x20B9)</td>";
+			echo "<tr><td>Kutira Pali (Maa's) (&#x20B9)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 				if($user_row['Gender']=="M"){
@@ -192,7 +192,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Sangha Sebaka($ 20)</td>";
+			echo "<tr><td>Sangha Sebaka ($ 20)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required pattern='0|20' type='text'  title='Enter 0 or 20' name='Sangha_sebaka[]' value='" .$user_row['Sangha_sebaka']. "'></input></td>";
@@ -200,7 +200,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Musti Bhikhyaa($ 25)</td>";
+			echo "<tr><td>Musti Bhikhyaa ($ 25)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required pattern='0|25' type='text'  title='Enter 0 or 25' name='Musti_Bhikhyaa[]' value='" .$user_row['Musti_Bhikhyaa']. "'></input></td>";
@@ -208,7 +208,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Gruhaasana($)</td>";
+			echo "<tr><td>Gruhaasana ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required min='0' max='9999' type='number' name='Gruhaasana[]' value='" .$user_row['Gruhaasana']. "'></input></td>";
@@ -216,7 +216,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Janmotsaba($)</td>";
+			echo "<tr><td>Janmotsaba ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required min='0' max='9999' type='number' name='Janmotsaba[]' value='" .$user_row['Janmotsaba']. "'></input></td>";
@@ -224,7 +224,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Kendra Unnayana($)</td>";
+			echo "<tr><td>Kendra Unnayana ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required  min='0' max='9999' type='number' name='Kendra_Unnayana[]' value='" .$user_row['Kendra_Unnayana']. "'></input></td>";
@@ -232,7 +232,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Nirmana($)</td>";
+			echo "<tr><td>Nirmana ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required  min='0' max='9999' type='number' name='Nirmana[]' value='" .$user_row['Nirmana']. "'></input></td>";
@@ -240,7 +240,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Sammilani Sahajya($)</td>";
+			echo "<tr><td>Sammilani Sahajya ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required  min='0' max='9999' type='number' name='Sammilani_sahajya[]' value='" .$user_row['Sammilani_sahajya']. "'></input></td>";
@@ -248,7 +248,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Narayana Sebaa($)</td>";
+			echo "<tr><td>Narayana Sebaa ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required  min='0' max='9999' type='number' name='Narayana_sebaa[]' value='" .$user_row['Narayana_sebaa']. "'></input></td>";
@@ -256,7 +256,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Webcast($)</td>";
+			echo "<tr><td>Webcast ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required  min='0' max='9999' type='number' name='Webcast[]' value='" .$user_row['Webcast']. "'></input></td>";
@@ -264,7 +264,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Nitya Puja($)</td>";
+			echo "<tr><td>Nitya Puja ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required  min='0' max='9999' type='number' name='Nitya_Puja[]' value='" .$user_row['Nitya_Puja']. "'></input></td>";
@@ -272,7 +272,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Bidhyaa Nidhi($)</td>";
+			echo "<tr><td>Bidhyaa Nidhi ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required min='0' max='9999' type='number' name='Bidhyaa_nidhi[]' value='" .$user_row['Bidhyaa_nidhi']. "'></input></td>";
@@ -280,7 +280,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Swaasthya Seba($)</td>";
+			echo "<tr><td>Swaasthya Seba ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required min='0' max='9999' type='number' name='Swaasthya_seba[]' value='" .$user_row['Swaasthya_seba']. "'></input></td>";
@@ -288,7 +288,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Sammilani Baalya($)</td>";
+			echo "<tr><td>Sammilani Baalya ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required min='0' max='9999' type='number' maxlength='4' name='Sammilani_Baalya[]' value='" .$user_row['Sammilani_Baalya']. "'></input></td>";
@@ -296,7 +296,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Misc pranami($)</td>";
+			echo "<tr><td>Misc pranami ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input required min='0' max='9999' type='number' maxlength='4' name='Misc_pranami[]' value='" .$user_row['Misc_pranami']. "'></input></td>";
@@ -304,7 +304,7 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>PP Total($)</td>";
+			echo "<tr><td>PP Total ($)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
 			echo "<td><input type='hidden' name='Round_up[]' value='0'/><input required min='0' max='9999' type='number' maxlength='4' name='PP_Total[]' value='" .$user_row['PP_Total']. "' readonly></input></td>";
