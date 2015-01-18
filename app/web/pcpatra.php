@@ -50,7 +50,7 @@ select{
 </head>
 <body width="100%">
 <div style="text-align:center">
-  <h2>America Saraswata Sangha</h2>
+  <h2><a href="http://jayaguru.net/">America Saraswata Sangha</a></h2>
   <h4>Parichaya Patra Application 2015</h4>
 <?php
 	session_start();
@@ -69,9 +69,9 @@ select{
 			echo "<h4>Download Printable Applications Below</h4>\n";
 
 			$printpage="pcpatraalt.html";
-			if (strpos($_SERVER['HTTP_USER_AGENT'],'Windows NT 6.1') !== false) {
+			/*if (strpos($_SERVER['HTTP_USER_AGENT'],'Windows NT 6.1') !== false) {
 				$printpage="pcpatraweb.htm";
-			}
+			}*/
 			$index=0;
 			$totalAmount = 0.00;
 			foreach( $_POST['Devotee_id'] as $D_id ) {
