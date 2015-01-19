@@ -114,7 +114,7 @@ select{
 		$user_query= "SELECT Devotee.Devotee_id LT_Devotee_id,Gender,First_name,YEAR(CURDATE()) CurrentYear,Value Exch_Rate,Parichaya_patra.* FROM Devotee ";
 		$user_query.= "JOIN Exchange_rate ON Exchange_rate.PP_year=YEAR(CURDATE()) ";
 		$user_query.= " LEFT OUTER JOIN Parichaya_patra ON Devotee.Devotee_id=Parichaya_patra.Devotee_id and Parichaya_patra.PP_year=".$POPULATE_YEAR;
-		$user_query.= " where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=".$_SESSION['PID'].") order by Fam_Pri_contact,First_name";
+		$user_query.= " where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=".$_SESSION['PID'].") order by Fam_Pri_contact desc,First_name asc";
 		//$user_query.= "where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=1) order by Fam_Pri_contact desc,First_name asc";
 		//echo $user_query;
 		$user_results = mysql_query($user_query);
@@ -316,7 +316,7 @@ select{
 			}
 			echo "</tr>\n";
 
-			echo "<tr><td colspan='1'><div title='Populate Year Information'><a href='pcpatra.php?autofill=2013'>2013</a> <a href='pcpatra.php?autofill=2014'>2014</a> <a href='pcpatra.php'>Current</a></div></td><td colspan='".app_count."'><input type='submit' value='Save & Print'></input></td><tr>\n";
+			echo "<tr><td colspan='1'><div title='Prepopulate with previous year information'><a href='pcpatra.php?autofill=2014'>2014</a> <a href='pcpatra.php'>Current</a></div></td><td colspan='".app_count."'><input type='submit' value='Save & Print'></input></td><tr>\n";
 			echo "</form>\n";
 
 			echo "</table>";
