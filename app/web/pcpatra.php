@@ -54,6 +54,7 @@ select{
   <h4>Parichaya Patra Application 2015</h4>
 <?php
 	session_start();
+	setlocale(LC_MONETARY,"en_US");
 	include 'db.php';
 	if (isset($_SESSION['PID'])) {
 		//var_dump($_SERVER);
@@ -82,16 +83,20 @@ select{
 					$applicant = mysql_query("select First_name,Last_name from Devotee where Devotee_id=".$D_id);
 					if($applicant){
 						while($one_applicant = mysql_fetch_assoc($applicant)) {
-							echo "<a target='Devotee".$D_id."' href='".$printpage."?First_name=".$one_applicant['First_name']."&Last_name=".$one_applicant['Last_name'];
-							echo "&A11=".$_POST['Musti_Bhikhyaa'][$index].".00";
-							echo "&A12=".$_POST['Gruhaasana'][$index].".00";
-							echo "&A13=".$_POST['Janmotsaba'][$index].".00";
-							echo "&A14=".$_POST['Kendra_Unnayana'][$index].".00";
-							echo "&A15=".$_POST['Nirmana'][$index].".00";
-							echo "&A16=".$_POST['Aabaahaka'][$index].".00";
-							echo "&A17=".$_POST['Sammilani_Daily_seba'][$index].".00";
-							echo "&A18=".$_POST['Misc_pranami'][$index].".00";
-							echo "'>".$one_applicant['First_name']." ".$one_applicant['Last_name']."</a><br>";
+							if($_POST['Parichaya_patra'][$index]=='100'){
+								echo "<a target='Devotee".$D_id."' href='".$printpage."?First_name=".$one_applicant['First_name']."&Last_name=".$one_applicant['Last_name'];
+								echo "&A11=".$_POST['Musti_Bhikhyaa'][$index].".00";
+								echo "&A12=".$_POST['Gruhaasana'][$index].".00";
+								echo "&A13=".$_POST['Janmotsaba'][$index].".00";
+								echo "&A14=".$_POST['Kendra_Unnayana'][$index].".00";
+								echo "&A15=".$_POST['Nirmana'][$index].".00";
+								echo "&A16=".$_POST['Aabaahaka'][$index].".00";
+								echo "&A17=".$_POST['Sammilani_Daily_seba'][$index].".00";
+								echo "&A18=".$_POST['Misc_pranami'][$index].".00";
+								echo "'>".$one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]))."</a><br>";
+							}else{
+								echo $one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]));
+							}
 							$totalAmount = $totalAmount + $_POST['PP_Total'][$index];
 						}
 					}
@@ -103,13 +108,13 @@ select{
 			echo "<hr>";
 		}
 		$POPULATE_YEAR="YEAR(CURDATE()) ";
-		if($_GET['autofill']=="true"){
-			$POPULATE_YEAR="YEAR(CURDATE())-1 ";
+		if(isset($_GET['autofill'])){
+			$POPULATE_YEAR=$_GET['autofill'];
 		}
 		$user_query= "SELECT Devotee.Devotee_id LT_Devotee_id,Gender,First_name,YEAR(CURDATE()) CurrentYear,Value Exch_Rate,Parichaya_patra.* FROM Devotee ";
 		$user_query.= "JOIN Exchange_rate ON Exchange_rate.PP_year=YEAR(CURDATE()) ";
-		$user_query.= "LEFT OUTER JOIN Parichaya_patra ON Devotee.Devotee_id=Parichaya_patra.Devotee_id and Parichaya_patra.PP_year=".$POPULATE_YEAR;
-		$user_query.= "where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=".$_SESSION['PID'].") order by Fam_Pri_contact,First_name";
+		$user_query.= " LEFT OUTER JOIN Parichaya_patra ON Devotee.Devotee_id=Parichaya_patra.Devotee_id and Parichaya_patra.PP_year=".$POPULATE_YEAR;
+		$user_query.= " where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=".$_SESSION['PID'].") order by Fam_Pri_contact,First_name";
 		//$user_query.= "where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=1) order by Fam_Pri_contact desc,First_name asc";
 		//echo $user_query;
 		$user_results = mysql_query($user_query);
@@ -130,10 +135,10 @@ select{
 			echo "</tr>\n";
 
 			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Parichaya Patra (&#x20B9 100)</td>";
+			echo "<tr><td>Parichaya Patra (&#x20B9 0/100)</td>";
 
 			while($user_row = mysql_fetch_assoc($user_results)) {
-				echo "<td><input required pattern='100' type='text' name='Parichaya_patra[]' value='100' readonly></input></td>";
+				echo "<td><input required pattern='0|100' type='text' title='Enter 0 for Kids or 100'  name='Parichaya_patra[]' value='".$user_row['Parichaya_patra']."'></input></td>";
 			}
 			echo "</tr>\n";
 
@@ -311,7 +316,7 @@ select{
 			}
 			echo "</tr>\n";
 
-			echo "<tr><td colspan='1'><a href='pcpatra.php?autofill=true'>Previous Year Information</a></td><td colspan='".app_count."'><input type='submit' value='Save & Print'></input></td><tr>\n";
+			echo "<tr><td colspan='1'><div title='Populate Year Information'><a href='pcpatra.php?autofill=2013'>2013</a> <a href='pcpatra.php?autofill=2014'>2014</a> <a href='pcpatra.php'>Current</a></div></td><td colspan='".app_count."'><input type='submit' value='Save & Print'></input></td><tr>\n";
 			echo "</form>\n";
 
 			echo "</table>";
