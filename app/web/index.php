@@ -1,6 +1,22 @@
 <?php
 include_once "templates/base.php";
 session_start();
+include 'db.php';
+
+if(isset($_POST['email']) && isset($_POST['password'])){
+	$select_query = "select * from Devotee where EmailId='" . $_POST['email'] . "' and Share_security='". $_POST['password']."'";
+	$user_results = mysql_query($select_query);
+	if($user_results){
+		while($user_row = mysql_fetch_array($user_results)) {
+			$_SESSION['display_name'] = $user_row['Pref_name'];
+			$_SESSION['email'] = $_POST['email'];
+			$_SESSION['PID']=$user_row['Devotee_id'];
+			$_SESSION['SANGHA_ID']=$user_row['Sangha_id'];
+			$_SESSION['ROLE']=$user_row['Roles'];
+			$_SESSION['FAM_PRI_CONTACT']=$user_row['Fam_Pri_contact'];
+		}
+	}
+}
 if (!isset($_SESSION['email'])) {
 	require_once realpath(dirname(__FILE__) . '/../autoload.php');
 
@@ -72,11 +88,24 @@ if (!isset($_SESSION['email'])) {
   <img src="/images/orgnz.gif"/><br>
 <?php
 if (isset($authUrl)) {
-  echo "<a class='login' href='" . $authUrl . "'><img src='sign-in-with-google.png' alt='Click here to login Via Google'/></a>";
+?>
+  <a class='login' href='<?php echo $authUrl; ?>'><img src='sign-in-with-google.png' alt='Click here to login Via Google'/></a><br>
+  <br>
+  <br>
+  <br>
+  <h1 style="font-size:30px">OR</h1>
+  <br>
+  <br>
+  <table class='calendar'>
+	  <form method='POST'>
+		  <tr><td colspan='2'>Login with your <a href='changepassword.php'>jayaguru.net account</a></td></tr>
+		  <tr><td>User Id:</td><td><input size='50' name='email' type='email'/></td></tr>
+		  <tr><td>Password:</td><td><input size='50' name='password' type='password'/></td></tr>
+		  <tr><td colspan='2' align='right'><input value='Submit' type='Submit'/></td></tr>
+	  </form>
+  </table>
+<?php
 }else{
-
-	include 'db.php';
-
 	$user_query = "select * from Devotee where EmailId='" . $_SESSION['email'] . "'";
 	$user_results = mysql_query($user_query);
 	if($user_results){
@@ -144,7 +173,7 @@ function draw_calendar($month,$year){
 	$calendar.= '<a href="logout.php">Logout</a><br>';
 	$calendar.= '<a href="preferences.php">Preferences</a><br>';
 	if($_SESSION['FAM_PRI_CONTACT']=='Y'){
-		$calendar.= '<a href="pcpatra.php">Parichaya Patra</a></br>';
+		$calendar.= '<a href="sseva.php">Samilani Seva</a></br>';
 	}
 	if(isAllowed($GLOBALS[ROLE_SA])){
 		$calendar.= '<a href="adddevotee.php">Add Devotee</a></br>';
