@@ -8,25 +8,25 @@ function runAccordion(index)
   var nID = "Accordion" + index + "Content";
   if(openAccordion == nID)
     nID = '';
-
+    
   setTimeout("animate(" + new Date().getTime() + "," + TimeToSlide + ",'" + openAccordion + "','" + nID + "')", 33);
-
+  
   openAccordion = nID;
 }
 
 function animate(lastTick, timeLeft, closingId, openingId)
-{
+{  
   var curTick = new Date().getTime();
   var elapsedTicks = curTick - lastTick;
-
+  
   var opening = (openingId == '') ? null : document.getElementById(openingId);
   var closing = (closingId == '') ? null : document.getElementById(closingId);
-
+ 
   if(timeLeft <= elapsedTicks)
   {
     if(opening != null)
       opening.style.height = ContentHeight + 'px';
-
+    
     if(closing != null)
     {
       closing.style.display = 'none';
@@ -34,7 +34,7 @@ function animate(lastTick, timeLeft, closingId, openingId)
     }
     return;
   }
-
+ 
   timeLeft -= elapsedTicks;
   var newClosedHeight = Math.round((timeLeft/TimeToSlide) * ContentHeight);
 
@@ -44,7 +44,7 @@ function animate(lastTick, timeLeft, closingId, openingId)
       opening.style.display = 'block';
     opening.style.height = (ContentHeight - newClosedHeight) + 'px';
   }
-
+  
   if(closing != null)
     closing.style.height = newClosedHeight + 'px';
 
@@ -59,10 +59,10 @@ function defineMenu() {
   document.write('<div id="Accordion1Content" class="AccordionContent">');
   document.write('<img  src="../images/123.jpg" height="201" width="170"/><br/>Paramahansha <br/>Srimatswami Nigamananda Saraswati Dev</a><br/><br/>');
   document.write('<ul>');
-  document.write('<li><a href="'+linkHome+menuLinks[1]+'" >'+menuItems[1]+'</a></li>');
-  document.write('<li><a href="'+linkHome+menuLinks[2]+'" >'+menuItems[2]+'</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[1]+'" >'+menuItems[1]+'</a></li>'); 
+  document.write('<li><a href="'+linkHome+menuLinks[2]+'" >'+menuItems[2]+'</a></li>'); 
   document.write('<li><a href="'+linkHome+menuLinks[3]+'">'+menuItems[3]+'</a></li>');
-  document.write('<li><a href="'+linkHome+menuLinks[4]+'" >'+menuItems[4]+'</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[4]+'" >'+menuItems[4]+'</a></li>'); 
   document.write('<li><a href="'+linkHome+menuLinks[9]+'">'+menuItems[9]+'</a></li>');
   document.write('</ul>');
   document.write('</div>');
@@ -75,11 +75,20 @@ function defineMenu() {
   document.write('<li><a href="'+linkHome+menuLinks[9]+'">'+menuItems[9]+'</a></li>');
   document.write('<li><a href="'+linkHome+menuLinks[6]+'">'+menuItems[6]+'</a></li>');
   document.write('<li><a href="'+linkHome+menuLinks[7]+'">'+menuItems[7]+'</a></li>');
-  document.write('<li><a href="'+linkHome+menuLinks[24]+'">'+menuItems[24]+'</a></li>');
   document.write('</ul>');
   document.write('</div>');
-  document.write('<div><div class="AccordionTitle" onclick="runAccordion(3);" onselectstart="return false;"><img src="../images/white.gif" /> Events</div></div>');
+  document.write('<div><div class="AccordionTitle" onclick="runAccordion(3);" onselectstart="return false;"><img src="../images/white.gif" /> Community Giving</div></div>');
   document.write('<div id="Accordion3Content" class="AccordionContent">');
+  document.write('<img  src="../images/125.gif" height="147" width="220"/><br/><br/>');
+  document.write('<ul>');
+  document.write('<li><a href="'+linkHome+menuLinks[29]+'">'+menuItems[29]+'</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[30]+'">'+menuItems[30]+'</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[31]+'">'+menuItems[31]+'</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[32]+'">'+menuItems[32]+'</a></li>');
+  document.write('</ul>');
+  document.write('</div>'); 
+  document.write('<div><div class="AccordionTitle" onclick="runAccordion(4);" onselectstart="return false;"><img src="../images/white.gif" /> Events</div></div>');
+  document.write('<div id="Accordion4Content" class="AccordionContent">');
   document.write('<img  src="../images/125.gif" height="147" width="220"/><br/><br/>');
   document.write('<ul>');
   document.write('<li><a href="'+linkHome+menuLinks[14]+'">'+menuItems[14]+'</a></li>');
@@ -88,13 +97,17 @@ function defineMenu() {
   document.write('<li><a href="'+linkHome+menuLinks[15]+'">'+menuItems[15]+'</a></li>');
   document.write('</ul>');
   document.write('</div>');
-  document.write('<div><div class="AccordionTitle" onclick="runAccordion(4);" onselectstart="return false;"><img src="../images/white.gif" /> Members</div></div>');
-  document.write('<div id="Accordion4Content" class="AccordionContent" >');
+  document.write('<div><div class="AccordionTitle" onclick="runAccordion(5);" onselectstart="return false;"><img src="../images/white.gif" /> Members</div></div>');
+  document.write('<div id="Accordion5Content" class="AccordionContent" >');
   document.write('<ul>');
-  document.write('<li><a href="'+linkHome+menuLinks[17]+'" >'+menuItems[17]+'</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[17]+'" >'+menuItems[17]+'</a></li>'); 
   document.write('<li><a href="'+linkHome+menuLinks[18]+'">'+menuItems[18]+'</a></li>');
   document.write('<li><a href="'+linkHome+menuLinks[19]+'">'+menuItems[19]+'</a></li>');
   document.write('<li><a href="'+linkHome+menuLinks[20]+'">'+menuItems[20]+'</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[21]+'">'+menuItems[21]+'</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[22]+'">'+menuItems[22]+'</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[23]+'">'+menuItems[23]+'</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[24]+'">'+menuItems[24]+'</a></li>');
   document.write('</ul>');
   document.write('</div>');
 }
@@ -102,10 +115,11 @@ function defineMenu() {
 function topmenu() {
 document.write('<div class="rightmenu" id="chromemenu">');
 document.write('<ul>');
-document.write('<li><a href="'+linkHome+menuLinks[1]+'" rel="dropmenu1">'+menuItems[1]+'</a></li>');
+document.write('<li><a href="'+linkHome+menuLinks[1]+'" rel="dropmenu1">'+menuItems[1]+'</a></li>');	
 document.write('<li><a href="'+linkHome+menuLinks[5]+'" rel="dropmenu2">'+menuItems[5]+'</a></li>');
-document.write('<li><a href="'+linkHome+menuLinks[11]+'" rel="dropmenu3">'+menuItems[11]+'</a></li>');
-document.write('<li><a href="'+linkHome+menuLinks[16]+'" rel="dropmenu4">'+menuItems[16]+'</a></li>');
+document.write('<li><a href="'+linkHome+menuLinks[28]+'" rel="dropmenu3">'+menuItems[28]+'</a></li>');
+document.write('<li><a href="'+linkHome+menuLinks[11]+'" rel="dropmenu4">'+menuItems[11]+'</a></li>');
+document.write('<li><a href="'+linkHome+menuLinks[16]+'" rel="dropmenu5">'+menuItems[16]+'</a></li>');
 document.write('</ul>');
 document.write('</div>');
 /*--1st drop down menu --*/
@@ -122,30 +136,40 @@ document.write('<a href="'+linkHome+menuLinks[8]+'">'+menuItems[8]+'</a>');
 document.write('<a href="'+linkHome+menuLinks[9]+'">'+menuItems[9]+'</a>');
 document.write('<a href="'+linkHome+menuLinks[6]+'">'+menuItems[6]+'</a>');
 document.write('<a href="'+linkHome+menuLinks[7]+'">'+menuItems[7]+'</a>');
-document.write('<a href="'+linkHome+menuLinks[24]+'">'+menuItems[24]+'</a>');
 document.write('</div>');
 /*--3rd drop down menu --*/
 document.write('<div id="dropmenu3" class="dropmenudiv" style="width: 200px;">');
+document.write('<a href="'+linkHome+menuLinks[29]+'">'+menuItems[29]+'</a>');
+document.write('<a href="'+linkHome+menuLinks[30]+'">'+menuItems[30]+'</a>');
+document.write('<a href="'+linkHome+menuLinks[31]+'">'+menuItems[31]+'</a>');
+document.write('<a href="'+linkHome+menuLinks[32]+'">'+menuItems[32]+'</a>');
+document.write('</div>');
+/*--4th drop down menu --*/
+document.write('<div id="dropmenu4" class="dropmenudiv" style="width: 200px;">');
 document.write('<a href="'+linkHome+menuLinks[14]+'">'+menuItems[14]+'</a>');
 document.write('<a href="'+linkHome+menuLinks[13]+'">'+menuItems[13]+'</a>');
 document.write('<a href="'+linkHome+menuLinks[12]+'">'+menuItems[12]+'</a>');
 document.write('<a href="'+linkHome+menuLinks[15]+'">'+menuItems[15]+'</a>');
 document.write('</div>');
-
-/*--4th drop down menu --*/
-document.write('<div id="dropmenu4" class="dropmenudiv" style="width: 200px;">');
+/*--5th drop down menu --*/
+document.write('<div id="dropmenu5" class="dropmenudiv" style="width: 200px;">');
 document.write('<a href="'+linkHome+menuLinks[17]+'">'+menuItems[17]+'</a>');
 document.write('<a href="'+linkHome+menuLinks[18]+'">'+menuItems[18]+'</a>');
 document.write('<a href="'+linkHome+menuLinks[19]+'">'+menuItems[19]+'</a>');
 document.write('<a href="'+linkHome+menuLinks[20]+'">'+menuItems[20]+'</a>');
+document.write('<a href="'+linkHome+menuLinks[21]+'">'+menuItems[21]+'</a>');
+document.write('<a href="'+linkHome+menuLinks[22]+'">'+menuItems[22]+'</a>');
+document.write('<a href="'+linkHome+menuLinks[23]+'">'+menuItems[23]+'</a>');
+document.write('<a href="'+linkHome+menuLinks[24]+'">'+menuItems[24]+'</a>');
 document.write('</div>');
 }
 
 function footLinksLeft() {
   document.write('<ul>');
-  document.write('<li><a href="'+linkHome+menuLinks[22]+'">About Us</a></li>');
-  document.write('<li><a href="contactus">Contact Us</a></li>');
-  document.write('<li><a href="'+linkHome+menuLinks[23]+'">Site Map</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[26]+'">About Us</a></li>');
+  document.write('<li><a href="mailto:amsas@jayaguru.net">Contact Us</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[27]+'">Site Map</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[28]+'">Community Giving</a></li>');
   document.write('</ul>');
 }
 function footLinksCenter() {
@@ -154,7 +178,7 @@ function footLinksCenter() {
 }
 function footLinksRight() {
   document.write('<ul>');
-  document.write('<li><a href="'+linkHome+menuLinks[21]+'">Prayers</a></li>');
+  document.write('<li><a href="'+linkHome+menuLinks[25]+'">Prayers</a></li>');
 /*  document.write('<li><a href="#">Adi Shankaracharya</a></li>');
   document.write('<li><a href="#">Shri Gourang Dev</a></li>');*/
   document.write('<li><a href="'+linkHome+menuLinks[11]+'">Sammilani (The Congregation)</a></li>');
@@ -180,7 +204,7 @@ function footCenter() {
 }
 
 function copyRight() {
-  document.write('<font face="Arial Unicode MS" size="1" color="303030">(c) Copyright 2012 America Saraswata Sangha</font>');
+  document.write('<font face="Arial Unicode MS" size="1" color="303030">(c) Copyright 2014 America Saraswata Sangha</font>');
 }
 
 
@@ -209,7 +233,7 @@ function getLink(text) {
 	  /*var end = (mi.indexOf("<br/>") == -1) ? mi.length : mi.indexOf("<br/>");
 	  if (end < mi.length-1) {
 	    ft = mi.substring(0, mi.lastIndexOf("<br/>"));
-		ft = ft + mi.substring(mi.lastIndexOf("<br/>")+5, mi.length);
+		ft = ft + mi.substring(mi.lastIndexOf("<br/>")+5, mi.length);	
 	  }
 	  else {ft = mi;}*/
 	  if (text == mi) {
@@ -253,15 +277,22 @@ var menuItems=['Home',
         'Members',
            'Sangha Puja',
            'Next Sangha Puja',
+           'Young Aspirants Sangha Puja',
+           'Next YA Sangha Puja',
            'Special Sangha Puja Sessions',
+		   'Sashtrapatha Puja',
+		   'Mahila Sangha Puja',
            'Member References',
 		'Prayer',
 		'About Us',
 		'Site Map',
-		'Mandira Construction'];
+		'Community Giving',
+			'Recent News',
+			'Special Interests',
+			'International Giving',
+			'Our Focus'];
 
 // menu Item links with respect to items in menuItem array
-//var linkHome = new String('/');
 var linkHome = new String('/');
 //var linkHome = new String('http://localhost:8080/');
 
@@ -284,12 +315,20 @@ var menuLinks=['',
         'members',
            'members/sangha_puja',
 	       'members/next_sangha_puja',
+           'members/young_aspirants_sanghapuja',
+		   'members/ya_nextpuja',
 		   'members/special_sanghapuja',
+		   'members/sastrapatha_and_mahilapuja',
+		   'members/sastrapatha_and_mahilapuja#mahila',
 		   'members/member_references',
 		'references/prayer',
 		'organization/america_saraswata_sangha',
 		'site_map.html',
-		'organization/mandira_construction'];
+		'community_giving',
+			'community_giving/recent_news',
+			'community_giving/special_interests',
+			'community_giving/international_giving',
+			'community_giving/our_focus'];
 
 function siteMap() {
 document.write('<ul>');
@@ -333,6 +372,10 @@ document.write('<li><a href="'+linkHome+menuLinks[16]+'">'+menuItems[16]+'</a>')
 	  document.write('<li><a href="'+linkHome+menuLinks[18]+'">'+menuItems[18]+'</a>');
 	  document.write('<li><a href="'+linkHome+menuLinks[19]+'">'+menuItems[19]+'</a>');
 	  document.write('<li><a href="'+linkHome+menuLinks[20]+'">'+menuItems[20]+'</a>');
+	  document.write('<li><a href="'+linkHome+menuLinks[21]+'">'+menuItems[21]+'</a>');
+	  document.write('<li><a href="'+linkHome+menuLinks[22]+'">'+menuItems[22]+'</a>');
+	  document.write('<li><a href="'+linkHome+menuLinks[23]+'">'+menuItems[23]+'</a>');
+	  document.write('<li><a href="'+linkHome+menuLinks[24]+'">'+menuItems[24]+'</a>');
 	document.write('</ul>');
 document.write('</li>');
 document.write('</ul>');
@@ -343,7 +386,7 @@ function samiYears() {
   var lastdot = samyear.lastIndexOf(".");
   var lastdash = samyear.lastIndexOf("_")+1;
   if (lastdash > lastdot) lastdot = samyear.length;
-  samyear = samyear.substring(lastdash, lastdot);
+  samyear = samyear.substring(lastdash, lastdot);	
 
   document.write('<FORM METHOD="POST" onReset="history.go(0)">Select year of Sammilani ');
   document.write('<SELECT NAME="syear" onchange="showSammilani(this.value);">');

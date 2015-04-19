@@ -195,7 +195,7 @@ cssdropdown.startchrome("chromemenu")
 <!--  Side Menu options start -->	   
 		   
 <div class="sidemenu" >
-  <script type="text/javascript" >runAccordion(4);</script> <!-- replace this index with folder index -->
+  <script type="text/javascript" >runAccordion(5);</script> <!-- replace this index with folder index -->
 <div id="AccordionContainer" class="AccordionContainer">
   <script type="text/javascript" >    defineMenu();  </script>
 
@@ -220,11 +220,11 @@ cssdropdown.startchrome("chromemenu")
 	  <!-- Additional Page Information start -->
       <table border="0" width="275" cellpadding="0" cellspacing="0" >
       <tr>
-          <td width="100%" height="30" align="center" valign="top" class="adtexts" ><img src="../images/underline.gif" height="18" width="106"/>
+          <td width="100%" height="30" align="center" valign="top" class="sidetexts" ><img src="../images/underline.gif" height="18" width="106"/>
           </td>
 	  </tr>
       <tr>
-	    <td width="100%" valign="top" class="adtexts"><p>Members have approbated SriSriThakura Nigamananda Saraswati Deva as their only <i>Guru</i> and <i>Ista</i> (diety); and asseverated to govern an ideal household life by acknowledging <i>Jayaguru</i> as the <i>SiddhaMantra</i> (hymn/intonation in Hinduism).	</p>
+	    <td width="100%" valign="top" class="sidetexts"><p>Members have approbated SriSriThakura Nigamananda Saraswati Deva as their only <i>Guru</i> and <i>Ista</i> (diety); and asseverated to govern an ideal household life by acknowledging <i>Jayaguru</i> as the <i>SiddhaMantra</i> (hymn/intonation in Hinduism).	</p>
 		  <img src="../images/evtad.gif" width="270" height="180" alt="America Sammilani 2009"/><br/><h2>Parichaya Patra - <i>The Identity</i></h2>
 		</td>
 	  </tr>
