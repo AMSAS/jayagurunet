@@ -3,11 +3,17 @@
 	<title></title>
 </head>
 <body>
-<h3>Program,Bibarani,YA Session upload utility</h3>
+<h3>Program,Bibarani upload utility</h3>
 <br />
 <form action="file_upload" enctype="multipart/form-data" method="post">
 <label for="file">Select File to upload:</label>
 <input id="file" name="file" type="file" /><br />
+<input type="radio" name="program_type" value="weekly" checked/>Weekly Puja (Bibarani, Program)<br/>
+<input type="radio" name="program_type" value="samilani"/>Samilani<br/>
+<input type="radio" name="program_type" value="janma"/>Janma<br/>
+<input type="radio" name="program_type" value="raasa"/>Raasa<br/>
+<input type="radio" name="program_type" value="annual"/>Annual<br/>
+<input type="radio" name="program_type" value="akhi"/>Akhi<br/>
 <input name="submit" type="submit" value="Submit" />&nbsp;</form>
 <br><a href='index.php'>Go Back</a>
 </body>
