@@ -16,36 +16,41 @@
 				echo "Type: " . $_FILES["file"]["type"] . "<br>";
 				echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
 				echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
+				$target_directory = "/home/content/17/11832717/html/";
+				
 				if($_POST['program_type']=='weekly'){
 					$bibaranis = strpos($_FILES["file"]["name"], "Bibarani");
 					if($bibaranis !==false){
+						$target_directory.="members/sangha/bibaranis/";
 						move_uploaded_file($_FILES["file"]["tmp_name"],
-						  "/home/content/17/11832717/html/members/sangha/bibaranis/" . $_FILES["file"]["name"]);
-						echo "Stored in: " . "/home/content/17/11832717/html/members/sangha/bibaranis/" . $_FILES["file"]["name"];
+						  $target_directory . $_FILES["file"]["name"]);
+						echo "Stored in: " . $target_directory . $_FILES["file"]["name"];
 					}
 				
 					$yasession = strpos($_FILES["file"]["name"], "Session");
 					if($yasession !==false){
+						$target_directory.="members/youngasp_puja/programs/";
 						move_uploaded_file($_FILES["file"]["tmp_name"],
-						  "/home/content/17/11832717/html/members/youngasp_puja/programs/" . $_FILES["file"]["name"]);
-					  echo "Stored in: " . "/home/content/17/11832717/html/members/youngasp_puja/programs/" . $_FILES["file"]["name"];
+						  $target_directory . $_FILES["file"]["name"]);
+					  echo "Stored in: " . $target_directory . $_FILES["file"]["name"];
 					}
 				
 					$program = strpos($_FILES["file"]["name"], "Program");
 					if($program !==false){
+						$target_directory.="members/sangha/programs/";
 						move_uploaded_file($_FILES["file"]["tmp_name"],
-						  "/home/content/17/11832717/html/members/sangha/programs/" . $_FILES["file"]["name"]);
-						  echo "Stored in: " . "/home/content/17/11832717/html/members/sangha/programs/" . $_FILES["file"]["name"];
+						  $target_directory . $_FILES["file"]["name"]);
+						  echo "Stored in: " . $target_directory . $_FILES["file"]["name"];
 					}
 				} else if($_POST['program_type']=='samilani'){
-					$target_directory = "/home/content/17/11832717/html/events/".date("Y")."/";
+					$target_directory.= "events/".date("Y")."/";
 					
 					move_uploaded_file($_FILES["file"]["tmp_name"],
 					$target_directory . $_FILES["file"]["name"]);
 					echo "Stored in: " . $target_directory . $_FILES["file"]["name"];
 					
 				} else {
-					$target_directory = "/home/content/17/11832717/html/members/".$_POST['program_type']."/programs/";
+					$target_directory.= "members/".$_POST['program_type']."/programs/";
 					
 					move_uploaded_file($_FILES["file"]["tmp_name"],
 					$target_directory . $_FILES["file"]["name"]);
