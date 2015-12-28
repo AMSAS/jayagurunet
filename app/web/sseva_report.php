@@ -1,6 +1,12 @@
 <?php
 	session_start();
 	include 'db.php';
+	$AmYear = new DateTime('NOW');
+	$AmYear->add(new DateInterval('P1M'));
+	$Seva_cat='Event';
+	if (isset($_REQUEST['Seva_cat'])){
+		$Seva_cat=$_REQUEST['Seva_cat']; 
+	}
 ?>
 <html>
 <head>
@@ -54,15 +60,16 @@ select{
 </head>
 	<body width="100%">
 		<div style="text-align:center">
-		  <h2><a href="http://diary.jayaguru.net/">America Saraswata Sangha</a></h2>
-		  <h4>Sammilani Seva Applicants <?php echo date("Y"); ?></h4>
+		  <a href="index.php"><img src="/images/orgnz.gif"/></a><br>
+		  <h4><?php echo $Seva_cat; ?> Seva Applicants <?php echo $AmYear->format("Y"); ?></h4>
 		<?php
 			if (isset($_SESSION['PID'])) {
 				$report_query="SELECT Seva_name, 
 							IFNULL( GROUP_CONCAT( Pref_name SEPARATOR '<br>' ) , '' ) Sevakas, 
 							IFNULL( GROUP_CONCAT( IF( Seba_mukhya = 'Y', Pref_name, NULL ) SEPARATOR '<br>' ) , '' ) Mukhyas
-							FROM Seva_xn  JOIN Devotee ON ( Devotee.Devotee_id = Seva_xn.Devotee_id AND Seva_xn.Sammilani_year = YEAR( CURDATE( ) ) ) 
-							RIGHT OUTER JOIN Seva_master ON ( Seva_master.Seva_id = Seva_xn.Seva_id ) 
+							FROM Seva_xn  JOIN Devotee ON ( Devotee.Devotee_id = Seva_xn.Devotee_id AND Seva_xn.Sammilani_year = YEAR( CURDATE() + INTERVAL 1 MONTH ) ) 
+							RIGHT OUTER JOIN Seva_master ON (Seva_master.Seva_id = Seva_xn.Seva_id ) 
+							WHERE Seva_master.Seva_cat='".$Seva_cat."'
 							GROUP BY Seva_master.Seva_id";
 				
 				//echo $user_query."<br>\n";

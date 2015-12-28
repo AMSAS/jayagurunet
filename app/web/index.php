@@ -116,6 +116,7 @@ if (isset($authUrl)) {
 				$_SESSION['SANGHA_ID']=$user_row['Sangha_id'];
 				$_SESSION['ROLE']=$user_row['Roles'];
 				$_SESSION['FAM_PRI_CONTACT']=$user_row['Fam_Pri_contact'];
+				$_SESSION['PP_MEMBER']=$user_row['PP_member'];
 				$user_exists = true;
 			}
 		}
@@ -125,7 +126,25 @@ if (isset($authUrl)) {
 				echo draw_calendar($_GET['mon'],$_GET['year']);
 			}else{
 				echo draw_calendar($today['mon'],$today['year']);
-			}
+			}?>
+			<a href="sseva.php?Seva_cat=Guest&PP_member=N">Guest</a> |
+			<a href="sseva.php?Seva_cat=Annual&PP_member=Y">Member</a> |
+			<a href="sseva.php?Seva_cat=Sammilani&PP_member=YN">Sammilani</a> |			
+			<?php
+			if(isAllowed($GLOBALS[ROLE_UPPROGRAM])){
+			?>
+			<a href="fileuploader.html">Upload Program</a> |
+			<?php }
+			if(isAllowed($GLOBALS[ROLE_SA])){
+			?>
+			<a href="adddevotee.php">Add Devotee</a> | 
+			<a href="managedevotee.php">Approve</a> | 
+			<a href="sseva_report.php?Seva_cat=Annual">Report</a> |
+			<a href='sseva_report_upd.php'>Seva Mukhya(s)</a> |
+			<?php }?>			
+			<a href="preferences.php">Preferences</a> |
+			<a href="logout.php">Logout</a>
+			<?php 	
 			//var_dump($_SESSION);
 		}else{
 			echo ("Welcome:");
@@ -170,17 +189,6 @@ function draw_calendar($month,$year){
 	$calendar.= '<tr><td class="calendar-day-head"><a href="?mon='.$prevm.'&year='.$prevy.'">&lt;-</a></td>';
 	$calendar.= '<td class="calendar-day-head" colspan="3"><a href="report.php?mon='.$month.'&year='.$year.'">'.$months[$month-1].'-'.$year.'</a></td>';
 	$calendar.= '<td class="calendar-day-head" colspan="2">';
-	$calendar.= '<a href="logout.php">Logout</a><br>';
-	$calendar.= '<a href="preferences.php">Preferences</a><br>';
-	if($_SESSION['FAM_PRI_CONTACT']=='Y'){
-		$calendar.= '<a href="sseva.php">Samilani Seva</a></br>';
-	}
-	if(isAllowed($GLOBALS[ROLE_SA])){
-		$calendar.= '<a href="adddevotee.php">Add Devotee</a></br>';
-	}
-	if(isAllowed($GLOBALS[ROLE_UPPROGRAM])){
-		$calendar.= '<a href="fileuploader.html">Upload Program</a></br>';
-	}
 	$calendar.= '</td>';
 	$calendar.= '<td class="calendar-day-head"><a href="?mon='.$nextm.'&year='.$nexty.'">-&gt;</a></td></tr>';
 
