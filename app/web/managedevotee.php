@@ -55,7 +55,7 @@ td.alignRight {
 					and sx.Seva_id=sm.Seva_id
 					and sx.Sammilani_year=YEAR(CURDATE() + INTERVAL 1 MONTH)
 					and d.Sangha_id='".$Sangha_id."' 
-					order by d.Family_id,d.Pref_name,sm.Seva_name";
+					order by sx.Status,d.Family_id,d.Pref_name,sm.Seva_name";
 		
 		$user_results = mysql_query($user_query);
 		if($user_results){
