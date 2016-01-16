@@ -3,10 +3,6 @@
 	include 'db.php';
 	$AmYear = new DateTime('NOW');
 	$AmYear->add(new DateInterval('P1M'));
-	$Seva_cat='Event';
-	if (isset($_REQUEST['Seva_cat'])){
-		$Seva_cat=$_REQUEST['Seva_cat']; 
-	}
 ?>
 <html>
 <head>
@@ -61,16 +57,16 @@ select{
 	<body width="100%">
 		<div style="text-align:center">
 		  <a href="index.php"><img src="/images/orgnz.gif"/></a><br>
-		  <h4><?php echo $Seva_cat; ?> Seva Applicants <?php echo $AmYear->format("Y"); ?></h4>
+		  <h4>Seva Applicants <?php echo $AmYear->format("Y"); ?></h4>
 		<?php
 			if (isset($_SESSION['PID'])) {
-				$report_query="SELECT Seva_name, 
+				$report_query="SELECT Seva_master.Seva_cat,Seva_master.Seva_name, 
 							IFNULL( GROUP_CONCAT( Pref_name SEPARATOR '<br>' ) , '' ) Sevakas, 
 							IFNULL( GROUP_CONCAT( IF( Seba_mukhya = 'Y', Pref_name, NULL ) SEPARATOR '<br>' ) , '' ) Mukhyas
 							FROM Seva_xn  JOIN Devotee ON ( Devotee.Devotee_id = Seva_xn.Devotee_id AND Seva_xn.Sammilani_year = YEAR( CURDATE() + INTERVAL 1 MONTH ) ) 
 							RIGHT OUTER JOIN Seva_master ON (Seva_master.Seva_id = Seva_xn.Seva_id ) 
-							WHERE Seva_master.Seva_cat='".$Seva_cat."'
-							GROUP BY Seva_master.Seva_id";
+							GROUP BY Seva_master.Seva_id 
+							ORDER BY Seva_master.Seva_cat,Seva_master.Seva_id";
 				
 				//echo $user_query."<br>\n";
 				$report_results = mysql_query($report_query);
@@ -78,12 +74,12 @@ select{
 		?>
 		
 					<table class='alignCenter' cellspacing='0' cellpadding='0'>
-					<tr><td><b>Seva Name</b></td><td><b>Mukhyas</b></td><td><b>Sevakas</b></td></tr>
+					<tr><td><b>Seva Cat</b></td><td><b>Seva Name</b></td><td><b>Mukhyas</b></td><td><b>Sevakas</b></td></tr>
 					
 		<?php			
 			while($report_row = mysql_fetch_assoc($report_results)) {
 		?>
-						<tr><td><?php echo $report_row['Seva_name']; ?></td><td><?php echo $report_row['Mukhyas']; ?></td><td><?php echo $report_row['Sevakas']; ?></td></tr>
+						<tr><td><?php echo $report_row['Seva_cat']; ?></td><td><?php echo $report_row['Seva_name']; ?></td><td><?php echo $report_row['Mukhyas']; ?></td><td><?php echo $report_row['Sevakas']; ?></td></tr>
 		
 		<?php						
 					}

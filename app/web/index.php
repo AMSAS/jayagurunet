@@ -139,7 +139,7 @@ if (isset($authUrl)) {
 			?>
 			<a href="adddevotee.php">Add Devotee</a> | 
 			<a href="managedevotee.php">Approve</a> | 
-			<a href="sseva_report.php?Seva_cat=Annual">Report</a> |
+			<a href="sseva_report.php">Report</a> |
 			<a href='sseva_report_upd.php'>Seva Mukhya(s)</a> |
 			<?php }?>			
 			<a href="preferences.php">Preferences</a> |
