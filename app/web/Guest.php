@@ -54,17 +54,11 @@ With divine grace of Shri Shri Thakura, I have been joining in the sangha puja s
 <p>
 Shri Shri Thakuracharanashrita
 </p>
-<p>
-<?php echo $_REQUEST['First_name']; ?> <?php echo $_REQUEST['Last_name']; ?><br>
-Place: USA					             <br>
-Date:<?php echo date("Y-m-d"); ?>  <br>
-</p>          
-
-
-<b>Approved By:</b>
 <?php
+	$SubmitTime = new DateTime('NOW');
+	$ApprovedBy = "";
 		if (isset($_SESSION['PID'])) {
-			$report_query="SELECT sm.Seva_name,d.First_name,d.Last_name FROM Seva_master sm,Seva_xn xn,Devotee d
+			$report_query="SELECT sm.Seva_name,d.First_name,d.Last_name,xn.Entry_time FROM Seva_master sm,Seva_xn xn,Devotee d
 							WHERE sm.Seva_cat='".$Seva_cat."' 
 							and	sm.Seva_id=xn.Seva_id
 							and xn.Status='APPROVED'
@@ -76,10 +70,11 @@ Date:<?php echo date("Y-m-d"); ?>  <br>
 			$report_results = mysql_query($report_query);
 			if($report_results){
 				if($report_row = mysql_fetch_assoc($report_results)) {
-						echo $report_row['First_name']." ".$report_row['Last_name'];
+						$ApprovedBy = $report_row['First_name']." ".$report_row['Last_name'];
 				}else{
-						echo 'Approval Pending';
+						$ApprovedBy = 'Approval Pending';
 				}
+				$SubmitTime=$report_row['Entry_time'];
 			}else{
 		?>
 		  		<a href='index.php'>[Session Expired] Visit Landing Page</a>
@@ -87,6 +82,16 @@ Date:<?php echo date("Y-m-d"); ?>  <br>
 			}
 		}
 		?>
+		
+<p>
+<?php echo $_REQUEST['First_name']; ?> <?php echo $_REQUEST['Last_name']; ?><br>
+Place: USA					             <br>
+Date: <?=$SubmitTime?>  <br>
+</p>          
+
+
+<b>Approved By: <?=$ApprovedBy?></b>
+
 		</div>
 	</body>
 </html>
