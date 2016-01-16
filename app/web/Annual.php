@@ -2,6 +2,8 @@
 	session_start();
 	include 'db.php';
 	$Seva_cat='Event';
+	$AmYear = new DateTime('NOW');
+	$AmYear->add(new DateInterval('P1M'));
 	if (isset($_REQUEST['Seva_cat'])){
 		$Seva_cat=$_REQUEST['Seva_cat']; 
 	}
@@ -48,7 +50,7 @@ text-align:left;
 Dear Sir,
 </p>
 <p>
-With divine grace of Shri Shri Thakura, I am a member of Nilachala Saraswata Sangha with a parichaya patra, I have been regularly worshiping Sri Sri thakura at my residence and also regularly  attending the sangha puja sessions of America Saraswata Sangha. I desire to continue joining the sangha puja sessions and participate in sangha puja pali when my turn comes. I also desire to perform the following seva.<br>
+With divine grace of Shri Shri Thakura, I am a member of Nilachala Saraswata Sangha with a parichaya patra, I have been regularly worshiping Sri Sri thakura at my residence and also regularly  attending the sangha puja sessions of America Saraswata Sangha. I desire to continue joining the sangha puja sessions and participate in sangha puja pali when my turn comes in year  <?=$AmYear->format("Y")?>. I also desire to perform the following seva.<br>
 </p>
 
 <?php
