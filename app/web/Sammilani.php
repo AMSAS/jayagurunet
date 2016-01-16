@@ -1,7 +1,9 @@
 <?php
 	session_start();
 	include 'db.php';
-	$Seva_cat='Event';
+	$AmYear = new DateTime('NOW');
+	$AmYear->add(new DateInterval('P1M'));
+	$Seva_cat='Sammilani';
 	if (isset($_REQUEST['Seva_cat'])){
 		$Seva_cat=$_REQUEST['Seva_cat']; 
 	}
@@ -48,7 +50,11 @@ text-align:left;
 Dear Sir,
 </p>
 <p>
-With divine grace of Shri Shri Thakura, I am a member of Nilachala Saraswata Sangha with a parichaya patra, I have been regularly worshiping Sri Sri thakura at my residence and also regularly  attending the sangha puja sessions of America Saraswata Sangha. I desire to continue joining the sangha puja sessions and participate in sangha puja pali when my turn comes. I also desire to perform the following seva.<br>
+Dear Sir,
+
+On the auspicious occasion of the <?=$AmYear->format("Y")?> annual sammilani of America Saraswata Sangha, I desire to perform the following services.
+
+
 </p>
 
 <?php
@@ -70,8 +76,8 @@ With divine grace of Shri Shri Thakura, I am a member of Nilachala Saraswata San
 			while($report_row = mysql_fetch_assoc($report_results)) {
 		?>
 						<li><?php echo $report_row['Seva_name']; ?> (<?php echo $report_row['xnstatus']; ?>)</li>
-		<?php			
-						$SubmitTime=$report_row['Entry_time'];
+		<?php		
+					$SubmitTime=$report_row['Entry_time'];
 					}
 		?>
 					</ul>
@@ -80,7 +86,7 @@ With divine grace of Shri Shri Thakura, I am a member of Nilachala Saraswata San
 			}
 		?>
 
-<p>I promise that I will try my best to perform these sevas, I will read the assigned books before the sangha puja sessions, and I will practice assigned songs before the session such that the sangha puja sessions goes smoothly.  While performing the seva I will keep my focus on the seva and will not be affected by actions of others.  I also promise that I will inform the president and secretary about any scheduled absence from the puja sessions via email. I understand that my absence from the puja sessions for three consecutive weeks without permission may result in termination of my membership from the sangha. Kindly grant the permission for the sevas described above.
+<p>I will try my best to perform these services such that the Sammilani event goes smoothly.  While performing the services I will keep my focus on the services and will not be affected by actions of others.  Kindly grant the permission for the services described below.
 </p>
 <p>
 Shri Shri Thakuracharanashrita
