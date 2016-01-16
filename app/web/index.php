@@ -150,7 +150,7 @@ if (isset($authUrl)) {
 			echo ("Welcome:");
 			echo ($_SESSION['display_name']);
 			echo ("<br>");
-			echo "We know who you are, Please contact admin@jayaguru.net for access.";
+			echo "We know who you are, Please contact admin@jayaguru.net for access with your Email ID:"+$_SESSION['email'];
 		}
 	}else{
 			echo ("Welcome:");
