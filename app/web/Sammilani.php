@@ -50,11 +50,7 @@ text-align:left;
 Dear Sir,
 </p>
 <p>
-Dear Sir,
-
 On the auspicious occasion of the <?=$AmYear->format("Y")?> annual sammilani of America Saraswata Sangha, I desire to perform the following services.
-
-
 </p>
 
 <?php
