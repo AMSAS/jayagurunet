@@ -3,341 +3,506 @@
 <link rel="stylesheet" type="text/css" href="styles/media-detect.css">
 <meta name="viewport" content="width=480">
 <style class="cp-pen-styles">
-
 .invalid input:invalid {
-    background: #BE4C54;
+	background: #BE4C54;
 }
 
 .invalid input:valid {
-    background: #17D654 ;
+	background: #17D654;
 }
 
 input {
-  display: block;
+	display: block;
 }
 </style>
 
 <style>
 * {
 	font-family: Arial, "Times New Roman", Times, serif;
-	font-size:12px;
+	font-size: 12px;
 }
+
 table {
 	border-collapse: collapse;
 }
-table, td, th {
+
+table,td,th {
 	border: 1px solid black;
 }
+
 .alignCenter {
- margin-left: auto; margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 td.alignRight {
- text-align:right;
+	text-align: right;
 }
 
 input[type="text"] {
-    width: 100px;
+	width: 100px;
 }
+
 input[type="number"] {
-    width: 100px;
+	width: 100px;
 }
-select{
-    width: 100px;
+
+select {
+	width: 100px;
 }
 </style>
 
 </head>
 <body width="100%">
-<div style="text-align:center">
-  <h2><a href="http://jayaguru.net/">America Saraswata Sangha</a></h2>
-  <h4>Parichaya Patra Application 2015</h4>
-<?php
-	session_start();
-	setlocale(LC_MONETARY,"en_US");
-	include 'db.php';
-	if (isset($_SESSION['PID'])) {
-		//var_dump($_SERVER);
-		if(isset($_POST['Parichaya_patra'])){
-			$index=0;
-			foreach( $_POST['Devotee_id'] as $D_id ) {
-				$query="delete from Parichaya_patra where Devotee_id=".$D_id. " and PP_year=".$_POST['PP_year'][$index];
-				//echo $query."<br>\n";
-				$results=mysql_query($query);
-				$index=$index+1;
-			}
+	<div style="text-align: center">
+        <a href="index.php"><img src="/images/orgnz.gif"/></a><br>
+		<?php
+		session_start();
+		setlocale(LC_MONETARY,"en_US");
+		include 'db.php';
 
-			echo "<h4>Download Printable Applications Below</h4>\n";
+		$AmYear = new DateTime('NOW');
+		$AmYear->add(new DateInterval('P1M'));
+		?>
+		<h4>
+			Parichaya Patra Application
+			<?=$AmYear->format("Y")?>
+		</h4>
 
-			$printpage="pcpatraalt.html";
-			/*if (strpos($_SERVER['HTTP_USER_AGENT'],'Windows NT 6.1') !== false) {
-				$printpage="pcpatraweb.htm";
-			}*/
-			$index=0;
-			$totalAmount = 0.00;
-			foreach( $_POST['Devotee_id'] as $D_id ) {
-				$query=insertPPQuery($index);
-				//echo $query."<br>\n";
-				$results=mysql_query($query);
-				if($results){
-					$applicant = mysql_query("select First_name,Last_name from Devotee where Devotee_id=".$D_id);
-					if($applicant){
-						while($one_applicant = mysql_fetch_assoc($applicant)) {
-							if($_POST['Parichaya_patra'][$index]=='100'){
-								echo "<a target='Devotee".$D_id."' href='".$printpage."?First_name=".urlencode($one_applicant['First_name'])."&Last_name=".$one_applicant['Last_name'];
-								echo "&A11=".$_POST['Musti_Bhikhyaa'][$index].".00";
-								echo "&A12=".$_POST['Gruhaasana'][$index].".00";
-								echo "&A13=".$_POST['Janmotsaba'][$index].".00";
-								echo "&A14=".$_POST['Kendra_Unnayana'][$index].".00";
-								echo "&A15=".$_POST['Nirmana'][$index].".00";
-								echo "&A16=".$_POST['Aabaahaka'][$index].".00";
-								echo "&A17=".$_POST['Sammilani_Daily_seba'][$index].".00";
-								echo "&A18=".$_POST['Misc_pranami'][$index].".00";
-								echo "'>".$one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]))."</a><br>";
-							}else{
-								echo $one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]));
+		<?php	
+		if (isset($_SESSION['PID'])) {
+			//var_dump($_SERVER);
+			if(isset($_POST['Parichaya_patra'])){
+				$index=0;
+				foreach( $_POST['Devotee_id'] as $D_id ) {
+					$query="delete from Parichaya_patra where Devotee_id=".$D_id. " and PP_year=".$_POST['PP_year'][$index];
+					//echo $query."<br>\n";
+					$results=mysql_query($query);
+					$index=$index+1;
+				}
+
+				echo "<h4>Download Printable Applications Below</h4>\n";
+
+				$printpage="pcpatraalt.html";
+				/*if (strpos($_SERVER['HTTP_USER_AGENT'],'Windows NT 6.1') !== false) {
+				 $printpage="pcpatraweb.htm";
+				}*/
+				$index=0;
+				$totalAmount = 0.00;
+				foreach( $_POST['Devotee_id'] as $D_id ) {
+					$query=insertPPQuery($index);
+					//echo $query."<br>\n";
+					$results=mysql_query($query);
+					if($results){
+						$applicant = mysql_query("select First_name,Last_name from Devotee where Devotee_id=".$D_id);
+						if($applicant){
+							while($one_applicant = mysql_fetch_assoc($applicant)) {
+								if($_POST['Parichaya_patra'][$index]=='100'){
+									echo "<a target='Devotee".$D_id."' href='".$printpage."?First_name=".urlencode($one_applicant['First_name'])."&Last_name=".$one_applicant['Last_name'];
+									echo "&A11=".$_POST['Musti_Bhikhyaa'][$index].".00";
+									echo "&A12=".$_POST['Gruhaasana'][$index].".00";
+									echo "&A13=".$_POST['Janmotsaba'][$index].".00";
+									echo "&A14=".$_POST['Kendra_Unnayana'][$index].".00";
+									echo "&A15=".$_POST['Nirmana'][$index].".00";
+									echo "&A16=".$_POST['Aabaahaka'][$index].".00";
+									echo "&A17=".$_POST['Sammilani_Daily_seba'][$index].".00";
+									echo "&A18=".$_POST['Misc_pranami'][$index].".00";
+									echo "'>".$one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]))."</a><br>";
+								}else{
+									echo $one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]));
+								}
+								$totalAmount = $totalAmount + $_POST['PP_Total'][$index];
 							}
-							$totalAmount = $totalAmount + $_POST['PP_Total'][$index];
 						}
 					}
+					$index=$index+1;
 				}
-				$index=$index+1;
-			}
 
-			echo "<h4>TOTAL AMOUNT DUE: $".round($totalAmount).".00</h4>";
-			echo "<hr>";
-		}
-		$POPULATE_YEAR="YEAR(CURDATE()) ";
-		if(isset($_GET['autofill'])){
+				echo "<h4>TOTAL AMOUNT DUE: $".round($totalAmount).".00</h4>";
+				echo "<hr>";
+			}
+			$POPULATE_YEAR=$AmYear->format("Y");
+			if(isset($_GET['autofill'])){
 			$POPULATE_YEAR=$_GET['autofill'];
 		}
-		$user_query= "SELECT Devotee.Devotee_id LT_Devotee_id,Gender,First_name,YEAR(CURDATE()) CurrentYear,Value Exch_Rate,Parichaya_patra.* FROM Devotee ";
-		$user_query.= "JOIN Exchange_rate ON Exchange_rate.PP_year=YEAR(CURDATE()) ";
-		$user_query.= " LEFT OUTER JOIN Parichaya_patra ON Devotee.Devotee_id=Parichaya_patra.Devotee_id and Parichaya_patra.PP_year=".$POPULATE_YEAR;
-		$user_query.= " where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=".$_SESSION['PID'].") order by Fam_Pri_contact desc,First_name asc";
+		$user_query= "SELECT Devotee.Devotee_id LT_Devotee_id,Gender,First_name,Value Exch_Rate,Parichaya_patra.* 
+					FROM Devotee JOIN Exchange_rate ON Exchange_rate.PP_year=".$AmYear->format("Y")." 
+					LEFT OUTER JOIN Parichaya_patra ON Devotee.Devotee_id=Parichaya_patra.Devotee_id and Parichaya_patra.PP_year=".$POPULATE_YEAR."
+					WHERE Devotee.Family_id=(select Family_id from Devotee where Devotee_id=".$_SESSION['PID'].") order by Fam_Pri_contact desc,First_name asc";
 		//$user_query.= "where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=1) order by Fam_Pri_contact desc,First_name asc";
 		//echo $user_query;
 		$user_results = mysql_query($user_query);
 		$submit_button='Submit';
 		if($user_results){
-			echo "<table class='alignCenter' cellspacing='0' cellpadding='0'>";
-			echo "<form class='validate-form' onsubmit='javascript:subTotal(event)' action='pcpatra.php' method='post'>\n";
-			echo "<tr><td><b>Name</b></td>";
-			$app_count = 0;
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td>";
-			echo "<input type='hidden' name='Exch_Rate[]' value='" .$user_row['Exch_Rate']. "' disabled/>";
-			echo "<input type='hidden' name='Devotee_id[]' value='" .$user_row['LT_Devotee_id']. "'/>";
-			echo "<input type='hidden' name='PP_year[]' value='" .$user_row['CurrentYear']. "'/>";
-			echo "<b>" .$user_row['First_name']. "</b></td>";
-			$app_count=$app_count+1;
+			?>
+
+		<table class='alignCenter' cellspacing='0' cellpadding='0'>
+			<form class='validate-form' onsubmit='javascript:subTotal(event)'
+				action='pcpatra.php' method='post'>
+				<tr>
+					<td><b>Name</b>
+					</td>
+					<?php
+					$app_count = 0;
+					$Exch_Rate = 0.00;
+					while($user_row = mysql_fetch_assoc($user_results)) {
+			?>
+					<td><input type='hidden' name='Exch_Rate[]'
+						value='<?=($Exch_Rate=$user_row['Exch_Rate'])?>' disabled /> <input
+						type='hidden' name='Devotee_id[]'
+						value='<?=$user_row['LT_Devotee_id']?>' /> <input type='hidden'
+						name='PP_year[]' value='<?=$AmYear->format("Y")?>'/> <b><?=$user_row['First_name']?>
+					</b>
+					</td>
+					<?php
+					$app_count=$app_count+1;
 			}
-			echo "</tr>\n";
+			?>
+				</tr>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Parichaya Patra (&#x20B9 0/100)</td>";
+				<tr>
+					<td>Parichaya Patra (&#x20B9 0/100)</td>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-				echo "<td><input required pattern='0|100' type='text' title='Enter 0 for Kids or 100'  name='Parichaya_patra[]' value='".$user_row['Parichaya_patra']."'></input></td>";
+					<?php
+					mysql_data_seek($user_results, 0);
+					while($user_row = mysql_fetch_assoc($user_results)) {
+			?>
+					<td><input required pattern='0|100' type='text'
+						title='Enter 100 OR 0 if not applying' name='Parichaya_patra[]'
+						value='<?=$user_row['Parichaya_patra']?>'></input>
+					</td>
+
+					<?php
 			}
-			echo "</tr>\n";
+			?>
+				</tr>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Aabaahaka (&#x20B9 126)</td>";
+				<tr>
+					<td>Aabaahaka (&#x20B9 126)</td>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required pattern='0|126' type='text' title='Enter 0 or 126' name='Aabaahaka[]' value='" .$user_row['Aabaahaka']. "'></input></td>";
+					<?php
+					mysql_data_seek($user_results, 0);
+					while($user_row = mysql_fetch_assoc($user_results)) {
+			?>
+					<td><input required pattern='0|126' type='text'
+						title='Enter 0 or 126' name='Aabaahaka[]'
+						value='<?=$user_row['Aabaahaka']?>'></input>
+					</td>
+
+					<?php
 			}
-			echo "</tr>\n";
+			?>
+				</tr>
+				<tr>
+					<td>Sammilani Daily Sebaa (&#x20B9 1101)</td>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Sammilani Daily Sebaa (&#x20B9 1101)</td>";
+					<?php
+					mysql_data_seek($user_results, 0);
+					while($user_row = mysql_fetch_assoc($user_results)) {
+			?>
+					<td><input required pattern='0|1101' type='text'
+						title='Enter 0 or 1101' name='Sammilani_Daily_seba[]'
+						value='<?=$user_row['Sammilani_Daily_seba']?>'></input>
+					</td>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required pattern='0|1101' type='text' title='Enter 0 or 1101' name='Sammilani_Daily_seba[]' value='" .$user_row['Sammilani_Daily_seba']. "'></input></td>";
-			}
-			echo "</tr>\n";
+					<?php } ?>
+				</tr>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Kutira Pali (Maa's) (&#x20B9)</td>";
+				<tr>
+					<td>Kutira Pali (Maa's) (&#x20B9)</td>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-				if($user_row['Gender']=="M"){
-					echo "<td><input type='text' name='Kutira_pali[]' value='0' readonly></input></td>";
+					<?php
+					mysql_data_seek($user_results, 0);
+					while($user_row = mysql_fetch_assoc($user_results)) {
+				if($user_row['Gender']=="M"){ ?>
+					<td><input type='text' name='Kutira_pali[]' value='0' readonly></input>
+					</td>
+					<?php
 				}else{
-					echo "<td><select name='Kutira_pali[]'>";
-					if($user_row['Kutira_pali']=="0"){
-						echo "<option value='0' selected>NA</option>";
-					}else{
-						echo "<option value='0'>NA</option>";
-					}
-					if($user_row['Kutira_pali']=="151"){
-						echo "<option value='151' selected>151 Weekly Recurring </option>";
-					}else{
-						echo "<option value='151'>151 Weekly Recurring </option>";
-					}
-					if($user_row['Kutira_pali']=="252"){
-						echo "<option value='252' selected>252 Weekly New </option>";
-					}else{
-						echo "<option value='252'>252 Weekly New </option>";
-					}
-					if($user_row['Kutira_pali']=="501"){
-						echo "<option value='501' selected>501 Monthly Recurring</option>";
-					}else{
-						echo "<option value='501'>501 Monthly Recurring </option>";
-					}
-					if($user_row['Kutira_pali']=="602"){
-						echo "<option value='602' selected>602 Monthly New</option>";
-					}else{
-						echo "<option value='602'>602 Monthly New</option>";
-					}
-					echo "</select></td>";
+				?>
+					<td><select name='Kutira_pali[]'>
+							<option value='0'
+							<?=$user_row['Kutira_pali']=="0"?'selected':''?>>NA</option>
+							<option value='151'
+							<?=$user_row['Kutira_pali']=="151"?'selected':''?>>151 Weekly
+								Recurring</option>
+							<option value='252'
+							<?=$user_row['Kutira_pali']=="252"?'selected':''?>>252 Weekly
+								New</option>
+							<option value='501'
+							<?=$user_row['Kutira_pali']=="501"?'selected':''?>>501 Monthly
+								Recurring</option>
+							<option value='602'
+							<?=$user_row['Kutira_pali']=="602"?'selected':''?>>602 Monthly
+								New</option>
+					</select>
+					</td>
+					<?php				
 				}
 			}
-			echo "</tr>\n";
+			?>
+				</tr>
+				<tr>
+					<td>Sangha Sebaka ($ 20)</td>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Sangha Sebaka ($ 20)</td>";
+					<?php
+					mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+					<td><input required pattern='0|20' type='text'
+						title='Enter 0 or 20' name='Sangha_sebaka[]'
+						value='<?=$user_row['Sangha_sebaka']?>'></input>
+					</td>
+					<?php }
+					?>
+				</tr>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required pattern='0|20' type='text'  title='Enter 0 or 20' name='Sangha_sebaka[]' value='" .$user_row['Sangha_sebaka']. "'></input></td>";
+				<tr>
+					<td>Musti Bhikhyaa ($ 25)</td>
+
+					<?php
+					mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+					<td><input required pattern='0|25' type='text'
+						title='Enter 0 or 25' name='Musti_Bhikhyaa[]'
+						value='<?=$user_row['Musti_Bhikhyaa']?>'></input>
+					</td>
+
+					<?php }
+					?>
+				</tr>
+
+				<tr>
+					<td>Gruhaasana ($)</td>
+
+					<?php
+					mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+					<td><input required min='0' max='9999' type='number'
+						name='Gruhaasana[]' value='<?=$user_row['Gruhaasana']?>'></input>
+					</td>
+					<?php }
+					?>
+				</tr>
+
+				<tr>
+					<td>Janmotsaba ($)</td>
+
+					<?php
+					mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+					<td><input required min='0' max='9999' type='number'
+						name='Janmotsaba[]' value='<?=$user_row['Janmotsaba']?>'></input>
+					</td>
+					<?php }
+					?>
+				</tr>
+
+				<tr>
+					<td>Kendra Unnayana ($)</td>
+
+					<?php
+					mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+					<td><input required min='0' max='9999' type='number'
+						name='Kendra_Unnayana[]' value='<?=$user_row['Kendra_Unnayana']?>'></input>
+					</td>
+					<?php }
+					?>
+				</tr>
+
+				<tr>
+					<td>NirmaaNa ($)</td>
+
+					<?php
+					mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) {?>
+					<td><input required min='0' max='9999' type='number'
+						name='Nirmana[]' value='<?=$user_row['Nirmana']?>'></input>
+					</td>
+
+					<?php }
+					?>
+				</tr>
+				<tr>
+					<td>Sammilani Saahaajya ($)</td>
+
+					<?php
+					mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+					<td><input required min='0' max='9999' type='number'
+						name='Sammilani_sahajya[]'
+						value='<?=$user_row['Sammilani_sahajya']?>'></input>
+					</td>
+
+					<?php }
+					?>
+				</tr>
+
+				<tr>
+					<td>Naaraayana Sebaa ($)</td>
+
+					<?php
+					mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+					<td><input required min='0' max='9999' type='number'
+						name='Narayana_sebaa[]' value='<?=$user_row['Narayana_sebaa']?>'></input>
+					</td>
+
+					<?php }
+					?>
+				</tr>
+
+				<tr>
+					<td>Webcast ($)</td>
+
+					<?php
+					mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+					<td><input required min='0' max='9999' type='number'
+						name='Webcast[]' value='<?=$user_row['Webcast']?>'></input>
+					</td>
+
+					<?php }
+					?>
+				</tr>
+
+				<tr>
+					<td>Nitya Pujaa ($)</td>
+
+					<?php
+					mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+					<td><input required min='0' max='9999' type='number'
+						name='Nitya_Puja[]' value='<?=$user_row['Nitya_Puja']?>'></input>
+					</td>
+
+					<?php }
+					?>
+				</tr>
+
+				<tr>
+					<td>Bidyaa Nidhi ($)</td>
+
+					<?php
+					mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+					<td><input required min='0' max='9999' type='number'
+						name='Bidhyaa_nidhi[]' value='<?=$user_row['Bidhyaa_nidhi']?>'></input>
+					</td>
+
+					<?php
 			}
-			echo "</tr>\n";
+			?>
+				</tr>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Musti Bhikhyaa ($ 25)</td>";
+				<tr>
+					<td>Swaasthya Sebaa ($)</td>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required pattern='0|25' type='text'  title='Enter 0 or 25' name='Musti_Bhikhyaa[]' value='" .$user_row['Musti_Bhikhyaa']. "'></input></td>";
-			}
-			echo "</tr>\n";
+					<?php
+					mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+					<td><input required min='0' max='9999' type='number'
+						name='Swaasthya_seba[]' value='<?=$user_row['Swaasthya_seba']?>'></input>
+					</td>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Gruhaasana ($)</td>";
+					<?php }
+					?>
+				</tr>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required min='0' max='9999' type='number' name='Gruhaasana[]' value='" .$user_row['Gruhaasana']. "'></input></td>";
-			}
-			echo "</tr>\n";
+			<tr>
+				<td>Sammilani Baalya ($)</td>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Janmotsaba ($)</td>";
+				<?php
+				mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+				<td><input required min='0' max='9999' type='number' maxlength='4'
+					name='Sammilani_Baalya[]'
+					value='<?=$user_row['Sammilani_Baalya']?>'></input>
+				</td>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required min='0' max='9999' type='number' name='Janmotsaba[]' value='" .$user_row['Janmotsaba']. "'></input></td>";
-			}
-			echo "</tr>\n";
+				<?php }
+				?>
+			</tr>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Kendra Unnayana ($)</td>";
+			<tr>
+				<td>NSS Centenary ($)</td>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required  min='0' max='9999' type='number' name='Kendra_Unnayana[]' value='" .$user_row['Kendra_Unnayana']. "'></input></td>";
-			}
-			echo "</tr>\n";
+				<?php
+				mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+				<td><input required min='0' max='9999' type='number' maxlength='4'
+					name='Misc_Fund1[]' value='<?=$user_row['Misc_Fund1']?>'></input>
+				</td>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>NirmaaNa ($)</td>";
+				<?php }
+				?>
+			</tr>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required  min='0' max='9999' type='number' name='Nirmana[]' value='" .$user_row['Nirmana']. "'></input></td>";
-			}
-			echo "</tr>\n";
+			<tr>
+				<td>Nirbikalpa Devl ($)</td>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Sammilani Saahaajya ($)</td>";
+				<?php
+				mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+				<td><input required min='0' max='9999' type='number' maxlength='4'
+					name='Misc_Fund2[]' value='<?=$user_row['Misc_Fund2']?>'></input>
+				</td>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required  min='0' max='9999' type='number' name='Sammilani_sahajya[]' value='" .$user_row['Sammilani_sahajya']. "'></input></td>";
-			}
-			echo "</tr>\n";
+				<?php }
+				?>
+			</tr>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Naaraayana Sebaa ($)</td>";
+			<tr>
+				<td>Misc pranaami ($)</td>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required  min='0' max='9999' type='number' name='Narayana_sebaa[]' value='" .$user_row['Narayana_sebaa']. "'></input></td>";
-			}
-			echo "</tr>\n";
+				<?php
+				mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+				<td><input required min='0' max='9999' type='number' maxlength='4'
+					name='Misc_pranami[]' value='<?=$user_row['Misc_pranami']?>'></input>
+				</td>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Webcast ($)</td>";
+				<?php }
+				?>
+			</tr>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required  min='0' max='9999' type='number' name='Webcast[]' value='" .$user_row['Webcast']. "'></input></td>";
-			}
-			echo "</tr>\n";
+			<tr>
+				<td>PP Total ($)</td>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Nitya Pujaa ($)</td>";
+				<?php
+				mysql_data_seek($user_results, 0);
+			while($user_row = mysql_fetch_assoc($user_results)) { ?>
+				<td><input type='hidden' name='Round_up[]' value='0' /><input
+					required min='0' max='9999' type='number' maxlength='4'
+					name='PP_Total[]' value='<?=$user_row['PP_Total']?>' readonly></input>
+				</td>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required  min='0' max='9999' type='number' name='Nitya_Puja[]' value='" .$user_row['Nitya_Puja']. "'></input></td>";
-			}
-			echo "</tr>\n";
+				<?php }
+				?>
+			</tr>
 
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Bidyaa Nidhi ($)</td>";
+			<tr>
+				<td colspan='1'><div
+						title='Prepopulate previous year(s) information'>
+						<a href='pcpatra.php?autofill=<?=$AmYear->format("Y")-2?>'><?=$AmYear->format("Y")-2?></a> &nbsp;
+						<a href='pcpatra.php?autofill=<?=$AmYear->format("Y")-1?>'><?=$AmYear->format("Y")-1?></a> &nbsp;
+						<?php if(isset($_GET['autofill'])){ ?>
+						<a href='pcpatra.php' title='Prepopulate with current year information(if any saved earlier)'>Current</a>
+						<?php } ?> 
+						</div>
+				</td>
+				<td colspan='<?=$app_count?>'>					
+					 	<input type='submit' value='Save & Print (1 USD = <?= $Exch_Rate ?> INR)'></input>
+				</td>
+			<tr>
+			
+			
+			</form>
 
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required min='0' max='9999' type='number' name='Bidhyaa_nidhi[]' value='" .$user_row['Bidhyaa_nidhi']. "'></input></td>";
-			}
-			echo "</tr>\n";
-
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Swaasthya Sebaa ($)</td>";
-
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required min='0' max='9999' type='number' name='Swaasthya_seba[]' value='" .$user_row['Swaasthya_seba']. "'></input></td>";
-			}
-			echo "</tr>\n";
-
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Sammilani Baalya ($)</td>";
-
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required min='0' max='9999' type='number' maxlength='4' name='Sammilani_Baalya[]' value='" .$user_row['Sammilani_Baalya']. "'></input></td>";
-			}
-			echo "</tr>\n";
-
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>NSS Centenary ($)</td>";
-
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required min='0' max='9999' type='number' maxlength='4' name='Misc_Fund1[]' value='" .$user_row['Misc_Fund1']. "'></input></td>";
-			}
-			echo "</tr>\n";
-
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Nirbikalpa Devl ($)</td>";
-
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required min='0' max='9999' type='number' maxlength='4' name='Misc_Fund2[]' value='" .$user_row['Misc_Fund2']. "'></input></td>";
-			}
-			echo "</tr>\n";
-
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>Misc pranaami ($)</td>";
-
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input required min='0' max='9999' type='number' maxlength='4' name='Misc_pranami[]' value='" .$user_row['Misc_pranami']. "'></input></td>";
-			}
-			echo "</tr>\n";
-
-			mysql_data_seek($user_results, 0);
-			echo "<tr><td>PP Total ($)</td>";
-
-			while($user_row = mysql_fetch_assoc($user_results)) {
-			echo "<td><input type='hidden' name='Round_up[]' value='0'/><input required min='0' max='9999' type='number' maxlength='4' name='PP_Total[]' value='" .$user_row['PP_Total']. "' readonly></input></td>";
-			}
-			echo "</tr>\n";
-
-			echo "<tr><td colspan='1'><div title='Prepopulate with previous year information'><a href='pcpatra.php?autofill=2014'>2014</a> <a href='pcpatra.php'>Current</a></div></td><td colspan='".app_count."'><input type='submit' value='Save & Print'></input></td><tr>\n";
-			echo "</form>\n";
-
-			echo "</table>";
+		</table>
+		<?php
 		}
-	}else{
+		}else{
   		echo "<a href='index.php'>[Session Expired] Visit Landing Page</a>";
 	}
 
@@ -352,10 +517,11 @@ select{
 		$insertQuery = "insert into Parichaya_patra(Audit_Time,".implode(', ',$keys).") values (NOW(),".implode(', ',$values).")";
 		return $insertQuery;
 	}
-?>
-</div>
-<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
-<script>
+	?>
+	</div>
+	<script
+		src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+	<script>
 function hasHtml5Validation () {
   return typeof document.createElement('input').checkValidity === 'function';
 }
@@ -385,7 +551,7 @@ function subTotal(myEvent){
 }
 function processMultiple(myEl,exchRates){
 	var famTotal=0.0;
-	for(index=0;index<exchRates.length;index++){
+	for(var index=0;index<exchRates.length;index++){
 		var pmTot = 0.0;
 		var exchRate = exchRates[index].value;
 		pmTot=pmTot+parseInt(myEl.namedItem("Parichaya_patra[]")[index].value)/exchRate;
@@ -413,7 +579,7 @@ function processMultiple(myEl,exchRates){
 		famTotal = famTotal+ pmTot;
 	}
 	var leftOver = Math.ceil(famTotal)-famTotal;
-	myEl.namedItem("Round_up[]")[0].value = leftOver
+	myEl.namedItem("Round_up[]")[0].value = leftOver;
 	myEl.namedItem("PP_Total[]")[0].value=parseFloat(myEl.namedItem("PP_Total[]")[0].value)+leftOver;
 }
 

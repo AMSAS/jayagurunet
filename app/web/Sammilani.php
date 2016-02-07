@@ -50,7 +50,7 @@ text-align:left;
 Dear Sir,
 </p>
 <p>
-On the auspicious occasion of the <?=$AmYear->format("Y")?> annual sammilani of America Saraswata Sangha, I desire to perform the following services.
+On the auspicious occasion of the <?=$AmYear->format("Y")?> annual sammilani of America Saraswata Sangha, I desire to perform the following seva.
 </p>
 
 <?php
@@ -82,7 +82,8 @@ On the auspicious occasion of the <?=$AmYear->format("Y")?> annual sammilani of 
 			}
 		?>
 
-<p>I will try my best to perform these services such that the Sammilani event goes smoothly.  While performing the services I will keep my focus on the services and will not be affected by actions of others.  Kindly grant the permission for the services described below.
+<p>I will try my best to perform these sevas such that the Sammilani event goes smoothly.  While performing the sevas I will stay focused
+ and will try not to get affected by actions of others.  Kindly grant the permission for the sevas described above.
 </p>
 <p>
 Shri Shri Thakuracharanashrita
