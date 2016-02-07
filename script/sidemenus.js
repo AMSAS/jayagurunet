@@ -246,7 +246,7 @@ function getLink(text) {
 }
 
 function getsouv(path) {
-  var styr = 2002, enyr = 2014;
+  var styr = 2002, enyr = 2015;
   // document.write('<SELECT NAME="choice" onchange="window.location.href=this.options[this.selectedIndex].value;">');
   document.write('<SELECT NAME="madhuri" >');
   document.write('<OPTION SELECTED VALUE="#">Select year');
@@ -310,7 +310,7 @@ var menuLinks=['',
         'events',
 			'events/sarbabhouma_sammilani',
 			'events/pradeshika_sammilani',
-			'events/america_bhakta_sammilani_2014',
+			'events/america_bhakta_sammilani',
 			'members/special_sanghapuja',
         'members',
            'members/sangha_puja',
@@ -390,8 +390,8 @@ function samiYears() {
 
   document.write('<FORM METHOD="POST" onReset="history.go(0)">Select year of Sammilani ');
   document.write('<SELECT NAME="syear" onchange="showSammilani(this.value);">');
-  //document.write('<OPTION SELECTED VALUE="##">Year');
-  for (var i=2014; i>2001; i--) {
+  document.write('<OPTION  VALUE="current">current');
+  for (var i=2015; i>2001; i--) {
     if (i != samyear)
       document.write('<OPTION  VALUE="'+i+'">'+i);
   }
@@ -401,6 +401,8 @@ function samiYears() {
 }
 
 function showSammilani(samyear) {
-//alert(samyear);
-window.location.href = linkHome+'events/america_bhakta_sammilani_'+samyear;
+	if(samyear=='current')
+		window.location.href = linkHome+'events/america_bhakta_sammilani';
+	else
+		window.location.href = linkHome+'events/america_bhakta_sammilani_'+samyear;
 }
