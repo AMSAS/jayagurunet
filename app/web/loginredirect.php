@@ -1,13 +1,11 @@
 <?php
 include_once "templates/base.php";
 session_start();
-//Save the URI to redirect to post login
-if(!isset($_SESSION['redirect_uri'])){
-	$_SESSION['redirect_uri'] = "http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
-}
+
 include 'db.php';
 
 if(isset($_POST['email']) && isset($_POST['password'])){
+	$_SESSION['amsas_uri'] = $_REQUEST['state'];
 	$select_query = "select * from Devotee where EmailId='" . $_POST['email'] . "' and Share_security='". $_POST['password']."'";
 	$user_results = mysql_query($select_query);
 	if($user_results){
@@ -35,10 +33,10 @@ if (!isset($_SESSION['email'])) {
 	$client->setScopes("openid email profile");
 
 
-
 	if (isset($_GET['code'])) {
 	  $client->authenticate($_GET['code']);
 	  $_SESSION['access_token'] = $client->getAccessToken();
+	  $_SESSION['amsas_uri'] = $_REQUEST['state'];
 	  $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
 	  header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 	}
@@ -46,6 +44,7 @@ if (!isset($_SESSION['email'])) {
 	if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 	  $client->setAccessToken($_SESSION['access_token']);
 	} else {
+	  $client->setState("http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]);
 	  $authUrl = $client->createAuthUrl();
 	}
 
@@ -91,7 +90,7 @@ if (isset($authUrl)) {
 		  <tr><td colspan='2'>Login with your <a href='changepassword.php'>jayaguru.net account</a></td></tr>
 		  <tr><td>User Id:</td><td><input size='50' name='email' type='email'/></td></tr>
 		  <tr><td>Password:</td><td><input size='50' name='password' type='password'/></td></tr>
-		  <tr><td colspan='2' align='right'><input value='Submit' type='Submit'/></td></tr>
+		  <tr><td colspan='2' align='right'><input size='50' name='state' value='http://<?=$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI] ?>' type='hidden'/><input value='Submit' type='Submit'/></td></tr>
 	  </form>
   </table>  
 </div>
@@ -112,9 +111,8 @@ if (isset($authUrl)) {
 			}
 		}
 		if($user_exists){
-			$temp_uri=$_SESSION['redirect_uri'];
-			unset($_SESSION['redirect_uri']);
-			header("Location: ".$temp_uri);
+			//echo ($_SESSION['redirect_uri']);
+			header("Location: ".$_SESSION['amsas_uri']);
 		}else{
 			echo ("Welcome:");
 			echo ($_SESSION['display_name']);
