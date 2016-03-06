@@ -502,8 +502,8 @@ select {
 		</table>
 		<?php
 		}
-		}else{
-  		echo "<a href='index.php'>[Session Expired] Visit Landing Page</a>";
+		}else{  		
+			include 'loginredirect.php';
 	}
 
 	function insertPPQuery($index){
