@@ -24,7 +24,7 @@ if (!isset($_SESSION['email'])) {
 
 	$client_id = '897609852685-u4ch2pnjnt3bnpuhas42canr1svclafc.apps.googleusercontent.com';
 	$client_secret = 'GJHc08_u05oQR3jLqbdOdDM4';
-	$redirect_uri = 'http://jayaguru.net/app/web/loginredirect.php';
+	$redirect_uri = 'http://'.$_SERVER['HTTP_HOST'].'/app/web/loginredirect.php';
 
 	$client = new Google_Client();
 	$client->setClientId($client_id);
