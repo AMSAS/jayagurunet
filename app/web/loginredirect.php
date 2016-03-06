@@ -86,7 +86,7 @@ if (isset($authUrl)) {
   <br>
   <br>
   <table class='calendar'>
-	  <form method='POST'>
+	  <form action='loginredirect.php' method='POST'>
 		  <tr><td colspan='2'>Login with your <a href='changepassword.php'>jayaguru.net account</a></td></tr>
 		  <tr><td>User Id:</td><td><input size='50' name='email' type='email'/></td></tr>
 		  <tr><td>Password:</td><td><input size='50' name='password' type='password'/></td></tr>
@@ -111,7 +111,6 @@ if (isset($authUrl)) {
 			}
 		}
 		if($user_exists){
-			//echo ($_SESSION['redirect_uri']);
 			header("Location: ".$_SESSION['amsas_uri']);
 		}else{
 			echo ("Welcome:");

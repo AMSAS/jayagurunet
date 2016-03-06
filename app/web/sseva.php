@@ -181,7 +181,7 @@ select{
 					echo "</table>";
 				}
 			}else{
-		  		echo "<a href='index.php'>[Session Expired] Visit Landing Page</a>";
+		  		include 'loginredirect.php';
 			}
 		?>
 		</div>
