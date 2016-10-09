@@ -41,15 +41,15 @@ if (isset($_SESSION['PID'])) {
 			}?>
 			<a href="sseva.php?Seva_cat=Guest&PP_member=N">Guest</a> |
 			<a href="sseva.php?Seva_cat=Annual&PP_member=Y">Member</a> |
-			<a href="sseva.php?Seva_cat=Sammilani&PP_member=YN">Sammilani</a> |		
+			<a href="sseva.php?Seva_cat=Sammilani&PP_member=YN">Sammilani</a> |	
+			<a href="pcpatra.php">Parichaya Patra</a> |		
 			<?php
 			if(isAllowed($GLOBALS[ROLE_UPPROGRAM])){
 			?>
 			<a href="fileuploader.html">Upload Program</a> |
 			<?php }
 			if(isAllowed($GLOBALS[ROLE_SA])){
-			?>
-			<a href="pcpatra.php">Parichaya Patra</a> |		
+			?>	
 			<a href="adddevotee.php">Add Devotee</a> | 
 			<a href="managedevotee.php">Approve</a> | 
 			<a href="sseva_report.php">Report</a> |

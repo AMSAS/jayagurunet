@@ -49,14 +49,14 @@ include '../header.php';
 
 <table border="0" width="1004" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
 
-  
-  
+
+
   <tr>
     <td align="left" valign="middle" width="2" background="../images/pgvl.gif">
     </td>
 
     <td width="275" height="25" valign="top" class="traces">
-		 <script type="text/javascript" src="../script/MPBackLinks.js"></script> 
+		 <script type="text/javascript" src="../script/MPBackLinks.js"></script>
 
     </td>
     <td width="725" valign="top" rowspan="3" >
@@ -84,7 +84,7 @@ include '../header.php';
 		  </td>
 		</tr>
 	    <tr>
-		  <td width="100%" valign="top" class="bodytext">		
+		  <td width="100%" valign="top" class="bodytext">
 
 		  <table border="0" cellspacing="0" cellpadding="0" align="center" width="100%" class="bodytext">
 		  <tr>
@@ -113,7 +113,7 @@ include '../header.php';
 			  closedir($dir_list);
 			  }
 			  else echo("invalid directory  ".$root_dir.$puja_dir);
-			  
+
 			  $prog_array = array_combine($puja_dates,$puja_files);
 			  krsort($prog_array,SORT_NUMERIC);
 			  $uniq_years = array_unique($puja_years);
@@ -204,18 +204,12 @@ include '../header.php';
 			  </FORM>
 			</td>
 		  </tr>
-		  <tr>
-		    <td width="100%" height="20" valign="top" style="padding-left:45px;" colspan="2" >
-			<a href="https://docs.google.com/spreadsheet/ccc?key=0AmUoUlSi_UXgdDBpRVdma2tWMWRMYTFYbjV4cWxidWc#gid=0">
-Sangha Puja Attendance</a>
-			</td>
-		  </tr>
 		  </table>
 
 		  </td>
 		</tr>
 		<tr>
-		  <td width="100%" valign="top" class="tabtext">		
+		  <td width="100%" valign="top" class="tabtext">
 		   <table border="0" cellspacing="0" cellpadding="0" align="center" width="100%" class="tabtext">
 		    <tr valign="top" >
 			<td width="350" >
@@ -234,7 +228,7 @@ Sangha Puja Attendance</a>
 		   </table>
 		  </td>
 		</tr>
-		
+
 	  </table>
 	  <!-- Body content ends -->
       </td>
@@ -245,14 +239,14 @@ Sangha Puja Attendance</a>
   </tr>
 
 
-  
+
   <tr>
     <td align="left" valign="middle" width="2" background="../images/pgvl.gif">
     </td>
 
 	   <td width="275" height="580" valign="top" bgcolor="#ffffff" >
-<!--  Side Menu options start -->	   
-		   
+<!--  Side Menu options start -->
+
 <div class="sidemenu" >
   <script type="text/javascript" >runAccordion(5);</script> <!-- replace this index with folder index -->
 <div id="AccordionContainer" class="AccordionContainer">
@@ -261,7 +255,7 @@ Sangha Puja Attendance</a>
 </div>
 </div>
 
-<!--  Side Menu options end -->	   
+<!--  Side Menu options end -->
       </td>
 
 
@@ -270,7 +264,7 @@ Sangha Puja Attendance</a>
   </tr>
 
 
-  
+
   <tr>
     <td align="left" valign="middle" width="2" background="../images/pgvl.gif">
     </td>
@@ -292,9 +286,9 @@ Sangha Puja Attendance</a>
     </td>
 
     <td align="left" valign="middle" width="2" background="../images/pgvr.gif">
-    </td> 
+    </td>
 	</tr>
-  
+
 </table>
 
 <!-- bottom row table -->

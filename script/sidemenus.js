@@ -246,7 +246,7 @@ function getLink(text) {
 }
 
 function getsouv(path) {
-  var styr = 2002, enyr = 2015;
+  var styr = 2002, enyr = new Date().getFullYear();
   // document.write('<SELECT NAME="choice" onchange="window.location.href=this.options[this.selectedIndex].value;">');
   document.write('<SELECT NAME="madhuri" >');
   document.write('<OPTION SELECTED VALUE="#">Select year');
