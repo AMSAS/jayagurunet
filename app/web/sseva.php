@@ -5,7 +5,7 @@
 	$AmYear->add(new DateInterval('P1M'));
 	$Seva_cat='Event';
 	if (isset($_REQUEST['Seva_cat'])){
-		$Seva_cat=$_REQUEST['Seva_cat']; 
+		$Seva_cat=$_REQUEST['Seva_cat'];
 	}
 	$PP_member='YN';
 	if (isset($_REQUEST['PP_member'])){
@@ -15,6 +15,9 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="styles/media-detect.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=480">
 <style class="cp-pen-styles">
 
@@ -75,48 +78,56 @@ select{
 		<div style="text-align:center">
 		  <a href="index.php"><img src="/images/orgnz.gif"/></a><br>
 		  <h4><?php echo $Seva_cat; ?> Seva Application <?php echo $AmYear->format("Y"); ?></h4>
-		<?php
+		  <?php 
 			if (isset($_SESSION['PID'])) {
-				if($_SERVER['REQUEST_METHOD']=='POST'){					
+			if($Seva_cat=='Annual'){?>
+		  	<div class="container">
+			  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Choose Pali Week(s)</button>
+			  <div id="demo" class="collapse">
+			    <iframe src="https://docs.google.com/spreadsheets/d/1qyZ0MTck_8zbT6qdSJ3DNdScE6ac_ecZoQIrA9jT1Ug/edit?usp=sharing&ui=2&chrome=false&rm=demo&range=A1:C53#gid=0" style="border-width:0" width="500" height="500" frameborder="0" scrolling="no"></iframe>
+			  </div>
+			</div>
+		  <?php }
+				if($_SERVER['REQUEST_METHOD']=='POST'){
 					//Update existing records
-					$query="update Seva_xn set transtate=0 where Sammilani_year=YEAR(CURDATE() + INTERVAL 1 MONTH) 
+					$query="update Seva_xn set transtate=0 where Sammilani_year=YEAR(CURDATE() + INTERVAL 1 MONTH)
 							and Seva_id in (select Seva_id from Seva_master where Seva_cat='".$Seva_cat."')
-							and Devotee_id in (select fm.Devotee_id from Devotee as fm,Devotee as ind 
+							and Devotee_id in (select fm.Devotee_id from Devotee as fm,Devotee as ind
 							where fm.Family_id=ind.Family_id and locate(fm.PP_member,'".$PP_member."')<>0 and ind.Devotee_id=".$_SESSION['PID'].")";
 					//echo $query."<br>\n";
 					$results=mysql_query($query);
-					
+
 					foreach( $_POST['Seva'] as $D_id ) {
 						$position = strpos($D_id,"_");
 						$Seva_id = substr($D_id,0,$position);
 						$Devotee_id = substr($D_id,$position+1);
 						$query="insert into Seva_xn(Sammilani_year,Seva_id,Devotee_id,transtate) values(YEAR(CURDATE() + INTERVAL 1 MONTH),".$Seva_id.",".$Devotee_id.",1)";
 						//echo $query."<br>\n";
-						$results=mysql_query($query);						
+						$results=mysql_query($query);
 						if(!$results){
 							$query="update Seva_xn set transtate=1 where Sammilani_year=YEAR(CURDATE() + INTERVAL 1 MONTH)and Seva_id=".$Seva_id." and Devotee_id=".$Devotee_id;
 							//echo $query."<br>\n";
 							$results=mysql_query($query);
 						}
 					}
-					
+
 
 					//Delete records where applicant has unapplied for the Seva(previously applied)
-					$query="delete from Seva_xn where transtate=0 
-							and Sammilani_year=YEAR(CURDATE() + INTERVAL 1 MONTH) 
+					$query="delete from Seva_xn where transtate=0
+							and Sammilani_year=YEAR(CURDATE() + INTERVAL 1 MONTH)
 							and Seva_id in (select Seva_id from Seva_master where Seva_cat='".$Seva_cat."')
-							and Devotee_id in (select fm.Devotee_id from Devotee as fm,Devotee as ind 
+							and Devotee_id in (select fm.Devotee_id from Devotee as fm,Devotee as ind
 							where fm.Family_id=ind.Family_id and locate(fm.PP_member,'".$PP_member."')<>0 and ind.Devotee_id=".$_SESSION['PID'].")";
 					//echo $query."<br>\n";
 					$results=mysql_query($query);
-				}	
-					
-					
-					
-				$member_query="select fm.* from Devotee as fm,Devotee as ind 
-								where fm.Family_id=ind.Family_id and locate(fm.PP_member,'".$PP_member."')<>0 
-								and ind.Devotee_id=".$_SESSION['PID']." and 
-								exists(select 1 from Seva_xn as xn,Seva_master as sm where sm.Seva_id=xn.Seva_id and sm.Seva_cat='".$Seva_cat."' 
+				}
+
+
+
+				$member_query="select fm.* from Devotee as fm,Devotee as ind
+								where fm.Family_id=ind.Family_id and locate(fm.PP_member,'".$PP_member."')<>0
+								and ind.Devotee_id=".$_SESSION['PID']." and
+								exists(select 1 from Seva_xn as xn,Seva_master as sm where sm.Seva_id=xn.Seva_id and sm.Seva_cat='".$Seva_cat."'
 								and fm.Devotee_id=xn.Devotee_id and xn.Sammilani_year=YEAR(CURDATE() + INTERVAL 1 MONTH))";
 
 				//echo $member_query."<br>\n";
@@ -128,16 +139,16 @@ select{
 				}
 				$logged_in_id = $_SESSION['PID'];
 				//$logged_in_id = 1;
-				$user_query= "select fm.Devotee_id,fm.Pref_name,sm.*,xn.Devotee_id xn_devotee,xn.Status xn_status FROM Seva_master as sm 
-							join Devotee as fm 
-							join Devotee as ind 
-							left outer join Seva_xn as xn on (sm.Seva_id=xn.Seva_id and xn.Devotee_id=fm.Devotee_id and xn.Sammilani_year=YEAR(CURDATE() + INTERVAL 1 MONTH)) 
-							where sm.Seva_cat='".$Seva_cat."' 
-							and fm.Family_id=ind.Family_id and locate(fm.PP_member,'".$PP_member."')<>0 and ind.Devotee_id=".$logged_in_id." 
+				$user_query= "select fm.Devotee_id,fm.Pref_name,sm.*,xn.Devotee_id xn_devotee,xn.Status xn_status FROM Seva_master as sm
+							join Devotee as fm
+							join Devotee as ind
+							left outer join Seva_xn as xn on (sm.Seva_id=xn.Seva_id and xn.Devotee_id=fm.Devotee_id and xn.Sammilani_year=YEAR(CURDATE() + INTERVAL 1 MONTH))
+							where sm.Seva_cat='".$Seva_cat."'
+							and fm.Family_id=ind.Family_id and locate(fm.PP_member,'".$PP_member."')<>0 and ind.Devotee_id=".$logged_in_id."
 							order by sm.Seva_id,fm.Devotee_id ";
-		
+
 				//echo $user_query."<br>\n";
-				
+
 				$user_results = mysql_query($user_query);
 				$submit_button='Submit';
 				$app_count = 0;
@@ -157,7 +168,7 @@ select{
 						break;
 					}
 					echo "</tr>";
-					
+
 					mysql_data_seek($user_results, 0);
 					$prev_seva_id = -1;
 					while($user_row = mysql_fetch_assoc($user_results)) {
@@ -168,7 +179,7 @@ select{
 						}
 						$xn_devotee = $user_row['xn_devotee'];
 						$xn_readonly = $user_row['Seva_id']==23?'return false':'';
-						if(isset($xn_devotee)||$user_row['Seva_id']==23){						
+						if(isset($xn_devotee)||$user_row['Seva_id']==23){
 							echo "\n<td onclick='".$xn_readonly."' class='".$user_row['xn_status']."'><input type='checkbox' name='Seva"."[]' value='".$user_row['Seva_id']."_".$user_row['Devotee_id']."' checked></td>";
 						}else{
 							echo "\n<td><input type='checkbox' name='Seva"."[]' value='".$user_row['Seva_id']."_".$user_row['Devotee_id']."'></td>";

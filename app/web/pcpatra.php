@@ -1,6 +1,9 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="styles/media-detect.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=480">
 <style class="cp-pen-styles">
 .invalid input:invalid {
@@ -80,9 +83,15 @@ select {
 					$results=mysql_query($query);
 					$index=$index+1;
 				}
+			?>
+  		  	<div class="container">
+			  <div class="well">
+			  		Grihasana Renewal(if applicable): <a href='https://docs.google.com/document/d/1WSviDCsqFsg13AHTEwJp8hXuAJaXz8_7LVIGvALdjrE/copy?ts=58ab042d&title=<?=$_SESSION['display_name']?>_<?=$AmYear->format("Y")?>_Grihasana' target='_new'><strong>Submit</strong></a> 
+			  		OR <a href='https://docs.google.com' target='_new'> <strong>edit</strong> (if already created) </a> the application and share it with Gyan Bhai.
+   			  </div>
+			</div>
 
-				echo "<h4>Download Printable Applications Below</h4>\n";
-
+			<?php				
 				$printpage="pcpatraalt.html";
 				/*if (strpos($_SERVER['HTTP_USER_AGENT'],'Windows NT 6.1') !== false) {
 				 $printpage="pcpatraweb.htm";
@@ -107,7 +116,7 @@ select {
 									echo "&A16=".$_POST['Aabaahaka'][$index].".00";
 									echo "&A17=".$_POST['Sammilani_Daily_seba'][$index].".00";
 									echo "&A18=".$_POST['Misc_pranami'][$index].".00";
-									echo "'>".$one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]))."</a><br>";
+									echo "'><span class='glyphicon glyphicon-print'> ".$one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]))."</span></a><br>";
 								}else{
 									echo $one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]));
 								}
@@ -161,14 +170,14 @@ select {
 				</tr>
 
 				<tr>
-					<td>Parichaya Patra (&#x20B9 0/100)</td>
+					<td>Parichaya Patra (&#x20B9 0/110)</td>
 
 					<?php
 					mysql_data_seek($user_results, 0);
 					while($user_row = mysql_fetch_assoc($user_results)) {
 			?>
-					<td><input required pattern='0|100' type='text'
-						title='Enter 100 OR 0 if not applying' name='Parichaya_patra[]'
+					<td><input required pattern='0|110' type='text'
+						title='Enter 110 OR 0 if not applying' name='Parichaya_patra[]'
 						value='<?=$user_row['Parichaya_patra']?>'></input>
 					</td>
 
@@ -492,7 +501,7 @@ select {
 						</div>
 				</td>
 				<td colspan='<?=$app_count?>'>					
-					 	<input type='submit' value='Save & Print (1 USD = <?= $Exch_Rate ?> INR)'></input>
+					 	<input class="btn btn-primary btn-xs" type='submit' value='Save & Print (1 USD = <?= $Exch_Rate ?> INR)'></input>
 				</td>
 			<tr>
 			

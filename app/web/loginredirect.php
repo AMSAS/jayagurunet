@@ -81,18 +81,19 @@ if (isset($authUrl)) {
   <a class='login' href='<?php echo $authUrl; ?>'><img src='sign-in-with-google.png' alt='Click here to login Via Google'/></a><br>
   <br>
   <br>
-  <br>
-  <h1 style="font-size:30px">OR</h1>
-  <br>
-  <br>
-  <table class='calendar'>
-	  <form action='loginredirect.php' method='POST'>
-		  <tr><td colspan='2'>Login with your <a href='changepassword.php'>jayaguru.net account</a></td></tr>
-		  <tr><td>User Id:</td><td><input size='50' name='email' type='email'/></td></tr>
-		  <tr><td>Password:</td><td><input size='50' name='password' type='password'/></td></tr>
-		  <tr><td colspan='2' align='right'><input size='50' name='state' value='http://<?=$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI] ?>' type='hidden'/><input value='Submit' type='Submit'/></td></tr>
-	  </form>
-  </table>  
+  		  	<div class="container">
+			  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">OR Jayaguru.net account</button>
+			  <div id="demo" class="collapse">
+				  <table class='calendar'>
+					  <form action='loginredirect.php' method='POST'>
+						  <tr><td colspan='2'> <a href='changepassword.php'>Change Password</a></td></tr>
+						  <tr><td>User Id:</td><td><input size='50' name='email' type='email'/></td></tr>
+						  <tr><td>Password:</td><td><input size='50' name='password' type='password'/></td></tr>
+						  <tr><td colspan='2' align='right'><input size='50' name='state' value='http://<?=$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI] ?>' type='hidden'/><input value='Submit' type='Submit'/></td></tr>
+					  </form>
+				  </table> 
+   				</div>
+			</div>
 </div>
 <?php
 }else{
