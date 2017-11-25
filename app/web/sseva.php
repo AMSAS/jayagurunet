@@ -87,8 +87,11 @@ select{
 			    <iframe src="https://docs.google.com/spreadsheets/d/1qyZ0MTck_8zbT6qdSJ3DNdScE6ac_ecZoQIrA9jT1Ug/edit?usp=sharing&ui=2&chrome=false&rm=demo&range=A1:C53#gid=0" style="border-width:0" width="500" height="500" frameborder="0" scrolling="no"></iframe>
 			  </div>
 			</div>
-		  <?php }
+		  <?php }		  
 				if($_SERVER['REQUEST_METHOD']=='POST'){
+					$query = "insert into Pledge_xn(Pledge_year,Family_id,Pledge_amt) values(YEAR(CURDATE() + INTERVAL 1 MONTH),'".$_POST['Family_id']."',".$_POST['Pledge_amt'].") ON DUPLICATE KEY UPDATE Pledge_amt=".$_POST['Pledge_amt'];
+					mysql_query($query);		
+					
 					//Update existing records
 					$query="update Seva_xn set transtate=0 where Sammilani_year=YEAR(CURDATE() + INTERVAL 1 MONTH)
 							and Seva_id in (select Seva_id from Seva_master where Seva_cat='".$Seva_cat."')
@@ -150,25 +153,37 @@ select{
 				//echo $user_query."<br>\n";
 
 				$user_results = mysql_query($user_query);
+				
+				$pledge_query = "select d.Family_id,p.Pledge_year,p.Pledge_amt from Devotee as d left outer join Pledge_xn as p on d.Family_id=p.Family_id where d.Devotee_id=".$logged_in_id." group by d.Family_id having p.Pledge_year = max(p.Pledge_year) or p.Pledge_year IS null";
+				
+				// echo $pledge_query."<br>\n";
+				$pledge_results = mysql_fetch_assoc(mysql_query($pledge_query));
+				
 				$submit_button='Submit';
 				$app_count = 0;
-				if($user_results){
-					echo "<table class='alignCenter' cellspacing='0' cellpadding='0'>";
-					echo "<form method='post'>\n";
-					echo "<tr><td><b>Seva Name</b></td>";
+				if($user_results){?>
+					<table class='alignCenter' cellspacing='0' cellpadding='0'>
+					<form method='post'>
+					<tr><td><b>Seva Name</b></td>
+				<?php
 					$app_count = 0;
 					$prev_seva_id = -1;
 					while($user_row = mysql_fetch_assoc($user_results)) {
 						if($prev_seva_id == -1 || $prev_seva_id==$user_row['Seva_id']){
 							$prev_seva_id= $user_row['Seva_id'];
-							$app_count=$app_count+1;
-							echo "<td><b>".$user_row['Pref_name']."</b></td>";
+							$app_count=$app_count+1;?>
+							<td><b><?=$user_row['Pref_name']?></b></td>
+							<?php
 							continue;
 						}
 						break;
-					}
-					echo "</tr>";
-
+					}?>
+					</tr>
+					<tr><td><b>Pledge Amount:</b></td><td colspan='<?=$app_count?>'>
+					<input type='hidden' name='Family_id' value='<?=$pledge_results['Family_id']?>'/>
+					<input type='number' name='Pledge_amt' title='Previously known contribution is automatically populated' value='<?=$pledge_results['Pledge_amt']?>' required/>
+					</td></tr>
+					<?php
 					mysql_data_seek($user_results, 0);
 					$prev_seva_id = -1;
 					while($user_row = mysql_fetch_assoc($user_results)) {
