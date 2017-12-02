@@ -78,7 +78,7 @@ select{
 		<div style="text-align:center">
 		  <a href="index.php"><img src="/images/orgnz.gif"/></a><br>
 		  <h4><?php echo $Seva_cat; ?> Seva Application <?php echo $AmYear->format("Y"); ?></h4>
-		  <?php 
+		  <?php
 			if (isset($_SESSION['PID'])) {
 			if($Seva_cat=='Annual'){?>
 		  	<div class="container">
@@ -87,11 +87,12 @@ select{
 			    <iframe src="https://docs.google.com/spreadsheets/d/1qyZ0MTck_8zbT6qdSJ3DNdScE6ac_ecZoQIrA9jT1Ug/edit?usp=sharing&ui=2&chrome=false&rm=demo&range=A1:C53#gid=0" style="border-width:0" width="500" height="500" frameborder="0" scrolling="no"></iframe>
 			  </div>
 			</div>
-		  <?php }		  
+		  <?php }
 				if($_SERVER['REQUEST_METHOD']=='POST'){
 					$query = "insert into Pledge_xn(Pledge_year,Family_id,Pledge_amt) values(YEAR(CURDATE() + INTERVAL 1 MONTH),'".$_POST['Family_id']."',".$_POST['Pledge_amt'].") ON DUPLICATE KEY UPDATE Pledge_amt=".$_POST['Pledge_amt'];
-					mysql_query($query);		
-					
+					//echo $query;
+					mysql_query($query);
+
 					//Update existing records
 					$query="update Seva_xn set transtate=0 where Sammilani_year=YEAR(CURDATE() + INTERVAL 1 MONTH)
 							and Seva_id in (select Seva_id from Seva_master where Seva_cat='".$Seva_cat."')
@@ -153,12 +154,12 @@ select{
 				//echo $user_query."<br>\n";
 
 				$user_results = mysql_query($user_query);
-				
-				$pledge_query = "select d.Family_id,p.Pledge_year,p.Pledge_amt from Devotee as d left outer join Pledge_xn as p on d.Family_id=p.Family_id where d.Devotee_id=".$logged_in_id." group by d.Family_id having p.Pledge_year = max(p.Pledge_year) or p.Pledge_year IS null";
-				
-				// echo $pledge_query."<br>\n";
+
+				$pledge_query = "select d.Family_id,p.Pledge_year,p.Pledge_amt from Devotee as d left join Pledge_xn p on d.Family_id=p.Family_id where d.Devotee_id=".$logged_in_id." order by p.Pledge_year desc";
+
+				//echo $pledge_query."<br>\n";
 				$pledge_results = mysql_fetch_assoc(mysql_query($pledge_query));
-				
+
 				$submit_button='Submit';
 				$app_count = 0;
 				if($user_results){?>
@@ -181,7 +182,7 @@ select{
 					</tr>
 					<tr><td><b>Pledge Amount:</b></td><td colspan='<?=$app_count?>'>
 					<input type='hidden' name='Family_id' value='<?=$pledge_results['Family_id']?>'/>
-					<input type='number' name='Pledge_amt' title='Previously known contribution is automatically populated' value='<?=$pledge_results['Pledge_amt']?>' required/>
+					<input type='number' name='Pledge_amt' title='Previously known contribution is automatically populated' value='<?=$pledge_results['Pledge_amt']?>' step=".01" required/>
 					</td></tr>
 					<?php
 					mysql_data_seek($user_results, 0);
