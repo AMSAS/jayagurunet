@@ -89,9 +89,11 @@ select{
 			</div>
 		  <?php }
 				if($_SERVER['REQUEST_METHOD']=='POST'){
-					$query = "insert into Pledge_xn(Pledge_year,Family_id,Pledge_amt) values(YEAR(CURDATE() + INTERVAL 1 MONTH),'".$_POST['Family_id']."',".$_POST['Pledge_amt'].") ON DUPLICATE KEY UPDATE Pledge_amt=".$_POST['Pledge_amt'];
-					//echo $query;
-					mysql_query($query);
+					if($Seva_cat!='Sammilani'){
+						$query = "insert into Pledge_xn(Pledge_year,Family_id,Pledge_amt) values(YEAR(CURDATE() + INTERVAL 1 MONTH),'".$_POST['Family_id']."',".$_POST['Pledge_amt'].") ON DUPLICATE KEY UPDATE Pledge_amt=".$_POST['Pledge_amt'];
+						//echo $query;
+						mysql_query($query);
+					}
 
 					//Update existing records
 					$query="update Seva_xn set transtate=0 where Sammilani_year=YEAR(CURDATE() + INTERVAL 1 MONTH)
@@ -180,11 +182,13 @@ select{
 						break;
 					}?>
 					</tr>
+					<?php if($Seva_cat!='Sammilani'){?>
 					<tr><td><b>Pledge Amount:</b></td><td colspan='<?=$app_count?>'>
 					<input type='hidden' name='Family_id' value='<?=$pledge_results['Family_id']?>'/>
-					<input type='number' name='Pledge_amt' title='Previously known contribution is automatically populated' value='<?=$pledge_results['Pledge_amt']?>' step=".01" required/>
+					<input type='number' name='Pledge_amt' title='Previously known contribution is automatically populated' value='<?=$pledge_results['Pledge_amt']?>' step=".01" <?=(!isset($pledge_results['Pledge_amt'])||date('n')==12)?'required':'readonly' ?>/>
 					</td></tr>
 					<?php
+					}
 					mysql_data_seek($user_results, 0);
 					$prev_seva_id = -1;
 					while($user_row = mysql_fetch_assoc($user_results)) {

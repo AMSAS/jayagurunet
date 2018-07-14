@@ -72,7 +72,7 @@ select {
 			<?=$AmYear->format("Y")?>
 		</h4>
 
-		<?php	
+		<?php
 		if (isset($_SESSION['PID'])) {
 			//var_dump($_SERVER);
 			if(isset($_POST['Parichaya_patra'])){
@@ -86,12 +86,12 @@ select {
 			?>
   		  	<div class="container">
 			  <div class="well">
-			  		Grihasana Renewal(if applicable): <a href='https://docs.google.com/document/d/1WSviDCsqFsg13AHTEwJp8hXuAJaXz8_7LVIGvALdjrE/copy?ts=58ab042d&title=<?=$_SESSION['display_name']?>_<?=$AmYear->format("Y")?>_Grihasana' target='_new'><strong>Submit</strong></a> 
-			  		OR <a href='https://docs.google.com' target='_new'> <strong>edit</strong> (if already created) </a> the application and share it with Gyan Bhai.
+			  		Grihasana Renewal(if applicable): <a href='https://docs.google.com/document/d/1WSviDCsqFsg13AHTEwJp8hXuAJaXz8_7LVIGvALdjrE/copy?ts=58ab042d&title=<?=$_SESSION['display_name']?>_<?=$AmYear->format("Y")?>_Grihasana' target='_new'><strong>Submit</strong></a>
+			  		OR <a href='https://docs.google.com' target='_new'> <strong>Edit</strong> (if already created) </a> the application and share it with Secretary/President.
    			  </div>
 			</div>
-
-			<?php				
+			<ul style="list-style-type:none">
+			<?php
 				$printpage="pcpatraalt.html";
 				/*if (strpos($_SERVER['HTTP_USER_AGENT'],'Windows NT 6.1') !== false) {
 				 $printpage="pcpatraweb.htm";
@@ -106,8 +106,8 @@ select {
 						$applicant = mysql_query("select First_name,Last_name from Devotee where Devotee_id=".$D_id);
 						if($applicant){
 							while($one_applicant = mysql_fetch_assoc($applicant)) {
-								if($_POST['Parichaya_patra'][$index]=='100'){
-									echo "<a target='Devotee".$D_id."' href='".$printpage."?First_name=".urlencode($one_applicant['First_name'])."&Last_name=".$one_applicant['Last_name'];
+								if($_POST['Parichaya_patra'][$index]!='0'){
+									echo "<li><a target='Devotee".$D_id."' href='".$printpage."?First_name=".urlencode($one_applicant['First_name'])."&Last_name=".$one_applicant['Last_name'];
 									echo "&A11=".$_POST['Musti_Bhikhyaa'][$index].".00";
 									echo "&A12=".$_POST['Gruhaasana'][$index].".00";
 									echo "&A13=".$_POST['Janmotsaba'][$index].".00";
@@ -116,9 +116,9 @@ select {
 									echo "&A16=".$_POST['Aabaahaka'][$index].".00";
 									echo "&A17=".$_POST['Sammilani_Daily_seba'][$index].".00";
 									echo "&A18=".$_POST['Misc_pranami'][$index].".00";
-									echo "'><span class='glyphicon glyphicon-print'> ".$one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]))."</span></a><br>";
+									echo "'><span class='glyphicon glyphicon-print'> ".$one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]))."</span></a></li>";
 								}else{
-									echo $one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]));
+									echo "<li><span class='glyphicon glyphicon-print'> ".$one_applicant['First_name']." ".$one_applicant['Last_name']."=".money_format('%.2n',floatval($_POST['PP_Total'][$index]))."</span></li>";
 								}
 								$totalAmount = $totalAmount + $_POST['PP_Total'][$index];
 							}
@@ -127,15 +127,15 @@ select {
 					$index=$index+1;
 				}
 
-				echo "<h4>TOTAL AMOUNT DUE: $".round($totalAmount).".00</h4>";
+				echo "</ul><h4>TOTAL AMOUNT DUE: $".round($totalAmount).".00</h4>";
 				echo "<hr>";
 			}
 			$POPULATE_YEAR=$AmYear->format("Y");
 			if(isset($_GET['autofill'])){
 			$POPULATE_YEAR=$_GET['autofill'];
 		}
-		$user_query= "SELECT Devotee.Devotee_id LT_Devotee_id,Gender,First_name,Value Exch_Rate,Parichaya_patra.* 
-					FROM Devotee JOIN Exchange_rate ON Exchange_rate.PP_year=".$AmYear->format("Y")." 
+		$user_query= "SELECT Devotee.Devotee_id LT_Devotee_id,Gender,First_name,Value Exch_Rate,Parichaya_patra.*
+					FROM Devotee JOIN Exchange_rate ON Exchange_rate.PP_year=".$AmYear->format("Y")."
 					LEFT OUTER JOIN Parichaya_patra ON Devotee.Devotee_id=Parichaya_patra.Devotee_id and Parichaya_patra.PP_year=".$POPULATE_YEAR."
 					WHERE Devotee.Family_id=(select Family_id from Devotee where Devotee_id=".$_SESSION['PID'].") order by Fam_Pri_contact desc,First_name asc";
 		//$user_query.= "where Devotee.Family_id=(select Family_id from Devotee where Devotee_id=1) order by Fam_Pri_contact desc,First_name asc";
@@ -246,7 +246,7 @@ select {
 								New</option>
 					</select>
 					</td>
-					<?php				
+					<?php
 				}
 			}
 			?>
@@ -497,21 +497,21 @@ select {
 						<a href='pcpatra.php?autofill=<?=$AmYear->format("Y")-1?>'><?=$AmYear->format("Y")-1?></a> &nbsp;
 						<?php if(isset($_GET['autofill'])){ ?>
 						<a href='pcpatra.php' title='Prepopulate with current year information(if any saved earlier)'>Current</a>
-						<?php } ?> 
+						<?php } ?>
 						</div>
 				</td>
-				<td colspan='<?=$app_count?>'>					
-					 	<input class="btn btn-primary btn-xs" type='submit' value='Save & Print (1 USD = <?= $Exch_Rate ?> INR)'></input>
+				<td colspan='<?=$app_count?>'>
+					 	<input class="btn btn-primary btn-xs" type='submit' value='Save & Print (1 USD = <?= $Exch_Rate ?> INR)'<?=($AmYear->format("m")-1)<3?'':' disabled'?>></input>
 				</td>
 			<tr>
-			
-			
+
+
 			</form>
 
 		</table>
 		<?php
 		}
-		}else{  		
+		}else{
 			include 'loginredirect.php';
 	}
 

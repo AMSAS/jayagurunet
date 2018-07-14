@@ -41,26 +41,18 @@ if (isset($_SESSION['PID'])) {
 				echo draw_calendar($_GET['mon'],$_GET['year']);
 			}else{
 				echo draw_calendar($today['mon'],$today['year']);
-			}?>
-			<a href="sseva.php?Seva_cat=Guest&PP_member=N">Guest</a> |
-			<a href="sseva.php?Seva_cat=Annual&PP_member=Y">Member</a> |
-			<a href="sseva.php?Seva_cat=Sammilani&PP_member=YN">Sammilani</a> |	
-			<a href="pcpatra.php">Parichaya Patra</a> |		
-			<?php
-			if(isAllowed($GLOBALS[ROLE_UPPROGRAM])){
-			?>
-			<a href="fileuploader.html">Upload Program</a> |
-			<?php }
+			}
 			if(isAllowed($GLOBALS[ROLE_SA])){
-			?>	
-			<a href="adddevotee.php">Add Devotee</a> | 
-			<a href="managedevotee.php">Approve</a> | 
-			<a href="sseva_report.php">Report</a> |
+			?>
+			<a href="pcpreport.php">Parichaya Patra Report</a> |
+			<a href="adddevotee.php">Add Devotee</a> |
+			<a href="managedevotee.php">Approve</a> |
+			<a href="sseva_report.php">Seva Appl Report</a> |
 			<a href='sseva_report_upd.php'>Seva Mukhya(s)</a> |
-			<?php }?>			
+			<?php }?>
 			<a href="preferences.php">Preferences</a> |
 			<a href="logout.php">Logout</a>
-			<?php 
+			<?php
 }else{
 	include 'loginredirect.php';
 }
